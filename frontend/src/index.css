@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Hind Siliguri', 'Noto Sans Bengali', 'Nirmala UI', system-ui, sans-serif;
+
+  --color-brand-50: #effaf6;
+  --color-brand-100: #d7f2e8;
+  --color-brand-200: #b0e4d2;
+  --color-brand-300: #7fd0b6;
+  --color-brand-400: #4bb597;
+  --color-brand-500: #27997b;
+  --color-brand-600: #14866d;
+  --color-brand-700: #116b58;
+  --color-brand-800: #105647;
+  --color-brand-900: #0e473b;
+
+  --color-navy-50: #eef4f9;
+  --color-navy-100: #d6e4ef;
+  --color-navy-200: #aec8de;
+  --color-navy-300: #7fa6c6;
+  --color-navy-400: #4f80a8;
+  --color-navy-500: #2f628b;
+  --color-navy-600: #1d4e74;
+  --color-navy-700: #0f3d5e;
+  --color-navy-800: #0c3049;
+  --color-navy-900: #09243a;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-gray-50 font-sans text-gray-900 antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+}

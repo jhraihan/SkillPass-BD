@@ -1,0 +1,30 @@
+export const ROLES = {
+  CUSTOMER: 'CUSTOMER',
+  WORKER: 'WORKER',
+  CONTRACTOR: 'CONTRACTOR',
+  ADMIN: 'ADMIN',
+};
+
+export const ROLE_HOME = {
+  CUSTOMER: '/customer',
+  WORKER: '/worker',
+  ADMIN: '/admin',
+};
+
+export function homePathForRole(role) {
+  return ROLE_HOME[role] ?? '/';
+}
+
+export const BOOKING_STATUS = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  EXPIRED: 'EXPIRED',
+  ON_THE_WAY: 'ON_THE_WAY',
+  IN_PROGRESS: 'IN_PROGRESS',
+  AWAITING_CONFIRMATION: 'AWAITING_CONFIRMATION',
+  COMPLETED: 'COMPLETED',
+  AUTO_CLOSED: 'AUTO_CLOSED',
+  CANCELLED: 'CANCELLED',
+  DISPUTED: 'DISPUTED',
+};

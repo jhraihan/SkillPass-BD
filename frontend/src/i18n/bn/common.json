@@ -1,0 +1,134 @@
+{
+  "appName": "স্কিলপাস বিডি",
+  "tagline": "যাচাই করা দক্ষতা, বিশ্বস্ত কাজ।",
+  "actions": {
+    "save": "সংরক্ষণ করুন",
+    "cancel": "বাতিল",
+    "confirm": "নিশ্চিত করুন",
+    "back": "পেছনে",
+    "retry": "আবার চেষ্টা করুন",
+    "submit": "জমা দিন",
+    "close": "বন্ধ করুন",
+    "next": "পরবর্তী",
+    "previous": "আগের",
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন",
+    "search": "খুঁজুন",
+    "logout": "লগ আউট",
+    "login": "লগ ইন",
+    "viewAll": "সব দেখুন",
+    "reload": "পেজটি আবার লোড করুন"
+  },
+  "states": {
+    "loading": "লোড হচ্ছে…",
+    "empty": "এখনো কিছু নেই",
+    "error": "কিছু একটা সমস্যা হয়েছে",
+    "comingSoon": "শীঘ্রই আসছে"
+  },
+  "errors": {
+    "generic": "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।",
+    "network": "ইন্টারনেট সংযোগ নেই। নেটওয়ার্ক দেখে আবার চেষ্টা করুন।",
+    "notFound": "খুঁজে পাওয়া যায়নি।",
+    "forbidden": "এই কাজটি করার অনুমতি আপনার নেই।",
+    "required": "এই ঘরটি পূরণ করতে হবে।",
+    "pageCrashed": "এই পেজে একটি সমস্যা হয়েছে।"
+  },
+  "pagination": {
+    "label": "পৃষ্ঠাসমূহ",
+    "previous": "আগের",
+    "next": "পরবর্তী",
+    "pageOf": "পৃষ্ঠা {{page}} / {{total}}"
+  },
+  "roles": {
+    "CUSTOMER": "গ্রাহক",
+    "WORKER": "কর্মী",
+    "CONTRACTOR": "ঠিকাদার",
+    "ADMIN": "অ্যাডমিন"
+  },
+  "status": {
+    "PENDING": "নতুন অনুরোধ",
+    "ACCEPTED": "গ্রহণ করা হয়েছে",
+    "DECLINED": "প্রত্যাখ্যাত",
+    "EXPIRED": "মেয়াদ শেষ",
+    "ON_THE_WAY": "রওনা দিয়েছে",
+    "IN_PROGRESS": "কাজ চলছে",
+    "AWAITING_CONFIRMATION": "নিশ্চিতকরণের অপেক্ষায়",
+    "COMPLETED": "সম্পন্ন",
+    "AUTO_CLOSED": "স্বয়ংক্রিয়ভাবে বন্ধ",
+    "CANCELLED": "বাতিল",
+    "DISPUTED": "পর্যালোচনা চলছে"
+  },
+  "language": {
+    "label": "ভাষা",
+    "switchTo": "English"
+  },
+  "nav": {
+    "home": "হোম",
+    "jobs": "কাজ",
+    "profile": "প্রোফাইল",
+    "help": "সাহায্য",
+    "dashboard": "ড্যাশবোর্ড",
+    "findWorkers": "কর্মী খুঁজুন",
+    "newRequest": "নতুন অনুরোধ",
+    "bookings": "আমার বুকিং",
+    "notifications": "নোটিফিকেশন",
+    "account": "অ্যাকাউন্ট",
+    "verifications": "যাচাই",
+    "reports": "অভিযোগ",
+    "users": "ব্যবহারকারী",
+    "catalog": "ক্যাটালগ",
+    "mainMenu": "প্রধান মেনু"
+  },
+  "upload": {
+    "choose": "ফাইল বাছুন",
+    "takePhoto": "ছবি তুলুন",
+    "remove": "{{name}} সরান",
+    "tooLarge": "{{name}} ফাইলটি {{max}} MB-এর বেশি বড়।",
+    "wrongType": "{{name}} এই ধরনের ফাইল দেওয়া যাবে না।"
+  },
+  "rating": {
+    "outOf": "৫-এর মধ্যে {{value}}",
+    "stars_one": "{{count}} তারা",
+    "stars_other": "{{count}} তারা"
+  },
+  "dev": {
+    "viewAs": "নমুনা ডেটা — যেভাবে দেখবেন",
+    "guest": "অতিথি"
+  },
+  "examples": {
+    "listTitle": "উদাহরণ তালিকা",
+    "listDescription": "নমুনা পেজ: লোডিং, ত্রুটি, খালি অবস্থা ও পৃষ্ঠা বিভাজনসহ তালিকা।",
+    "detailTitle": "উদাহরণ বিস্তারিত",
+    "formTitle": "উদাহরণ ফর্ম",
+    "formDescription": "নমুনা পেজ: যাচাই, টাইল, তারা ও সার্ভার ত্রুটিসহ ফর্ম।",
+    "new": "নতুন আইটেম",
+    "empty": "এখনো কোনো আইটেম নেই",
+    "fields": {
+      "title": "কাজের নাম",
+      "titleHint": "কমপক্ষে ৩টি অক্ষর",
+      "category": "ক্যাটাগরি",
+      "categoryPlaceholder": "একটি ক্যাটাগরি বাছুন",
+      "urgency": "কত জরুরি?",
+      "rating": "রেটিং",
+      "notes": "নোট",
+      "area": "এলাকা",
+      "status": "অবস্থা",
+      "created": "তৈরির সময়"
+    },
+    "categories": {
+      "ac": "এসি মেরামত",
+      "plumbing": "প্লাম্বিং",
+      "electrical": "ইলেকট্রিক্যাল"
+    },
+    "urgency": {
+      "low": "জরুরি না",
+      "normal": "এই সপ্তাহে",
+      "urgent": "আজই"
+    },
+    "errors": {
+      "titleMin": "নাম কমপক্ষে ৩ অক্ষরের হতে হবে।",
+      "ratingMin": "কমপক্ষে ১টি তারা দিন।"
+    },
+    "saved": "সফলভাবে সংরক্ষণ হয়েছে।"
+  }
+}

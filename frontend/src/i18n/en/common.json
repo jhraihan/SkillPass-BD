@@ -1,0 +1,134 @@
+{
+  "appName": "SkillPass BD",
+  "tagline": "Verified skills. Trusted work.",
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "retry": "Try again",
+    "submit": "Submit",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "logout": "Log out",
+    "login": "Log in",
+    "viewAll": "View all",
+    "reload": "Reload page"
+  },
+  "states": {
+    "loading": "Loading…",
+    "empty": "Nothing here yet",
+    "error": "Something went wrong",
+    "comingSoon": "Coming soon"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "No internet connection. Check your network and try again.",
+    "notFound": "We couldn't find that.",
+    "forbidden": "You don't have permission to do this.",
+    "required": "This field is required.",
+    "pageCrashed": "This page ran into a problem."
+  },
+  "pagination": {
+    "label": "Pages",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {{page}} of {{total}}"
+  },
+  "roles": {
+    "CUSTOMER": "Customer",
+    "WORKER": "Worker",
+    "CONTRACTOR": "Contractor",
+    "ADMIN": "Admin"
+  },
+  "status": {
+    "PENDING": "New request",
+    "ACCEPTED": "Accepted",
+    "DECLINED": "Declined",
+    "EXPIRED": "Expired",
+    "ON_THE_WAY": "On the way",
+    "IN_PROGRESS": "Work in progress",
+    "AWAITING_CONFIRMATION": "Waiting for confirmation",
+    "COMPLETED": "Completed",
+    "AUTO_CLOSED": "Closed automatically",
+    "CANCELLED": "Cancelled",
+    "DISPUTED": "Under review"
+  },
+  "language": {
+    "label": "Language",
+    "switchTo": "বাংলা"
+  },
+  "nav": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "profile": "Profile",
+    "help": "Help",
+    "dashboard": "Dashboard",
+    "findWorkers": "Find workers",
+    "newRequest": "New request",
+    "bookings": "My bookings",
+    "notifications": "Notifications",
+    "account": "Account",
+    "verifications": "Verifications",
+    "reports": "Reports",
+    "users": "Users",
+    "catalog": "Catalog",
+    "mainMenu": "Main menu"
+  },
+  "upload": {
+    "choose": "Choose file",
+    "takePhoto": "Take photo",
+    "remove": "Remove {{name}}",
+    "tooLarge": "{{name}} is larger than {{max}} MB.",
+    "wrongType": "{{name}} is not an allowed file type."
+  },
+  "rating": {
+    "outOf": "{{value}} out of 5",
+    "stars_one": "{{count}} star",
+    "stars_other": "{{count}} stars"
+  },
+  "dev": {
+    "viewAs": "Mock data — view as",
+    "guest": "Guest"
+  },
+  "examples": {
+    "listTitle": "Example list",
+    "listDescription": "Reference page: list with loading, error, empty states and pagination.",
+    "detailTitle": "Example detail",
+    "formTitle": "Example form",
+    "formDescription": "Reference page: form with validation, tiles, stars and server errors.",
+    "new": "New item",
+    "empty": "No items yet",
+    "fields": {
+      "title": "Job title",
+      "titleHint": "At least 3 characters",
+      "category": "Category",
+      "categoryPlaceholder": "Choose a category",
+      "urgency": "How urgent is it?",
+      "rating": "Rating",
+      "notes": "Notes",
+      "area": "Area",
+      "status": "Status",
+      "created": "Created"
+    },
+    "categories": {
+      "ac": "AC repair",
+      "plumbing": "Plumbing",
+      "electrical": "Electrical"
+    },
+    "urgency": {
+      "low": "Not urgent",
+      "normal": "This week",
+      "urgent": "Today"
+    },
+    "errors": {
+      "titleMin": "Title must be at least 3 characters.",
+      "ratingMin": "Choose at least 1 star."
+    },
+    "saved": "Saved successfully."
+  }
+}
