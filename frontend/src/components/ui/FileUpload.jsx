@@ -15,6 +15,15 @@ function FileThumb({ file }) {
   return <img src={url} alt="" className="size-12 rounded-lg object-cover" />;
 }
 
+function matches(file, accept) {
+  return accept
+    .split(',')
+    .map((rule) => rule.trim())
+    .some((rule) =>
+      rule.endsWith('/*') ? file.type.startsWith(rule.slice(0, -1)) : file.type === rule,
+    );
+}
+
 export default function FileUpload({
   label,
   hint,
@@ -36,6 +45,10 @@ export default function FileUpload({
   const addFiles = (fileList) => {
     const accepted = [];
     for (const file of Array.from(fileList ?? [])) {
+      if (!matches(file, accept)) {
+        setLocalError(t('upload.wrongType', { name: file.name }));
+        continue;
+      }
       if (file.size > maxSizeMB * 1024 * 1024) {
         setLocalError(t('upload.tooLarge', { name: file.name, max: maxSizeMB }));
         continue;

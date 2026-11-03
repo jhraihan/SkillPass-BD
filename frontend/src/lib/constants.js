@@ -60,3 +60,14 @@ export const TRUST_FACTORS = Object.keys(TRUST_WEIGHTS);
 export const RATING_DIMENSIONS = ['quality', 'professionalism', 'punctuality', 'communication'];
 
 export const REVIEWABLE_STATUSES = ['COMPLETED', 'AUTO_CLOSED'];
+
+export const VERIFICATION_TYPES = ['IDENTITY', 'SKILL_EVIDENCE'];
+
+export const VERIFICATION_STATUSES = ['PENDING', 'APPROVED', 'REJECTED'];
+
+export const DOCUMENT_RULES = {
+  accept: 'image/jpeg,image/png,application/pdf',
+  types: ['image/jpeg', 'image/png', 'application/pdf'],
+  maxSizeMB: 5,
+  maxFiles: 5,
+};
