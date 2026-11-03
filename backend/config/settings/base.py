@@ -100,14 +100,13 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
-# Verification documents live here and are never served directly.
 PRIVATE_MEDIA_ROOT = BASE_DIR / "private_media"
 
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=["http://localhost:5173"])
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "apps.accounts.authentication.SkillPassJWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
     "DEFAULT_PAGINATION_CLASS": "common.pagination.StandardPagination",
@@ -131,10 +130,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=env.int("JWT_REFRESH_DAYS", default=7)),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
-    "UPDATE_LAST_LOGIN": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_AUTHENTICATION_RULE": "apps.accounts.authentication.user_can_authenticate",
+    "CHECK_REVOKE_TOKEN": True,
 }
-# Workers get a longer session so they rarely see the login screen (PRD FR-01).
 JWT_WORKER_REFRESH_LIFETIME = timedelta(days=env.int("JWT_WORKER_REFRESH_DAYS", default=30))
 
 SPECTACULAR_SETTINGS = {

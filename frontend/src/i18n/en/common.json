@@ -31,7 +31,13 @@
     "notFound": "We couldn't find that.",
     "forbidden": "You don't have permission to do this.",
     "required": "This field is required.",
-    "pageCrashed": "This page ran into a problem."
+    "pageCrashed": "This page ran into a problem.",
+    "phone": "Enter a valid mobile number, like 01712345678.",
+    "pinFormat": "The PIN must be exactly 6 digits.",
+    "pinWeak": "This PIN is too easy to guess. Choose a different one.",
+    "pinMismatch": "The two PINs do not match.",
+    "passwordMin": "Use at least 8 characters.",
+    "passwordMismatch": "The two passwords do not match."
   },
   "pagination": {
     "label": "Pages",
@@ -130,5 +136,11 @@
       "ratingMin": "Choose at least 1 star."
     },
     "saved": "Saved successfully."
+  },
+  "apiErrors": {
+    "invalid_credentials": "Phone number or PIN/password is incorrect.",
+    "account_locked": "Your account is locked after too many wrong attempts. Please contact support.",
+    "account_suspended": "Your account is suspended. Please contact support.",
+    "throttled": "Too many tries. Please wait a minute and try again."
   }
 }

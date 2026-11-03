@@ -1,11 +1,17 @@
-// Reference list page — copy this pattern for any page that shows a list.
-// Route: /_examples (dev only)   Data: useExampleItems
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { StatusTag } from '@/components/domain';
-import { Button, Card, EmptyState, ErrorState, LoadingState, PageHeader, Pagination } from '@/components/ui';
+import {
+  Button,
+  Card,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  PageHeader,
+  Pagination,
+} from '@/components/ui';
 import { EXAMPLE_PAGE_SIZE, useExampleItems } from '@/hooks/examples';
 import { formatDate } from '@/lib/format';
 
@@ -35,7 +41,11 @@ export default function ExampleListPage() {
           <ul className="space-y-3">
             {data.results.map((item) => (
               <li key={item.id}>
-                <Card as={Link} to={`/_examples/${item.id}`} className="block hover:border-brand-300">
+                <Card
+                  as={Link}
+                  to={`/_examples/${item.id}`}
+                  className="block hover:border-brand-300"
+                >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="font-semibold text-gray-900">{item.title}</p>
                     <StatusTag status={item.status} size="sm" />

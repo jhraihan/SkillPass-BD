@@ -1,5 +1,3 @@
-// Mock-only hooks used by the reference pages in features/_example.
-// Real hooks follow the same shape but use apiOrMock() from ./request.
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { exampleItems } from '@/mocks/examples';
 import { mockFind, mockPaginate, mockRequest } from '@/mocks/utils';

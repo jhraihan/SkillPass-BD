@@ -13,9 +13,7 @@ function write(key, value) {
   try {
     if (value) localStorage.setItem(key, value);
     else localStorage.removeItem(key);
-  } catch {
-    // Storage unavailable (private mode); the session just won't survive a reload.
-  }
+  } catch {}
 }
 
 export const tokens = {

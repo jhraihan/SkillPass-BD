@@ -8,9 +8,6 @@ import { LoadingState } from '@/components/ui';
 import NotificationBell from '@/features/customer/components/NotificationBell';
 import NavItem from './NavItem';
 
-/**
- * Worker area: phone-first, bigger text, and only 4 bottom tabs that never move (PRD §14.2).
- */
 export default function WorkerLayout() {
   const { t } = useTranslation();
 

@@ -5,10 +5,6 @@ import { cn } from '@/lib/cn';
 
 const SIZES = { sm: 'max-w-sm', md: 'max-w-lg', lg: 'max-w-2xl' };
 
-/**
- * Accessible dialog built on <dialog>: focus is trapped, Escape and backdrop click close it.
- * <Modal open={open} onClose={() => setOpen(false)} title="…" footer={<Button>…</Button>}>…</Modal>
- */
 export default function Modal({ open, onClose, title, size = 'md', footer, children }) {
   const { t } = useTranslation();
   const dialogRef = useRef(null);

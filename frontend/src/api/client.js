@@ -3,7 +3,6 @@ import i18n from '@/i18n';
 import { API_BASE_URL } from '@/lib/config';
 import { tokens } from './tokens';
 
-/** Fired when the session can no longer be refreshed; AuthProvider listens for it. */
 export const AUTH_LOGOUT_EVENT = 'skillpass:logout';
 
 const api = axios.create({ baseURL: API_BASE_URL, timeout: 15_000 });
@@ -20,7 +19,6 @@ let refreshPromise = null;
 async function refreshAccessToken() {
   const refresh = tokens.getRefresh();
   if (!refresh) throw new Error('No refresh token');
-  // Plain axios, not `api`, so this request never re-enters the interceptor.
   const { data } = await axios.post(`${API_BASE_URL}/auth/refresh/`, { refresh });
   tokens.set({ access: data.access, refresh: data.refresh });
   return data.access;
@@ -36,7 +34,6 @@ api.interceptors.response.use(
 
     original._retry = true;
     try {
-      // Several requests can fail at once; share a single refresh call between them.
       refreshPromise ??= refreshAccessToken().finally(() => {
         refreshPromise = null;
       });

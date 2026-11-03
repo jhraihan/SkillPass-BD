@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { cn } from '@/lib/cn';
 
-/** Page title row: <PageHeader title="…" description="…" backTo="/customer" actions={<Button/>} /> */
 export default function PageHeader({ title, description, backTo, actions, className }) {
   const { t } = useTranslation();
   return (

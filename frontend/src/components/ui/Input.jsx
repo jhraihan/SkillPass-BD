@@ -2,7 +2,6 @@ import { useId } from 'react';
 import Field from './Field';
 import { controlClass, describedBy } from './styles';
 
-/** Text input. Works with react-hook-form: <Input label="…" {...register('name')} /> */
 export default function Input({
   label,
   hint,

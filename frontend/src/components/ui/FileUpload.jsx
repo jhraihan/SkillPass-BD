@@ -15,10 +15,6 @@ function FileThumb({ file }) {
   return <img src={url} alt="" className="size-12 rounded-lg object-cover" />;
 }
 
-/**
- * Pick files or take a photo with the phone camera.
- * <FileUpload label="…" value={files} onChange={setFiles} accept="image/*,application/pdf" camera multiple />
- */
 export default function FileUpload({
   label,
   hint,
@@ -57,11 +53,21 @@ export default function FileUpload({
     <Field id={id} label={label} hint={hint} error={error ?? localError} className={className}>
       <div className="flex flex-wrap gap-3">
         {camera && (
-          <Button variant="outline" size="lg" icon={Camera} onClick={() => cameraRef.current?.click()}>
+          <Button
+            variant="outline"
+            size="lg"
+            icon={Camera}
+            onClick={() => cameraRef.current?.click()}
+          >
             {t('upload.takePhoto')}
           </Button>
         )}
-        <Button variant="outline" size="lg" icon={Upload} onClick={() => pickerRef.current?.click()}>
+        <Button
+          variant="outline"
+          size="lg"
+          icon={Upload}
+          onClick={() => pickerRef.current?.click()}
+        >
           {t('upload.choose')}
         </Button>
       </div>

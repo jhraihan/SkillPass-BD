@@ -22,7 +22,10 @@ export default function Avatar({ src, name, size = 'md', className }) {
   if (src) return <img src={src} alt={name ?? ''} className={classes} loading="lazy" />;
   return (
     <span
-      className={cn(classes, 'inline-flex items-center justify-center bg-brand-100 font-semibold text-brand-800')}
+      className={cn(
+        classes,
+        'inline-flex items-center justify-center bg-brand-100 font-semibold text-brand-800',
+      )}
       aria-label={name}
       role="img"
     >

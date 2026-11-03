@@ -1,12 +1,11 @@
 import { cn } from '@/lib/cn';
 
-const COLUMNS = { 2: 'grid-cols-2', 3: 'grid-cols-2 sm:grid-cols-3', 4: 'grid-cols-2 sm:grid-cols-4' };
+const COLUMNS = {
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 sm:grid-cols-3',
+  4: 'grid-cols-2 sm:grid-cols-4',
+};
 
-/**
- * Big picture tiles instead of a text list (worker-friendly choices, PRD §14.2).
- * options: [{ value, label, icon?: LucideIcon | string (emoji), description? }]
- * Single: value='ac', onChange(value). Multiple: multiple, value=['ac'], onChange(values).
- */
 export default function TileGroup({
   options = [],
   value,
@@ -17,7 +16,7 @@ export default function TileGroup({
   error,
   className,
 }) {
-  const selected = multiple ? value ?? [] : value;
+  const selected = multiple ? (value ?? []) : value;
   const isSelected = (optionValue) =>
     multiple ? selected.includes(optionValue) : selected === optionValue;
 

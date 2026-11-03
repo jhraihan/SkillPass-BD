@@ -6,8 +6,6 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """Platform user. Logs in with phone number; workers use a 6-digit PIN as the password."""
-
     class Role(models.TextChoices):
         CUSTOMER = "CUSTOMER", "Customer"
         WORKER = "WORKER", "Worker"
@@ -30,9 +28,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_suspended = models.BooleanField(default=False)
 
-    # Set when an admin creates the account or resets the PIN/password.
     must_change_credential = models.BooleanField(default=False)
     failed_login_count = models.PositiveSmallIntegerField(default=0)
+    last_failed_login_at = models.DateTimeField(blank=True, null=True)
     locked_at = models.DateTimeField(blank=True, null=True)
     created_by = models.ForeignKey(
         "self",
@@ -63,3 +61,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_customer(self):
         return self.role == self.Role.CUSTOMER
+
+
+class CustomerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="customer_profile")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Customer: {self.user.full_name}"

@@ -9,7 +9,6 @@ import { AuthContext } from './auth-context';
 const MOCK_ROLE_KEY = 'skillpass.mockRole';
 
 function readMockRole() {
-  // ?mockRole=WORKER in the address bar picks the demo user directly.
   const fromUrl = new URLSearchParams(window.location.search).get('mockRole');
   if (fromUrl) {
     writeMockRole(fromUrl === 'GUEST' ? null : fromUrl);
@@ -26,9 +25,7 @@ function writeMockRole(role) {
   try {
     if (role) localStorage.setItem(MOCK_ROLE_KEY, role);
     else localStorage.removeItem(MOCK_ROLE_KEY);
-  } catch {
-    // Storage unavailable; mock role resets on reload.
-  }
+  } catch {}
 }
 
 function initialState() {
@@ -40,7 +37,6 @@ export default function AuthProvider({ children }) {
   const queryClient = useQueryClient();
   const [state, setState] = useState(initialState);
 
-  // Real API: a saved token exists, so load who it belongs to.
   useEffect(() => {
     if (USE_MOCKS || state.status !== 'loading') return undefined;
     let cancelled = false;
@@ -59,7 +55,6 @@ export default function AuthProvider({ children }) {
     };
   }, [state.status]);
 
-  // The API client fires this when the refresh token is no longer valid.
   useEffect(() => {
     const onLogout = () => setState({ status: 'ready', user: null });
     window.addEventListener(AUTH_LOGOUT_EVENT, onLogout);
@@ -72,9 +67,9 @@ export default function AuthProvider({ children }) {
       status: state.status,
       isAuthenticated: Boolean(state.user),
 
-      /** Call after a successful login/register API response. */
       signIn({ access, refresh, user }) {
         tokens.set({ access, refresh });
+        if (USE_MOCKS) writeMockRole(user.role);
         setState({ status: 'ready', user });
       },
 
@@ -83,13 +78,14 @@ export default function AuthProvider({ children }) {
       },
 
       signOut() {
+        const refresh = tokens.getRefresh();
+        if (!USE_MOCKS && refresh) api.post('/auth/logout/', { refresh }).catch(() => {});
         tokens.clear();
         writeMockRole(null);
         queryClient.clear();
         setState({ status: 'ready', user: null });
       },
 
-      /** Mock mode only: switch which demo user is "logged in". */
       setMockRole: USE_MOCKS
         ? (role) => {
             writeMockRole(role);

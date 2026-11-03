@@ -13,14 +13,9 @@ const SIZES = {
   sm: 'min-h-9 gap-1.5 px-3 text-sm',
   md: 'min-h-11 gap-2 px-4 text-base',
   lg: 'min-h-12 gap-2 px-5 text-lg',
-  // Worker primary actions: at least 56px tall (PRD §14.2).
   xl: 'min-h-14 gap-3 px-6 text-xl font-semibold',
 };
 
-/**
- * <Button variant="primary" size="xl" fullWidth icon={Check}>…</Button>
- * Render a link with: <Button as={Link} to="/somewhere">…</Button>
- */
 export default function Button({
   as: Component = 'button',
   variant = 'primary',

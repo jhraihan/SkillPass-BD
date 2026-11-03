@@ -23,8 +23,20 @@ function savedLanguage() {
 
 i18n.use(initReactI18next).init({
   resources: {
-    en: { common: enCommon, public: enPublic, customer: enCustomer, worker: enWorker, admin: enAdmin },
-    bn: { common: bnCommon, public: bnPublic, customer: bnCustomer, worker: bnWorker, admin: bnAdmin },
+    en: {
+      common: enCommon,
+      public: enPublic,
+      customer: enCustomer,
+      worker: enWorker,
+      admin: enAdmin,
+    },
+    bn: {
+      common: bnCommon,
+      public: bnPublic,
+      customer: bnCustomer,
+      worker: bnWorker,
+      admin: bnAdmin,
+    },
   },
   lng: savedLanguage() || 'bn',
   fallbackLng: 'en',
@@ -40,9 +52,7 @@ i18n.on('languageChanged', (lng) => {
   document.documentElement.lang = lng;
   try {
     localStorage.setItem(STORAGE_KEY, lng);
-  } catch {
-    // Storage unavailable; language resets on reload.
-  }
+  } catch {}
 });
 
 export default i18n;
