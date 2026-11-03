@@ -3,7 +3,6 @@ from rest_framework.views import exception_handler
 
 
 def custom_exception_handler(exc, context):
-    """Return every API error as {"detail", "code", "errors"} (PRD §13)."""
     response = exception_handler(exc, context)
     if response is None:
         return None

@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router';
 import { cn } from '@/lib/cn';
 
-/** Link that highlights itself when its page is open. variant: 'top' | 'side' | 'bottom' */
 export default function NavItem({ to, icon: Icon, label, end = false, variant = 'top' }) {
   return (
     <NavLink

@@ -5,10 +5,6 @@ const SIZES = {
   lg: { track: 'h-10 w-[4.5rem]', thumb: 'size-9', on: 'translate-x-8' },
 };
 
-/**
- * On/off switch. Controlled: <Toggle checked={on} onChange={setOn} label="…" />
- * With react-hook-form wrap it in <Controller> and pass field.value / field.onChange.
- */
 export default function Toggle({
   checked = false,
   onChange,

@@ -2,8 +2,6 @@ from rest_framework.permissions import BasePermission
 
 
 class HasRole(BasePermission):
-    """Base class: allow authenticated, non-suspended users whose role is in `roles`."""
-
     roles: tuple[str, ...] = ()
 
     def has_permission(self, request, view):

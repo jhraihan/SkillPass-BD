@@ -1,5 +1,3 @@
-// Reference detail page — copy this pattern for any page that shows one item.
-// Route: /_examples/:id (dev only)   Data: useExampleItem
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 import { StarRating, StatusTag } from '@/components/domain';

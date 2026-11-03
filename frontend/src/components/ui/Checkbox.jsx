@@ -5,7 +5,10 @@ export default function Checkbox({ label, error, className, id, ref, ...props })
   const inputId = id ?? autoId;
   return (
     <div className={className}>
-      <label htmlFor={inputId} className="flex min-h-11 cursor-pointer items-center gap-3 text-base">
+      <label
+        htmlFor={inputId}
+        className="flex min-h-11 cursor-pointer items-center gap-3 text-base"
+      >
         <input
           ref={ref}
           id={inputId}

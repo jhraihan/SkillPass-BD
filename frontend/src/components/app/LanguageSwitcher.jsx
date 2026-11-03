@@ -2,7 +2,6 @@ import { Languages } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/cn';
 
-/** One tap switches between বাংলা and English. */
 export default function LanguageSwitcher({ className }) {
   const { t, i18n } = useTranslation();
   const next = i18n.language === 'bn' ? 'en' : 'bn';

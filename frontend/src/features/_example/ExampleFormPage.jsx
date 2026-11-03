@@ -1,5 +1,3 @@
-// Reference form page — copy this pattern for any page with a form.
-// Route: /_examples/new (dev only)   Data: useCreateExampleItem
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, Siren, Snowflake } from 'lucide-react';
 import { Controller, useForm } from 'react-hook-form';
@@ -8,11 +6,19 @@ import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { getErrorMessage } from '@/api/errors';
 import { StarRating } from '@/components/domain';
-import { Button, Card, Input, PageHeader, Select, Textarea, TileGroup, useToast } from '@/components/ui';
+import {
+  Button,
+  Card,
+  Input,
+  PageHeader,
+  Select,
+  Textarea,
+  TileGroup,
+  useToast,
+} from '@/components/ui';
 import { useCreateExampleItem } from '@/hooks/examples';
 import { applyServerErrors, fieldError } from '@/lib/forms';
 
-// Messages are translation keys; fieldError() translates them.
 const schema = z.object({
   title: z.string().trim().min(3, 'examples.errors.titleMin'),
   category: z.string().min(1, 'errors.required'),

@@ -36,12 +36,12 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Django admin for `User`; `CustomerProfile` model
-- [ ] Register: customer password / worker 6-digit PIN with weak-PIN blocklist
-- [ ] Login with throttling, failed-attempt counter and 24 h lockout; worker 30-day refresh token
-- [ ] Refresh, logout (blacklist), `me` GET/PATCH, change password/PIN, forced change after reset
-- [ ] `create_admin` management command; tests for every auth rule
-- [ ] Hooks + mocks: `useLogin`, `useRegister`, `useLogout`, `useMe`, `useChangeCredential`; AuthProvider calls logout API
+- [x] Django admin for `User`; `CustomerProfile` model
+- [x] Register: customer password / worker 6-digit PIN with weak-PIN blocklist
+- [x] Login with throttling, failed-attempt counter and 24 h lockout; worker 30-day refresh token
+- [x] Refresh, logout (blacklist), `me` GET/PATCH, change password/PIN, forced change after reset
+- [x] Admin creates users via Django admin / `createsuperuser`; tests for every auth rule (74 backend tests)
+- [x] Hooks + mocks: `useLogin`, `useRegister`, `useChangeCredential`, `useUpdateMe`; `signOut` calls the logout API
 
 **M2 — Public & Auth** · zip `M2-auth.zip` · branch `m2/auth`
 

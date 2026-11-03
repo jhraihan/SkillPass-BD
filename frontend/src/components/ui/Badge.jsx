@@ -15,7 +15,6 @@ const SIZES = {
   lg: 'gap-2 px-3 py-1.5 text-base',
 };
 
-/** Small label. Always pair color with text (and ideally an icon) — never color alone. */
 export default function Badge({ tone = 'gray', size = 'md', icon: Icon, className, children }) {
   return (
     <span

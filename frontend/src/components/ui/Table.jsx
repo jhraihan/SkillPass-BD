@@ -1,9 +1,5 @@
 import { cn } from '@/lib/cn';
 
-/**
- * Simple data table that scrolls sideways on small screens.
- * columns: [{ key, header, render?: (row) => node, className? }]
- */
 export default function Table({ columns, rows, rowKey = 'id', emptyText, onRowClick, className }) {
   return (
     <div className={cn('overflow-x-auto rounded-2xl border border-gray-200 bg-white', className)}>

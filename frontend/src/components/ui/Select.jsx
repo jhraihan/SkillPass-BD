@@ -2,7 +2,6 @@ import { useId } from 'react';
 import Field from './Field';
 import { controlClass, describedBy } from './styles';
 
-/** options: [{ value, label }] */
 export default function Select({
   label,
   hint,

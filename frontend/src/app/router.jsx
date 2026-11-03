@@ -10,9 +10,6 @@ import RootLayout from '@/layouts/RootLayout';
 import WorkerLayout from '@/layouts/WorkerLayout';
 import { RequireAuth, RequireRole } from './guards';
 
-// Every page is loaded on demand so budget phones download only what they open.
-
-// Public & Auth — M2
 const LandingPage = lazy(() => import('@/features/public/pages/LandingPage'));
 const LoginPage = lazy(() => import('@/features/public/pages/LoginPage'));
 const RegisterPage = lazy(() => import('@/features/public/pages/RegisterPage'));
@@ -23,7 +20,6 @@ const TrustExplainerPage = lazy(() => import('@/features/public/pages/TrustExpla
 const AboutPage = lazy(() => import('@/features/public/pages/AboutPage'));
 const NotFoundPage = lazy(() => import('@/features/public/pages/NotFoundPage'));
 
-// Customer — M3
 const CustomerDashboardPage = lazy(() => import('@/features/customer/pages/CustomerDashboardPage'));
 const NewRequestPage = lazy(() => import('@/features/customer/pages/NewRequestPage'));
 const MatchResultsPage = lazy(() => import('@/features/customer/pages/MatchResultsPage'));
@@ -33,7 +29,6 @@ const ReviewFormPage = lazy(() => import('@/features/customer/pages/ReviewFormPa
 const NotificationsPage = lazy(() => import('@/features/customer/pages/NotificationsPage'));
 const AccountSettingsPage = lazy(() => import('@/features/customer/pages/AccountSettingsPage'));
 
-// Worker — M4
 const WorkerHomePage = lazy(() => import('@/features/worker/pages/WorkerHomePage'));
 const ProfileWizardPage = lazy(() => import('@/features/worker/pages/ProfileWizardPage'));
 const EditProfilePage = lazy(() => import('@/features/worker/pages/EditProfilePage'));
@@ -44,7 +39,6 @@ const MyReviewsPage = lazy(() => import('@/features/worker/pages/MyReviewsPage')
 const WorkHistoryPage = lazy(() => import('@/features/worker/pages/WorkHistoryPage'));
 const HelpPage = lazy(() => import('@/features/worker/pages/HelpPage'));
 
-// Admin & Verification — M5
 const AdminDashboardPage = lazy(() => import('@/features/admin/pages/AdminDashboardPage'));
 const CatalogPage = lazy(() => import('@/features/admin/pages/CatalogPage'));
 const VerificationUploadPage = lazy(() => import('@/features/admin/pages/VerificationUploadPage'));
@@ -54,7 +48,6 @@ const ReportsQueuePage = lazy(() => import('@/features/admin/pages/ReportsQueueP
 const ReportResolvePage = lazy(() => import('@/features/admin/pages/ReportResolvePage'));
 const UsersPage = lazy(() => import('@/features/admin/pages/UsersPage'));
 
-// Reference pages for the team. Development only: left out of production builds.
 function exampleRoutes() {
   const ExampleListPage = lazy(() => import('@/features/_example/ExampleListPage'));
   const ExampleDetailPage = lazy(() => import('@/features/_example/ExampleDetailPage'));

@@ -3,10 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Button from './Button';
 import Modal from './Modal';
 
-/**
- * Ask before destructive actions (Decline, Cancel, Delete) — PRD §14.2 "safe mistakes".
- * <ConfirmDialog open={open} onClose={close} onConfirm={doIt} title="…" message="…" tone="danger" />
- */
 export default function ConfirmDialog({
   open,
   onClose,

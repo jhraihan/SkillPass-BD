@@ -7,7 +7,6 @@ import { USE_MOCKS } from '@/lib/config';
 
 const ROLES = ['CUSTOMER', 'WORKER', 'ADMIN'];
 
-/** Mock mode only: pick a demo user to see any area of the app without a backend. */
 export default function DevRoleSwitcher() {
   const { t } = useTranslation();
   const { user, setMockRole } = useAuth();

@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router';
 import { Button, ErrorState } from '@/components/ui';
 
-/** Shown instead of a page that crashed while rendering. */
 export default function RouteError() {
   const { t } = useTranslation();
   const error = useRouteError();

@@ -3,7 +3,6 @@ import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
 import i18n from '@/i18n';
 
-// Tests read English text.
 i18n.changeLanguage('en');
 
 afterEach(() => cleanup());

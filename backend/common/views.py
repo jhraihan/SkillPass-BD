@@ -6,8 +6,6 @@ from rest_framework.views import APIView
 
 
 class HealthView(APIView):
-    """Liveness check used by deployment platforms."""
-
     permission_classes = [AllowAny]
     authentication_classes = []
 

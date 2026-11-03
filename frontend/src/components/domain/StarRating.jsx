@@ -6,10 +6,6 @@ import { formatNumber } from '@/lib/format';
 
 const SIZES = { sm: 'size-4', md: 'size-6', lg: 'size-9' };
 
-/**
- * Display:  <StarRating value={4.4} readOnly showValue />
- * Input:    <StarRating label="Quality" value={field.value} onChange={field.onChange} error={…} />
- */
 export default function StarRating({
   value = 0,
   onChange,
@@ -35,7 +31,10 @@ export default function StarRating({
         {[1, 2, 3, 4, 5].map((n) => (
           <Star
             key={n}
-            className={cn(starSize, n <= rounded ? 'fill-amber-400 text-amber-400' : 'text-gray-300')}
+            className={cn(
+              starSize,
+              n <= rounded ? 'fill-amber-400 text-amber-400' : 'text-gray-300',
+            )}
             aria-hidden="true"
           />
         ))}
@@ -67,7 +66,10 @@ export default function StarRating({
             className="rounded-lg p-1"
           >
             <Star
-              className={cn(starSize, n <= rounded ? 'fill-amber-400 text-amber-400' : 'text-gray-300')}
+              className={cn(
+                starSize,
+                n <= rounded ? 'fill-amber-400 text-amber-400' : 'text-gray-300',
+              )}
               aria-hidden="true"
             />
           </button>

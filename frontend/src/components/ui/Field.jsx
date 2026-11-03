@@ -1,6 +1,5 @@
 import { cn } from '@/lib/cn';
 
-/** Label + control + hint/error. Used by Input, Select, Textarea and custom controls. */
 export default function Field({ id, label, hint, error, required, className, children }) {
   return (
     <div className={cn('space-y-1.5', className)}>
