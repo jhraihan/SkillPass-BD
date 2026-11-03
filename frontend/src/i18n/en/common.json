@@ -195,5 +195,43 @@
       "category_experience_one": "{{count}} verified job in this service",
       "category_experience_other": "{{count}} verified jobs in this service"
     }
+  },
+  "trust": {
+    "factors": {
+      "completion": "Finishes accepted jobs",
+      "rating": "Customer ratings",
+      "verified_jobs": "Verified jobs",
+      "cancellation": "Rarely cancels",
+      "response": "Replies quickly",
+      "identity": "Identity checked",
+      "experience": "Years of experience"
+    },
+    "points": "{{points}} / {{weight}}",
+    "prior": "Not enough jobs yet, so a fair starting value is used.",
+    "detail": {
+      "completion": "Finished {{finished}} of {{accepted}} accepted jobs",
+      "rating": "{{average}} average from {{count}} reviews",
+      "ratingNone": "No reviews yet, so a fair starting value is used.",
+      "verified_jobs": "{{verified}} customer-confirmed jobs (full points at {{cap}})",
+      "cancellation": "Cancelled {{cancelled}} of {{accepted}} accepted jobs",
+      "response": "Usually replies in {{median_minutes}} minutes",
+      "responseHours": "Usually replies in {{hours}} hours",
+      "identityYes": "NID checked by SkillPass",
+      "identityNo": "Identity not checked yet",
+      "experience": "{{years}} years of experience (full points at 10)"
+    }
+  },
+  "review": {
+    "dimensions": {
+      "quality": "Work quality",
+      "professionalism": "Behaviour",
+      "punctuality": "On time",
+      "communication": "Communication"
+    },
+    "wouldHireAgain": "Would hire again"
+  },
+  "history": {
+    "confirmedBy": "Confirmed by {{name}}",
+    "noReview": "No review left"
   }
 }

@@ -195,5 +195,43 @@
       "category_experience_one": "এই সার্ভিসে {{count}}টি যাচাই করা কাজ",
       "category_experience_other": "এই সার্ভিসে {{count}}টি যাচাই করা কাজ"
     }
+  },
+  "trust": {
+    "factors": {
+      "completion": "নেওয়া কাজ শেষ করেন",
+      "rating": "গ্রাহকের রেটিং",
+      "verified_jobs": "যাচাই করা কাজ",
+      "cancellation": "কম বাতিল করেন",
+      "response": "দ্রুত উত্তর দেন",
+      "identity": "পরিচয় যাচাই",
+      "experience": "অভিজ্ঞতার বছর"
+    },
+    "points": "{{points}} / {{weight}}",
+    "prior": "এখনো যথেষ্ট কাজ হয়নি, তাই একটি ন্যায্য শুরুর মান ধরা হয়েছে।",
+    "detail": {
+      "completion": "নেওয়া {{accepted}}টি কাজের মধ্যে {{finished}}টি শেষ করেছেন",
+      "rating": "{{count}}টি রিভিউ থেকে গড় {{average}}",
+      "ratingNone": "এখনো রিভিউ নেই, তাই একটি ন্যায্য শুরুর মান ধরা হয়েছে।",
+      "verified_jobs": "গ্রাহকের নিশ্চিত করা {{verified}}টি কাজ ({{cap}}টিতে পূর্ণ নম্বর)",
+      "cancellation": "নেওয়া {{accepted}}টি কাজের মধ্যে {{cancelled}}টি বাতিল করেছেন",
+      "response": "সাধারণত {{median_minutes}} মিনিটে উত্তর দেন",
+      "responseHours": "সাধারণত {{hours}} ঘণ্টায় উত্তর দেন",
+      "identityYes": "স্কিলপাস এনআইডি যাচাই করেছে",
+      "identityNo": "পরিচয় এখনো যাচাই হয়নি",
+      "experience": "{{years}} বছরের অভিজ্ঞতা (১০ বছরে পূর্ণ নম্বর)"
+    }
+  },
+  "review": {
+    "dimensions": {
+      "quality": "কাজের মান",
+      "professionalism": "ব্যবহার",
+      "punctuality": "সময়মতো",
+      "communication": "যোগাযোগ"
+    },
+    "wouldHireAgain": "আবার ডাকবেন"
+  },
+  "history": {
+    "confirmedBy": "{{name}} নিশ্চিত করেছেন",
+    "noReview": "রিভিউ দেননি"
   }
 }

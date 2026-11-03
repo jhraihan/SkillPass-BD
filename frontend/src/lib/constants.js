@@ -44,3 +44,19 @@ export function mapsUrl(...parts) {
   const query = parts.filter(Boolean).join(', ');
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
+
+export const TRUST_WEIGHTS = {
+  completion: 25,
+  rating: 20,
+  verified_jobs: 15,
+  cancellation: 15,
+  response: 10,
+  identity: 10,
+  experience: 5,
+};
+
+export const TRUST_FACTORS = Object.keys(TRUST_WEIGHTS);
+
+export const RATING_DIMENSIONS = ['quality', 'professionalism', 'punctuality', 'communication'];
+
+export const REVIEWABLE_STATUSES = ['COMPLETED', 'AUTO_CLOSED'];

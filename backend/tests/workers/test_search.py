@@ -77,7 +77,16 @@ def test_public_profile(api_client, workers):
     body = api_client.get(f"{URL}{workers['rahim'].id}/").json()
 
     assert body["display_name"] == "Rahim"
-    assert body["trust"] == {"score": 82, "breakdown": []}
+    assert body["trust"]["score"] == 82
+    assert [item["factor"] for item in body["trust"]["breakdown"]] == [
+        "completion",
+        "rating",
+        "verified_jobs",
+        "cancellation",
+        "response",
+        "identity",
+        "experience",
+    ]
     assert body["categories"][0]["slug"] == "ac-repair"
     assert "member_since" in body
     assert "phone" not in str(body)

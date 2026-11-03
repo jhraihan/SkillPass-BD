@@ -102,6 +102,7 @@ class BookingViewSet(
         queryset = Booking.objects.select_related(
             "customer",
             "worker__user",
+            "review",
             "service_request__category",
             "service_request__area",
         ).prefetch_related("service_request__skills", "history")

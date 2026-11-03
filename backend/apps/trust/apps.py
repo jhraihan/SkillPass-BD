@@ -5,3 +5,6 @@ class TrustConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "apps.trust"
     verbose_name = "Trust"
+
+    def ready(self):
+        from . import listeners  # noqa: F401

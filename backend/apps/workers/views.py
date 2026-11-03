@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 
 from apps.bookings.models import Booking
 from apps.bookings.serializers import BookingSerializer
+from apps.trust.services import recalculate
 from common.permissions import IsWorker
 
 from . import services
@@ -87,6 +88,7 @@ class MyWorkerProfileView(APIView):
         serializer = MyWorkerProfileSerializer(profile, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        recalculate(profile, trigger="profile_updated")
         return _my_profile_response(request, profile)
 
 
@@ -99,6 +101,7 @@ class MySkillsView(APIView):
         serializer.is_valid(raise_exception=True)
         profile = services.profile_for(request.user)
         services.set_skills(profile, serializer.validated_data["skills"])
+        recalculate(profile, trigger="profile_updated")
         return _my_profile_response(request, profile)
 
 
@@ -111,6 +114,7 @@ class MyAreasView(APIView):
         serializer.is_valid(raise_exception=True)
         profile = services.profile_for(request.user)
         services.set_service_areas(profile, serializer.validated_data["areas"])
+        recalculate(profile, trigger="profile_updated")
         return _my_profile_response(request, profile)
 
 
@@ -150,7 +154,11 @@ class WorkerDashboardView(APIView):
             WorkerProfile.objects.filter(pk=services.profile_for(request.user).pk)
         ).get()
         bookings = Booking.objects.filter(worker=profile).select_related(
-            "customer", "worker__user", "service_request__category", "service_request__area"
+            "customer",
+            "worker__user",
+            "review",
+            "service_request__category",
+            "service_request__area",
         )
         pending = bookings.filter(status=Booking.Status.PENDING)
         in_hand = [s for s in Booking.ACTIVE_STATUSES if s != Booking.Status.PENDING]

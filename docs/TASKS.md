@@ -129,22 +129,26 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Review model + eligibility rules; worker reviews list; verified work history endpoint
-- [ ] Trust score service (7 factors, Bayesian rating, cold start), history, recalculation triggers + command; tests
-- [ ] Domain components `ReviewCard`, `TrustBreakdown`; hooks + mocks
+- [x] Review model + eligibility rules; worker reviews list; verified work history endpoint
+- [x] Trust score service (7 factors, Bayesian rating, cold start), history, recalculation triggers + command; tests
+- [x] Domain components `ReviewCard`, `TrustBreakdown`, `WorkHistoryCard`; hooks + mocks
 
 **M2 — Public & Auth** · zip `M2-reviews.zip` · branch `m2/reviews`
 
-- [ ] `TrustExplainerPage.jsx` — `/trust-score`
+- [x] `TrustExplainerPage.jsx` — `/trust-score`
+- [x] `ReviewsSection.jsx`, `WorkHistorySection.jsx` (components) — shown on `/workers/2`
+- [x] Update `WorkerProfilePage.jsx` — trust breakdown, work history, reviews
 
 **M3 — Customer** · zip `M3-reviews.zip` · branch `m3/reviews`
 
-- [ ] `ReviewFormPage.jsx` — `/customer/bookings/1/review`
+- [x] `ReviewFormPage.jsx` — `/customer/bookings/1/review`
+- [x] Update `BookingActions.jsx` — hide "Rate this worker" once reviewed
 
 **M4 — Worker** · zip `M4-reviews.zip` · branch `m4/reviews`
 
-- [ ] `MyReviewsPage.jsx` — `/worker/reviews`
-- [ ] `WorkHistoryPage.jsx` — `/worker/history`
+- [x] `MyReviewsPage.jsx` — `/worker/reviews`
+- [x] `WorkHistoryPage.jsx` — `/worker/history`
+- [x] Update `TrustScoreCard.jsx` — links to reviews and work history
 
 ## Part 7 — Verification  (`verification`)
 
