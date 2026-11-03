@@ -65,6 +65,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class CustomerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="customer_profile")
+    default_area = models.ForeignKey(
+        "catalog.Area", on_delete=models.SET_NULL, blank=True, null=True, related_name="+"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

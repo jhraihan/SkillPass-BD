@@ -141,6 +141,7 @@
     "invalid_credentials": "Phone number or PIN/password is incorrect.",
     "account_locked": "Your account is locked after too many wrong attempts. Please contact support.",
     "account_suspended": "Your account is suspended. Please contact support.",
-    "throttled": "Too many tries. Please wait a minute and try again."
+    "throttled": "Too many tries. Please wait a minute and try again.",
+    "in_use": "This item is in use and cannot be deleted. Deactivate it instead."
   }
 }

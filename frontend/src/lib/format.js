@@ -26,3 +26,9 @@ export function formatNumber(value, lang, options) {
   if (value === null || value === undefined) return '';
   return new Intl.NumberFormat(locale(lang), options).format(value);
 }
+
+export function localName(item, lang) {
+  if (!item) return '';
+  const preferred = lang === 'bn' ? item.name_bn : item.name_en;
+  return preferred || item.name_en || item.name_bn || '';
+}

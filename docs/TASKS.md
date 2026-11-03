@@ -57,10 +57,10 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Models: Division, District, Area, ServiceCategory, Skill (bn/en names, slugs)
-- [ ] Fixtures: Dhaka areas, 6–8 categories, ~40 skills
-- [ ] Read endpoints + admin CRUD endpoints; Django admin; tests
-- [ ] Hooks + mocks: `useCategories`, `useSkills`, `useAreas`, admin mutations
+- [x] Models: Division, District, Area, ServiceCategory, Skill (bn/en names, slugs)
+- [x] Seed migration: 20 Dhaka areas, 8 categories, 40 skills (bn + en)
+- [x] Read endpoints + admin CRUD (409 when in use); Django admin; tests (90 backend tests total)
+- [x] Hooks + mocks: `useCategories`, `useSkills`, `useAreas`, `useDistricts`, `useSaveCatalogItem`, `useDeleteCatalogItem`
 
 **M5 — Admin & Verification** · zip `M5-catalog.zip` · branch `m5/catalog`
 
