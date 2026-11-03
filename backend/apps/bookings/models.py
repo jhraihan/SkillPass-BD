@@ -95,6 +95,7 @@ class Booking(TimeStampedModel):
     dispute_reason = models.TextField(blank=True)
     completion_notes = models.TextField(blank=True)
     is_verified = models.BooleanField(default=False)
+    worker_at_fault = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_at"]

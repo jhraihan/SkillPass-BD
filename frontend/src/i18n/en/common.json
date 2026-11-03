@@ -150,7 +150,8 @@
     "already_verified": "This is already verified.",
     "already_pending": "You already sent this. Please wait for the review.",
     "already_decided": "This request was already decided. Refresh the page.",
-    "skill_removed": "The worker removed this skill from their profile."
+    "skill_removed": "The worker removed this skill from their profile.",
+    "already_reported": "You already reported this. Our team is looking at it."
   },
   "worker": {
     "availability": {
@@ -248,5 +249,33 @@
       "APPROVED": "Approved",
       "REJECTED": "Not accepted"
     }
+  },
+  "report": {
+    "reason": {
+      "NO_SHOW": "Did not come",
+      "POOR_WORK": "Poor work",
+      "OVERCHARGING": "Asked for too much money",
+      "MISCONDUCT": "Bad behaviour",
+      "FAKE_PROFILE": "Fake profile",
+      "INAPPROPRIATE": "Rude or unsuitable words",
+      "OTHER": "Something else"
+    },
+    "status": {
+      "OPEN": "New",
+      "IN_REVIEW": "Being checked",
+      "RESOLVED": "Resolved",
+      "DISMISSED": "Dismissed"
+    },
+    "target": {
+      "BOOKING": "Job",
+      "WORKER": "Worker profile",
+      "REVIEW": "Review"
+    },
+    "fault": {
+      "WORKER": "Worker",
+      "CUSTOMER": "Customer",
+      "NONE": "No one"
+    },
+    "dispute": "Dispute"
   }
 }

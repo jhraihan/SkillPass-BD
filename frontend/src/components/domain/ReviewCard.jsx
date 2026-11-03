@@ -6,7 +6,7 @@ import { RATING_DIMENSIONS } from '@/lib/constants';
 import { formatDate, localName } from '@/lib/format';
 import StarRating from './StarRating';
 
-export default function ReviewCard({ review, showCategory = true, className }) {
+export default function ReviewCard({ review, showCategory = true, footer, className }) {
   const { t, i18n } = useTranslation();
 
   return (
@@ -39,10 +39,17 @@ export default function ReviewCard({ review, showCategory = true, className }) {
 
       {review.comment && <p className="text-gray-800">{review.comment}</p>}
 
-      {review.would_hire_again && (
-        <Badge tone="green" size="sm" icon={ThumbsUp}>
-          {t('review.wouldHireAgain')}
-        </Badge>
+      {(review.would_hire_again || footer) && (
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          {review.would_hire_again ? (
+            <Badge tone="green" size="sm" icon={ThumbsUp}>
+              {t('review.wouldHireAgain')}
+            </Badge>
+          ) : (
+            <span />
+          )}
+          {footer}
+        </div>
       )}
     </article>
   );
