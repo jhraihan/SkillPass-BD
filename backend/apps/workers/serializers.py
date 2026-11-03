@@ -51,10 +51,10 @@ class WorkerCardSerializer(serializers.ModelSerializer):
             "service_areas",
         ]
 
-    def get_service_areas(self, profile):
+    def get_service_areas(self, profile) -> list[dict]:
         return AreaBriefSerializer([link.area for link in profile.area_links.all()], many=True).data
 
-    def get_categories(self, profile):
+    def get_categories(self, profile) -> list[dict]:
         seen = {}
         for link in profile.skill_links.all():
             category = link.skill.category
@@ -77,7 +77,7 @@ class WorkerPublicSerializer(WorkerCardSerializer):
     class Meta(WorkerCardSerializer.Meta):
         fields = [*WorkerCardSerializer.Meta.fields, "bio", "member_since", "trust"]
 
-    def get_trust(self, profile):
+    def get_trust(self, profile) -> dict:
         return {"score": profile.trust_score, "breakdown": []}
 
 
@@ -94,10 +94,10 @@ class MyWorkerProfileSerializer(WorkerPublicSerializer):
         ]
         extra_kwargs = {"years_experience": {"max_value": 60}}
 
-    def get_completeness(self, profile):
+    def get_completeness(self, profile) -> dict:
         return services.completeness(profile)
 
-    def get_is_setup_complete(self, profile):
+    def get_is_setup_complete(self, profile) -> bool:
         return services.is_setup_complete(profile)
 
 

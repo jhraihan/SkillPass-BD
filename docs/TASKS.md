@@ -100,11 +100,11 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Models: ServiceRequest, Booking (one active per request), BookingStatusHistory
-- [ ] Matching service with reasons; `transition()` service with row locks and history
-- [ ] Action endpoints (accept, decline, on-the-way, start, mark-complete, confirm, cancel, dispute); contact/address privacy
-- [ ] `process_booking_timeouts` command (24 h expire, 72 h auto-close); tests for every transition
-- [ ] Domain component `StatusTimeline`; hooks + mocks for requests, matches, bookings, actions
+- [x] Models: ServiceRequest, Booking (one active per request), BookingStatusHistory
+- [x] Matching service with reasons; `transition()` service with row locks and history
+- [x] Action endpoints (accept, decline, on-the-way, start, mark-complete, confirm, cancel, dispute); contact/address privacy
+- [x] `process_booking_timeouts` command (24 h expire, 72 h auto-close); tests for every transition
+- [x] Domain `StatusTimeline`, ui `ReasonDialog`; hooks + mocks for requests, matches, bookings, actions; worker dashboard lists requests and today's jobs (139 backend tests)
 
 **M3 — Customer** · zip `M3-bookings.zip` · branch `m3/bookings`
 

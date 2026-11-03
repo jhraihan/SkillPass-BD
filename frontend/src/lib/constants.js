@@ -28,3 +28,19 @@ export const BOOKING_STATUS = {
   CANCELLED: 'CANCELLED',
   DISPUTED: 'DISPUTED',
 };
+
+export const ACTIVE_BOOKING_STATUSES = [
+  'PENDING',
+  'ACCEPTED',
+  'ON_THE_WAY',
+  'IN_PROGRESS',
+  'AWAITING_CONFIRMATION',
+  'DISPUTED',
+];
+
+export const TIME_SLOTS = ['MORNING', 'AFTERNOON', 'EVENING'];
+
+export function mapsUrl(...parts) {
+  const query = parts.filter(Boolean).join(', ');
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
