@@ -170,21 +170,23 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Report model; create, admin queue, resolve (fault + booking outcome)
-- [ ] Admin: suspend / reactivate, unlock, reset PIN/password; audit entries; tests
-- [ ] Hooks + mocks for reports and admin users
+- [x] Report model; create, admin queue, resolve (fault + booking outcome)
+- [x] Admin: suspend / reactivate, unlock, reset PIN/password; audit entries; tests
+- [x] Hooks + mocks for reports and admin users
 
 **M2 — Public & Auth** · zip `M2-reports.zip` · branch `m2/reports`
 
-- [ ] `ReportModal.jsx`
+- [x] `ReportModal.jsx`
+- [x] Update `WorkerProfilePage.jsx`, `ReviewsSection.jsx` — report profile / review buttons
 
 **M5 — Admin & Verification** · zip `M5-reports.zip` · branch `m5/reports`
 
-- [ ] `ReportsQueuePage.jsx` — `/admin/reports`
-- [ ] `ReportResolvePage.jsx` — `/admin/reports/1`
-- [ ] `UsersPage.jsx` — `/admin/users`
-- [ ] `ResolveForm.jsx`
-- [ ] `UserStatusBadge.jsx`
+- [x] `ReportsQueuePage.jsx` — `/admin/reports`
+- [x] `ReportResolvePage.jsx` — `/admin/reports/1`
+- [x] `UsersPage.jsx` — `/admin/users`
+- [x] `ResolveForm.jsx`
+- [x] `UserStatusBadge.jsx`
+- [x] `ReportTarget.jsx`, `UserActions.jsx`, `CredentialModal.jsx`
 
 ## Part 9 — Notifications & help  (`notifications`)
 

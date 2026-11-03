@@ -71,3 +71,33 @@ export const DOCUMENT_RULES = {
   maxSizeMB: 5,
   maxFiles: 5,
 };
+
+export const REPORT_REASONS = [
+  'NO_SHOW',
+  'POOR_WORK',
+  'OVERCHARGING',
+  'MISCONDUCT',
+  'FAKE_PROFILE',
+  'INAPPROPRIATE',
+  'OTHER',
+];
+
+export const REPORT_REASONS_BY_TARGET = {
+  WORKER: ['FAKE_PROFILE', 'MISCONDUCT', 'OVERCHARGING', 'NO_SHOW', 'OTHER'],
+  REVIEW: ['INAPPROPRIATE', 'FAKE_PROFILE', 'OTHER'],
+  BOOKING: ['NO_SHOW', 'POOR_WORK', 'OVERCHARGING', 'MISCONDUCT', 'OTHER'],
+};
+
+export const REPORT_TARGETS = ['BOOKING', 'WORKER', 'REVIEW'];
+
+export const REPORT_STATUSES = ['OPEN', 'IN_REVIEW', 'RESOLVED', 'DISMISSED'];
+
+export const OPEN_REPORT_STATUSES = ['OPEN', 'IN_REVIEW'];
+
+export const FAULTS = ['WORKER', 'CUSTOMER', 'NONE'];
+
+export const DISPUTE_OUTCOMES = ['COMPLETED', 'CANCELLED'];
+
+export const REVIEW_ACTIONS = ['HIDE', 'INVALIDATE'];
+
+export const USER_STATES = ['active', 'suspended', 'locked'];

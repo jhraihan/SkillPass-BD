@@ -160,6 +160,22 @@ makeBooking(paint, 13, 'COMPLETED', [
   'AWAITING_CONFIRMATION',
   'COMPLETED',
 ]);
+const tank = makeRequest({
+  category: 'plumbing',
+  skillSlugs: ['water-pump-repair'],
+  area: 'dhanmondi',
+  description: 'Water pump makes noise and stops.',
+  date: -2,
+});
+const disputedBooking = makeBooking(tank, 11, 'DISPUTED', [
+  'ACCEPTED',
+  'ON_THE_WAY',
+  'IN_PROGRESS',
+  'AWAITING_CONFIRMATION',
+  'DISPUTED',
+]);
+disputedBooking.completion_notes = 'Replaced the pump capacitor.';
+disputedBooking.dispute_reason = 'The pump stopped again after one hour.';
 makeRequest({
   category: 'electrical',
   skillSlugs: ['fan-installation'],
@@ -391,4 +407,45 @@ export function mockReviewBooking(id) {
   booking.has_review = true;
   const request = byId(requests, booking.request_id);
   return { booking, category: request.category_detail, workerId: booking.worker_id };
+}
+
+export const DISPUTED_MOCK_BOOKING_ID = disputedBooking.id;
+
+export function mockAdminBooking(id) {
+  const booking = byId(bookings, Number(id));
+  if (!booking) return null;
+  const request = byId(requests, booking.request_id);
+  const worker = byId(workers, booking.worker_id);
+  const customer = mockUsers.CUSTOMER;
+  return {
+    id: booking.id,
+    status: booking.status,
+    category: request.category_detail.name_en,
+    category_bn: request.category_detail.name_bn,
+    description: request.description,
+    dispute_reason: booking.dispute_reason,
+    completion_notes: booking.completion_notes,
+    customer: {
+      id: customer.id,
+      name: customer.full_name,
+      phone: customer.phone,
+      role: 'CUSTOMER',
+      is_suspended: false,
+    },
+    worker: { id: worker.id, display_name: worker.display_name, trust_score: worker.trust_score },
+    history: booking.history,
+  };
+}
+
+export function mockSetBookingOutcome(id, outcome, note) {
+  const booking = byId(bookings, Number(id));
+  booking.history.push({
+    from_status: booking.status,
+    to_status: outcome,
+    actor_role: 'ADMIN',
+    note,
+    created_at: new Date().toISOString(),
+  });
+  booking.status = outcome;
+  booking.closed_at = new Date().toISOString();
 }

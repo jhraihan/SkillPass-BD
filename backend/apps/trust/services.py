@@ -33,7 +33,9 @@ def _completion(bookings):
 def _cancellation(bookings, worker):
     accepted = [b for b in bookings if b.accepted_at]
     cancelled = [
-        b for b in accepted if b.status == S.CANCELLED and b.cancelled_by_id == worker.user_id
+        b
+        for b in accepted
+        if b.status == S.CANCELLED and (b.cancelled_by_id == worker.user_id or b.worker_at_fault)
     ]
     if len(accepted) < MIN_SAMPLE:
         return NEUTRAL_PRIOR, {

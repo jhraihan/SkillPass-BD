@@ -99,3 +99,15 @@ def act():
         return client.post(f"/api/v1/bookings/{booking_id}/{action}/", data)
 
     return _act
+
+
+@pytest.fixture
+def admin_user(db):
+    return User.objects.create_user(
+        phone="01912345678", password="x", full_name="Admin One", role=User.Role.ADMIN
+    )
+
+
+@pytest.fixture
+def admin_api(client_for, admin_user):
+    return client_for(admin_user)

@@ -174,5 +174,7 @@ SPECTACULAR_SETTINGS = {
         "BookingStatusEnum": "apps.bookings.models.Booking.Status",
         "ServiceRequestStatusEnum": "apps.bookings.models.ServiceRequest.Status",
         "VerificationStatusEnum": "apps.verification.models.Verification.Status",
+        "ReportStatusEnum": "apps.reports.models.Report.Status",
+        "UserRoleEnum": "apps.accounts.models.User.Role",
     },
 }

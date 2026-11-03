@@ -132,3 +132,19 @@ export function mockCreateReview({ booking: bookingId, comment = '', ...ratings 
   entryFor(result.workerId)?.reviews.unshift(review);
   return mockRequest(review);
 }
+
+export function mockReviewById(id) {
+  for (const [workerId, entry] of store) {
+    const review = entry.reviews.find((r) => String(r.id) === String(id));
+    if (review) return { review, workerId };
+  }
+  return null;
+}
+
+export function mockModerateReview(id, action) {
+  const found = mockReviewById(id);
+  if (!found) return;
+  const entry = store.get(found.workerId);
+  entry.reviews = entry.reviews.filter((r) => r !== found.review);
+  found.review[action === 'HIDE' ? 'is_hidden' : 'is_invalid'] = true;
+}

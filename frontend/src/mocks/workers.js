@@ -220,6 +220,7 @@ export function mockSearchWorkers({
 } = {}) {
   const term = search?.toLowerCase();
   const results = workers
+    .filter((w) => !w.is_suspended)
     .filter((w) => !category || w.categories.some((c) => c.slug === category))
     .filter((w) => !skill || w.skills.some((s) => s.slug === skill))
     .filter((w) => !area || w.service_areas.some((a) => a.slug === area))
@@ -237,7 +238,7 @@ export function mockSearchWorkers({
 }
 
 export function mockGetWorker(id) {
-  const worker = workers.find((w) => String(w.id) === String(id));
+  const worker = workers.find((w) => String(w.id) === String(id) && !w.is_suspended);
   return worker ? mockRequest(worker) : mockError(404, 'Not found.', {}, { code: 'not_found' });
 }
 
