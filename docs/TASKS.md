@@ -154,16 +154,17 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Models: Verification, VerificationDocument; upload validation (type by content, 5 MB)
-- [ ] Private storage + authenticated document streaming; approve / reject; badges; audit log
-- [ ] Tests (nobody else can read documents); hooks + mocks
+- [x] Models: Verification, VerificationDocument; upload validation (type by content, 5 MB)
+- [x] Private storage + authenticated document streaming; approve / reject; badges; audit log
+- [x] Tests (nobody else can read documents); hooks + mocks
 
 **M5 — Admin & Verification** · zip `M5-verification.zip` · branch `m5/verification`
 
-- [ ] `VerificationUploadPage.jsx` — `/worker/verification`
-- [ ] `VerificationQueuePage.jsx` — `/admin/verifications`
-- [ ] `VerificationReviewPage.jsx` — `/admin/verifications/1`
-- [ ] `DocumentViewer.jsx`
+- [x] `VerificationUploadPage.jsx` — `/worker/verification`
+- [x] `VerificationQueuePage.jsx` — `/admin/verifications`
+- [x] `VerificationReviewPage.jsx` — `/admin/verifications/1`
+- [x] `DocumentViewer.jsx`
+- [x] `VerificationHistory.jsx` (component) — shown on `/worker/verification`
 
 ## Part 8 — Reports & disputes  (`reports`)
 

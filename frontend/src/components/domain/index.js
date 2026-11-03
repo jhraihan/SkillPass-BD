@@ -6,5 +6,6 @@ export { default as StatusTag } from './StatusTag';
 export { default as StatusTimeline } from './StatusTimeline';
 export { default as TrustBreakdown } from './TrustBreakdown';
 export { default as TrustScorePill } from './TrustScorePill';
+export { default as VerificationStatus } from './VerificationStatus';
 export { default as WorkerCard } from './WorkerCard';
 export { default as WorkHistoryCard } from './WorkHistoryCard';

@@ -157,6 +157,9 @@ TRUST_WEIGHTS = {
 }
 REVIEW_WINDOW_DAYS = 14
 
+VERIFICATION_MAX_FILE_MB = 5
+VERIFICATION_MAX_FILES = 5
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "SkillPass BD API",
     "DESCRIPTION": (
@@ -170,5 +173,6 @@ SPECTACULAR_SETTINGS = {
     "ENUM_NAME_OVERRIDES": {
         "BookingStatusEnum": "apps.bookings.models.Booking.Status",
         "ServiceRequestStatusEnum": "apps.bookings.models.ServiceRequest.Status",
+        "VerificationStatusEnum": "apps.verification.models.Verification.Status",
     },
 }

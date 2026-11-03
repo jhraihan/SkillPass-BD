@@ -146,7 +146,11 @@
     "invalid_transition": "This job cannot move to that step now. Refresh the page.",
     "action_not_allowed": "You cannot do this on this job.",
     "worker_busy": "Finish your current job before starting another one.",
-    "request_not_open": "This request already has a booking or is closed."
+    "request_not_open": "This request already has a booking or is closed.",
+    "already_verified": "This is already verified.",
+    "already_pending": "You already sent this. Please wait for the review.",
+    "already_decided": "This request was already decided. Refresh the page.",
+    "skill_removed": "The worker removed this skill from their profile."
   },
   "worker": {
     "availability": {
@@ -233,5 +237,16 @@
   "history": {
     "confirmedBy": "Confirmed by {{name}}",
     "noReview": "No review left"
+  },
+  "verification": {
+    "type": {
+      "IDENTITY": "Identity (NID)",
+      "SKILL_EVIDENCE": "Skill proof"
+    },
+    "status": {
+      "PENDING": "Waiting for review",
+      "APPROVED": "Approved",
+      "REJECTED": "Not accepted"
+    }
   }
 }
