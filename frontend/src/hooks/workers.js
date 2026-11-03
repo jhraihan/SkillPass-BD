@@ -7,8 +7,8 @@ import {
   mockSetMySkills,
   mockUpdateMyProfile,
   mockUploadMyPhoto,
-  mockWorkerDashboard,
 } from '@/mocks/workers';
+import { mockWorkerDashboard } from '@/mocks/bookings';
 import { api, apiOrMock } from './request';
 
 export { WORKER_PAGE_SIZE } from '@/mocks/workers';

@@ -1,7 +1,7 @@
 from django.db.models import Exists, OuterRef, Prefetch
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, inline_serializer
-from rest_framework import serializers as drf_serializers
 from rest_framework import status, viewsets
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.parsers import FormParser, MultiPartParser
@@ -9,6 +9,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.bookings.models import Booking
+from apps.bookings.serializers import BookingSerializer
 from common.permissions import IsWorker
 
 from . import services
@@ -138,8 +140,8 @@ class WorkerDashboardView(APIView):
             "WorkerDashboard",
             fields={
                 "profile": MyWorkerProfileSerializer(),
-                "pending_requests": drf_serializers.ListField(),
-                "today_jobs": drf_serializers.ListField(),
+                "pending_requests": BookingSerializer(many=True),
+                "today_jobs": BookingSerializer(many=True),
             },
         )
     )
@@ -147,10 +149,19 @@ class WorkerDashboardView(APIView):
         profile = with_relations(
             WorkerProfile.objects.filter(pk=services.profile_for(request.user).pk)
         ).get()
+        bookings = Booking.objects.filter(worker=profile).select_related(
+            "customer", "worker__user", "service_request__category", "service_request__area"
+        )
+        pending = bookings.filter(status=Booking.Status.PENDING)
+        in_hand = [s for s in Booking.ACTIVE_STATUSES if s != Booking.Status.PENDING]
+        today = bookings.filter(
+            status__in=in_hand, service_request__preferred_date__lte=timezone.localdate()
+        )
+        context = {"request": request}
         return Response(
             {
-                "profile": MyWorkerProfileSerializer(profile, context={"request": request}).data,
-                "pending_requests": [],
-                "today_jobs": [],
+                "profile": MyWorkerProfileSerializer(profile, context=context).data,
+                "pending_requests": BookingSerializer(pending, many=True, context=context).data,
+                "today_jobs": BookingSerializer(today, many=True, context=context).data,
             }
         )

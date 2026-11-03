@@ -142,7 +142,11 @@
     "account_locked": "Your account is locked after too many wrong attempts. Please contact support.",
     "account_suspended": "Your account is suspended. Please contact support.",
     "throttled": "Too many tries. Please wait a minute and try again.",
-    "in_use": "This item is in use and cannot be deleted. Deactivate it instead."
+    "in_use": "This item is in use and cannot be deleted. Deactivate it instead.",
+    "invalid_transition": "This job cannot move to that step now. Refresh the page.",
+    "action_not_allowed": "You cannot do this on this job.",
+    "worker_busy": "Finish your current job before starting another one.",
+    "request_not_open": "This request already has a booking or is closed."
   },
   "worker": {
     "availability": {
@@ -163,5 +167,33 @@
     "years_one": "{{count}} year of experience",
     "years_other": "{{count}} years of experience",
     "moreAreas": "+{{count}} more"
+  },
+  "booking": {
+    "actor": {
+      "CUSTOMER": "By the customer",
+      "WORKER": "By the worker",
+      "ADMIN": "By SkillPass support",
+      "SYSTEM": "Automatically"
+    },
+    "slots": {
+      "MORNING": "Morning (8am–12pm)",
+      "AFTERNOON": "Afternoon (12pm–5pm)",
+      "EVENING": "Evening (5pm–9pm)"
+    },
+    "requestStatus": {
+      "OPEN": "Looking for a worker",
+      "BOOKED": "Booked",
+      "CLOSED": "Done",
+      "CANCELLED": "Cancelled"
+    },
+    "matchReasons": {
+      "serves_area": "Works in {{area}}",
+      "skill_match": "Has the exact skill",
+      "category_match": "Works in this service",
+      "available_now": "Available now",
+      "high_trust": "High trust score ({{score}})",
+      "category_experience_one": "{{count}} verified job in this service",
+      "category_experience_other": "{{count}} verified jobs in this service"
+    }
   }
 }

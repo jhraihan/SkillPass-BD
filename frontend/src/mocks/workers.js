@@ -53,7 +53,7 @@ function buildWorker(id, name, skillSlugs, areaSlugs, extra = {}) {
   return worker;
 }
 
-const workers = [
+export const workers = [
   buildWorker(
     2,
     'রহিম উদ্দিন',
@@ -241,7 +241,7 @@ export function mockGetWorker(id) {
 
 const me = workers[0];
 
-function myProfile() {
+export function myProfile() {
   me.categories = categoriesFor(me.skills);
   const missing = COMPLETENESS_STEPS.filter(([, , done]) => !done(me)).map(([key]) => key);
   const percent = COMPLETENESS_STEPS.filter(([key]) => !missing.includes(key)).reduce(
@@ -288,8 +288,4 @@ export function mockSetMyAreas(ids) {
 export function mockUploadMyPhoto(file) {
   me.photo = URL.createObjectURL(file);
   return mockRequest(myProfile());
-}
-
-export function mockWorkerDashboard() {
-  return mockRequest({ profile: myProfile(), pending_requests: [], today_jobs: [] });
 }

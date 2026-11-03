@@ -136,6 +136,17 @@ SIMPLE_JWT = {
 }
 JWT_WORKER_REFRESH_LIFETIME = timedelta(days=env.int("JWT_WORKER_REFRESH_DAYS", default=30))
 
+BOOKING_RESPONSE_TIMEOUT = timedelta(hours=24)
+BOOKING_CONFIRMATION_TIMEOUT = timedelta(hours=72)
+MATCHING_WEIGHTS = {
+    "skill": 30,
+    "trust": 30,
+    "availability": 15,
+    "experience": 15,
+    "responsiveness": 10,
+}
+MATCHING_LIMIT = 20
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "SkillPass BD API",
     "DESCRIPTION": (
@@ -146,4 +157,8 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "COMPONENT_SPLIT_REQUEST": True,
     "SCHEMA_PATH_PREFIX": r"/api/v1",
+    "ENUM_NAME_OVERRIDES": {
+        "BookingStatusEnum": "apps.bookings.models.Booking.Status",
+        "ServiceRequestStatusEnum": "apps.bookings.models.ServiceRequest.Status",
+    },
 }
