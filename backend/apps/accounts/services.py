@@ -6,6 +6,8 @@ from django.db import transaction
 from django.utils import timezone
 from rest_framework import serializers
 
+from apps.workers.services import create_worker_profile
+
 from .exceptions import AccountLocked, AccountSuspended, InvalidCredentials
 from .models import CustomerProfile, User
 from .phone import normalize_bd_phone
@@ -23,6 +25,8 @@ def register_user(*, role, full_name, phone, password, email=None, preferred_lan
     )
     if role == User.Role.CUSTOMER:
         CustomerProfile.objects.create(user=user)
+    elif role == User.Role.WORKER:
+        create_worker_profile(user)
     return user
 
 
