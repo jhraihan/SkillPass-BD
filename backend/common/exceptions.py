@@ -1,4 +1,5 @@
-from rest_framework.exceptions import ValidationError
+from rest_framework import status
+from rest_framework.exceptions import APIException, ValidationError
 from rest_framework.views import exception_handler
 
 
@@ -20,3 +21,9 @@ def custom_exception_handler(exc, context):
         "errors": {},
     }
     return response
+
+
+class Conflict(APIException):
+    status_code = status.HTTP_409_CONFLICT
+    default_detail = "This item is in use and cannot be deleted. Deactivate it instead."
+    default_code = "in_use"
