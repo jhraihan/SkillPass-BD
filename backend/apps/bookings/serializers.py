@@ -92,6 +92,7 @@ class BookingSerializer(serializers.ModelSerializer):
     customer = serializers.SerializerMethodField()
     contact_visible = serializers.BooleanField(read_only=True)
     allowed_actions = serializers.SerializerMethodField()
+    has_review = serializers.SerializerMethodField()
 
     class Meta:
         model = Booking
@@ -111,6 +112,7 @@ class BookingSerializer(serializers.ModelSerializer):
             "dispute_reason",
             "completion_notes",
             "is_verified",
+            "has_review",
             "created_at",
         ]
 
@@ -148,6 +150,9 @@ class BookingSerializer(serializers.ModelSerializer):
             "name": customer.full_name if full else customer.full_name.split()[0],
             "phone": customer.phone if booking.contact_visible else None,
         }
+
+    def get_has_review(self, booking) -> bool:
+        return hasattr(booking, "review")
 
     def get_allowed_actions(self, booking) -> list[str]:
         return services.allowed_actions(booking, self._viewer())

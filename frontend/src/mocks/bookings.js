@@ -82,7 +82,8 @@ function makeBooking(request, workerId, status, history) {
     status,
     accepted_at: CONTACT.includes(status) ? hoursAgo(3) : null,
     work_done_at: null,
-    closed_at: null,
+    closed_at: ['COMPLETED', 'AUTO_CLOSED'].includes(status) ? hoursAgo(1) : null,
+    has_review: false,
     cancel_reason: '',
     dispute_reason: '',
     completion_notes: '',
@@ -267,7 +268,10 @@ export function mockBookingAction({ id, action, note = '' }, viewerRole) {
   if (target === 'ACCEPTED') booking.accepted_at = new Date().toISOString();
   if (target === 'CANCELLED') booking.cancel_reason = note;
   if (target === 'DISPUTED') booking.dispute_reason = note;
-  if (target === 'COMPLETED') booking.is_verified = true;
+  if (target === 'COMPLETED') {
+    booking.is_verified = true;
+    booking.closed_at = new Date().toISOString();
+  }
   return mockRequest(present(booking, viewerRole));
 }
 
@@ -369,4 +373,22 @@ export function mockWorkerDashboard() {
       .filter((b) => b.status !== 'PENDING' && SCOPES.today(b))
       .map((b) => present(b, 'WORKER')),
   });
+}
+
+export function mockReviewBooking(id) {
+  const booking = byId(bookings, Number(id));
+  if (!booking) return { error: mockError(404, 'Not found.', {}, { code: 'not_found' }) };
+  if (!['COMPLETED', 'AUTO_CLOSED'].includes(booking.status)) {
+    return {
+      error: mockError(400, 'Invalid input.', { booking: ['This job is not finished yet.'] }),
+    };
+  }
+  if (booking.has_review) {
+    return {
+      error: mockError(400, 'Invalid input.', { booking: ['You already reviewed this job.'] }),
+    };
+  }
+  booking.has_review = true;
+  const request = byId(requests, booking.request_id);
+  return { booking, category: request.category_detail, workerId: booking.worker_id };
 }

@@ -146,6 +146,16 @@ MATCHING_WEIGHTS = {
     "responsiveness": 10,
 }
 MATCHING_LIMIT = 20
+TRUST_WEIGHTS = {
+    "completion": 25,
+    "rating": 20,
+    "verified_jobs": 15,
+    "cancellation": 15,
+    "response": 10,
+    "identity": 10,
+    "experience": 5,
+}
+REVIEW_WINDOW_DAYS = 14
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "SkillPass BD API",

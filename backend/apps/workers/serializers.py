@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from apps.catalog.models import Area
+from apps.trust.services import latest_breakdown
 
 from . import services
 from .models import WorkerProfile, WorkerSkill
@@ -78,7 +79,7 @@ class WorkerPublicSerializer(WorkerCardSerializer):
         fields = [*WorkerCardSerializer.Meta.fields, "bio", "member_since", "trust"]
 
     def get_trust(self, profile) -> dict:
-        return {"score": profile.trust_score, "breakdown": []}
+        return {"score": profile.trust_score, "breakdown": latest_breakdown(profile)}
 
 
 class MyWorkerProfileSerializer(WorkerPublicSerializer):

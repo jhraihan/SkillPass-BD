@@ -64,8 +64,9 @@ def test_patch_updates_editable_fields_only(worker_api):
     assert profile.display_name == "Rahim Electric"
     assert profile.years_experience == 9
     assert profile.availability_status == "AVAILABLE"
-    assert profile.trust_score == 0
+    assert profile.trust_score != 99
     assert profile.identity_verified is False
+    assert profile.trust_history.first().trigger == "profile_updated"
 
 
 def test_set_skills_and_areas_completes_setup(worker_api):

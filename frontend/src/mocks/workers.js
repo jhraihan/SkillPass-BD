@@ -1,4 +1,5 @@
 import { areas, categories, skills } from './catalogData';
+import { mockTrust } from './trust';
 import { mockError, mockPaginate, mockRequest } from './utils';
 
 const skillBySlug = Object.fromEntries(skills.map((skill) => [skill.slug, skill]));
@@ -49,7 +50,8 @@ function buildWorker(id, name, skillSlugs, areaSlugs, extra = {}) {
   };
   worker.categories = categoriesFor(worker.skills);
   worker.is_new = worker.completed_jobs_count < 3;
-  worker.trust = { score: worker.trust_score, breakdown: [] };
+  worker.trust = mockTrust(worker);
+  worker.trust_score = worker.trust.score;
   return worker;
 }
 
@@ -243,6 +245,8 @@ const me = workers[0];
 
 export function myProfile() {
   me.categories = categoriesFor(me.skills);
+  me.trust = mockTrust(me);
+  me.trust_score = me.trust.score;
   const missing = COMPLETENESS_STEPS.filter(([, , done]) => !done(me)).map(([key]) => key);
   const percent = COMPLETENESS_STEPS.filter(([key]) => !missing.includes(key)).reduce(
     (sum, [, weight]) => sum + weight,
