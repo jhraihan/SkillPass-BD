@@ -143,5 +143,25 @@
     "account_suspended": "আপনার অ্যাকাউন্ট স্থগিত আছে। সাপোর্টে যোগাযোগ করুন।",
     "throttled": "অনেকবার চেষ্টা হয়েছে। এক মিনিট পর আবার চেষ্টা করুন।",
     "in_use": "এটি ব্যবহার হচ্ছে, তাই মুছে ফেলা যাবে না। বরং নিষ্ক্রিয় করুন।"
+  },
+  "worker": {
+    "availability": {
+      "AVAILABLE": "এখন কাজ নিচ্ছেন",
+      "BUSY": "ব্যস্ত",
+      "OFFLINE": "অফলাইন"
+    },
+    "identityVerified": "পরিচয় যাচাই করা",
+    "evidenceVerified": "দক্ষতা যাচাই করা",
+    "verifiedJobs_one": "{{count}}টি যাচাই করা কাজ",
+    "verifiedJobs_other": "{{count}}টি যাচাই করা কাজ",
+    "newOnSkillPass": "স্কিলপাসে নতুন",
+    "trust": "ট্রাস্ট {{score}}",
+    "trustLabel": "ট্রাস্ট স্কোর",
+    "reviews_one": "{{count}}টি রিভিউ",
+    "reviews_other": "{{count}}টি রিভিউ",
+    "noReviews": "এখনো কোনো রিভিউ নেই",
+    "years_one": "{{count}} বছরের অভিজ্ঞতা",
+    "years_other": "{{count}} বছরের অভিজ্ঞতা",
+    "moreAreas": "+আরও {{count}}টি"
   }
 }

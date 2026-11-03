@@ -71,10 +71,10 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Models: WorkerProfile (counters), WorkerSkill, WorkerServiceArea
-- [ ] Worker `me` profile, photo upload, availability, replace skills / areas, completeness %
-- [ ] Public profile serializer (badges, hidden phone), search filters + ordering, worker dashboard endpoint; tests
-- [ ] Domain components: `WorkerCard`; hooks + mocks for search, profile, availability
+- [x] Models: WorkerProfile (counters), WorkerSkill, WorkerServiceArea
+- [x] Worker `me` profile, photo upload, availability, replace skills / areas, completeness %
+- [x] Public profile serializer (badges, hidden phone), search filters + ordering, worker dashboard endpoint; tests
+- [x] Domain components: `WorkerCard`, `TrustScorePill`, `AvailabilityDot`, `CategoryIcon`; hooks + mocks for search, profile, skills, areas, photo, dashboard
 
 **M2 — Public & Auth** · zip `M2-profiles.zip` · branch `m2/profiles`
 

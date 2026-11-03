@@ -143,5 +143,25 @@
     "account_suspended": "Your account is suspended. Please contact support.",
     "throttled": "Too many tries. Please wait a minute and try again.",
     "in_use": "This item is in use and cannot be deleted. Deactivate it instead."
+  },
+  "worker": {
+    "availability": {
+      "AVAILABLE": "Available now",
+      "BUSY": "Busy",
+      "OFFLINE": "Offline"
+    },
+    "identityVerified": "Identity verified",
+    "evidenceVerified": "Skill checked",
+    "verifiedJobs_one": "{{count}} verified job",
+    "verifiedJobs_other": "{{count}} verified jobs",
+    "newOnSkillPass": "New on SkillPass",
+    "trust": "Trust {{score}}",
+    "trustLabel": "Trust score",
+    "reviews_one": "{{count}} review",
+    "reviews_other": "{{count}} reviews",
+    "noReviews": "No reviews yet",
+    "years_one": "{{count}} year of experience",
+    "years_other": "{{count}} years of experience",
+    "moreAreas": "+{{count}} more"
   }
 }
