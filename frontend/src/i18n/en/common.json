@@ -347,5 +347,14 @@
         "body": "{{reason}}"
       }
     }
+  },
+  "voice": {
+    "listen": "Read this screen aloud",
+    "stop": "Stop reading",
+    "speak": "Speak",
+    "listening": "Listening… tap to stop"
+  },
+  "offline": {
+    "banner": "No internet. Some things will not work until you are back online."
   }
 }

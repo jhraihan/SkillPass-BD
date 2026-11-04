@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { mockAdminUserAction, mockListAdminUsers } from '@/mocks/adminUsers';
+import { mockAdminUserAction, mockListAdminUsers, mockOnboardWorker } from '@/mocks/adminUsers';
 import { api, apiOrMock } from './request';
 
 export function useAdminUsers(filters = {}) {
@@ -30,5 +30,17 @@ export function useAdminUserAction() {
       queryClient.invalidateQueries({ queryKey: ['workers'] });
       queryClient.invalidateQueries({ queryKey: ['reports'] });
     },
+  });
+}
+
+export function useOnboardWorker() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (values) =>
+      apiOrMock(
+        () => api.post('/admin/workers/', values),
+        () => mockOnboardWorker(values),
+      ),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin'] }),
   });
 }

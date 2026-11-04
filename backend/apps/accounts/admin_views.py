@@ -11,6 +11,7 @@ from common.permissions import IsAdminRole
 from . import admin_services
 from .admin_stats import PERIODS, dashboard_stats
 from .models import User
+from .serializers import PhoneField
 
 STATES = {
     "active": Q(is_suspended=False, locked_at__isnull=True),
@@ -45,6 +46,21 @@ class AdminUserSerializer(serializers.ModelSerializer):
     def get_worker_profile_id(self, user) -> int | None:
         profile = getattr(user, "worker_profile", None)
         return profile.id if profile else None
+
+
+class OnboardWorkerSerializer(serializers.Serializer):
+    full_name = serializers.CharField(max_length=150)
+    phone = PhoneField(max_length=20)
+    preferred_language = serializers.ChoiceField(
+        choices=User.Language.choices, default=User.Language.BENGALI
+    )
+
+    def validate_phone(self, value):
+        if User.objects.filter(phone=value).exists():
+            raise serializers.ValidationError(
+                "An account with this phone number already exists.", code="phone_taken"
+            )
+        return value
 
 
 class SuspendSerializer(serializers.Serializer):
@@ -145,3 +161,21 @@ class AdminStatsView(APIView):
         except ValueError:
             days = 30
         return Response(dashboard_stats(days))
+
+
+class OnboardWorkerView(APIView):
+    permission_classes = [IsAdminRole]
+
+    @extend_schema(request=OnboardWorkerSerializer, responses={201: CredentialResponse})
+    def post(self, request):
+        serializer = OnboardWorkerSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user, pin = admin_services.onboard_worker(
+            request.user, request=request, **serializer.validated_data
+        )
+        response = Response(
+            {"user": AdminUserSerializer(user).data, "kind": "pin", "temporary_credential": pin},
+            status=201,
+        )
+        response["Cache-Control"] = "no-store"
+        return response

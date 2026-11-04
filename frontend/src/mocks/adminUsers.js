@@ -111,3 +111,25 @@ export function mockAdminUserAction({ id, action, reason }) {
     kind === 'pin' ? `${pick('123456789', 1)}${pick(DIGITS, 5)}` : pick(LETTERS, 12);
   return mockRequest({ user: { ...user }, kind, temporary_credential: credential });
 }
+
+export function mockOnboardWorker({ full_name: fullName, phone }) {
+  const digits = String(phone ?? '').replace(/\D/g, '');
+  const normalized = `+880${digits.slice(-10)}`;
+  if (!/^\+8801[3-9]\d{8}$/.test(normalized)) {
+    return mockError(400, 'Invalid input.', {
+      phone: ['Enter a valid Bangladeshi mobile number.'],
+    });
+  }
+  if (users.some((u) => u.phone === normalized)) {
+    return mockError(400, 'Invalid input.', {
+      phone: ['An account with this phone number already exists.'],
+    });
+  }
+  const user = base(
+    { id: 300 + users.length, full_name: fullName, phone: normalized, role: 'WORKER' },
+    { must_change_credential: true, date_joined: new Date().toISOString(), last_login: null },
+  );
+  users.push(user);
+  const pin = `${pick('123456789', 1)}${pick(DIGITS, 5)}`;
+  return mockRequest({ user: { ...user }, kind: 'pin', temporary_credential: pin });
+}
