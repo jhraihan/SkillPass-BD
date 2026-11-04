@@ -4,10 +4,12 @@ from drf_spectacular.utils import OpenApiParameter, extend_schema, inline_serial
 from rest_framework import mixins, serializers, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from common.permissions import IsAdminRole
 
 from . import admin_services
+from .admin_stats import PERIODS, dashboard_stats
 from .models import User
 
 STATES = {
@@ -128,3 +130,18 @@ class AdminUserViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewset
         )
         response["Cache-Control"] = "no-store"
         return response
+
+
+class AdminStatsView(APIView):
+    permission_classes = [IsAdminRole]
+
+    @extend_schema(
+        parameters=[OpenApiParameter("days", OpenApiTypes.INT, enum=list(PERIODS))],
+        responses=OpenApiTypes.OBJECT,
+    )
+    def get(self, request):
+        try:
+            days = int(request.query_params.get("days", 30))
+        except ValueError:
+            days = 30
+        return Response(dashboard_stats(days))
