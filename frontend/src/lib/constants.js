@@ -101,3 +101,12 @@ export const DISPUTE_OUTCOMES = ['COMPLETED', 'CANCELLED'];
 export const REVIEW_ACTIONS = ['HIDE', 'INVALIDATE'];
 
 export const USER_STATES = ['active', 'suspended', 'locked'];
+
+export const STATS_PERIODS = [7, 30, 90];
+
+export const CHART_COLORS = {
+  requested: '#2a78d6',
+  completed: '#eb6834',
+  grid: '#e5e7eb',
+  axis: '#6b7280',
+};

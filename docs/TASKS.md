@@ -214,13 +214,14 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] `admin/stats/` endpoint; add Recharts; `useAdminStats` hook + mocks
+- [x] `admin/stats/` endpoint; add Recharts; `TrendChart` (domain); `useAdminStats` hook + mocks
 
 **M5 — Admin & Verification** · zip `M5-admin.zip` · branch `m5/admin`
 
-- [ ] `AdminDashboardPage.jsx` — `/admin`
-- [ ] `StatCard.jsx`
-- [ ] `BookingsChart.jsx`
+- [x] `AdminDashboardPage.jsx` — `/admin`
+- [x] `StatCard.jsx`
+- [x] `BookingsChart.jsx`
+- [x] `StatusBreakdown.jsx`, `TopCategories.jsx`
 
 ## Part 11 — Worker assistance  (`assistance`)
 
