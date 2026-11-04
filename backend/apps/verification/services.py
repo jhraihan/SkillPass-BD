@@ -4,6 +4,8 @@ from django.utils import timezone
 from rest_framework import serializers
 
 from apps.audit.services import record
+from apps.notifications.models import Notification
+from apps.notifications.services import notify
 from apps.trust.services import recalculate
 from apps.workers.models import WorkerProfile, WorkerSkill
 from common.exceptions import Conflict
@@ -100,6 +102,11 @@ def approve(verification, admin, request=None):
     else:
         WorkerSkill.objects.filter(pk=verification.worker_skill_id).update(evidence_verified=True)
     record(admin, "verification.approved", verification, _audit_data(verification), request)
+    notify(
+        verification.worker.user,
+        Notification.Type.VERIFICATION_APPROVED,
+        _notice_data(verification),
+    )
     return verification
 
 
@@ -109,6 +116,11 @@ def reject(verification, admin, reason, request=None):
     _decide(verification, admin, S.REJECTED, reason)
     data = {**_audit_data(verification), "reason": reason}
     record(admin, "verification.rejected", verification, data, request)
+    notify(
+        verification.worker.user,
+        Notification.Type.VERIFICATION_REJECTED,
+        {**_notice_data(verification), "reason": reason},
+    )
     return verification
 
 
@@ -117,4 +129,19 @@ def _audit_data(verification):
         "worker_id": verification.worker_id,
         "type": verification.type,
         "skill": verification.skill_name,
+    }
+
+
+def _notice_data(verification):
+    subject = {
+        T.IDENTITY: {"name_en": "Identity (NID)", "name_bn": "পরিচয় (এনআইডি)"},
+        T.SKILL_EVIDENCE: {
+            "name_en": f"Skill proof: {verification.skill_name}",
+            "name_bn": f"দক্ষতার প্রমাণ: {verification.skill_name}",
+        },
+    }[verification.type]
+    return {
+        "verification_id": verification.pk,
+        "verification_type": verification.type,
+        "subject": subject,
     }

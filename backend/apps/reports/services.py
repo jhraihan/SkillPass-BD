@@ -7,6 +7,8 @@ from apps.accounts.admin_services import suspend_user
 from apps.audit.services import record
 from apps.bookings.models import Booking
 from apps.bookings.services import transition
+from apps.notifications.models import Notification
+from apps.notifications.services import booking_data, notify
 from apps.reviews.models import Review
 from apps.trust.services import recalculate
 from apps.workers.models import WorkerProfile
@@ -110,7 +112,9 @@ def _validate_resolution(report, target, data):
     errors = {}
     outcome = data.get("booking_outcome")
     disputed = report.target_type == T.BOOKING and target.status == Booking.Status.DISPUTED
-    if data["status"] == R.RESOLVED and disputed and not outcome:
+    if disputed and data["status"] == R.DISMISSED:
+        errors["status"] = ["A dispute must be resolved with an outcome."]
+    elif disputed and not outcome:
         errors["booking_outcome"] = ["Choose how this job ends."]
     if outcome and not disputed:
         errors["booking_outcome"] = ["This job is not in dispute."]
@@ -165,4 +169,15 @@ def resolve(report, admin, data, request=None):
         if data.get(key)
     }
     record(admin, f"report.{data['status'].lower()}", report, metadata, request)
+    if report.is_dispute and report.target_type == T.BOOKING:
+        _notify_dispute_result(target, note)
     return report
+
+
+def _notify_dispute_result(booking, note):
+    booking = Booking.objects.select_related(
+        "customer", "worker__user", "service_request__category", "service_request__area"
+    ).get(pk=booking.pk)
+    data = booking_data(booking, reason=note, outcome=booking.status)
+    for person in (booking.customer, booking.worker.user):
+        notify(person, Notification.Type.DISPUTE_RESOLVED, data)

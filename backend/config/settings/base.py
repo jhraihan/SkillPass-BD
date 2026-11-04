@@ -160,6 +160,10 @@ REVIEW_WINDOW_DAYS = 14
 VERIFICATION_MAX_FILE_MB = 5
 VERIFICATION_MAX_FILES = 5
 
+SUPPORT_PHONE = env("SUPPORT_PHONE", default="+8801700000000")
+SUPPORT_WHATSAPP = env("SUPPORT_WHATSAPP", default="8801700000000")
+SUPPORT_HOURS = env("SUPPORT_HOURS", default="9:00-21:00")
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "SkillPass BD API",
     "DESCRIPTION": (
@@ -176,5 +180,7 @@ SPECTACULAR_SETTINGS = {
         "VerificationStatusEnum": "apps.verification.models.Verification.Status",
         "ReportStatusEnum": "apps.reports.models.Report.Status",
         "UserRoleEnum": "apps.accounts.models.User.Role",
+        "NotificationTypeEnum": "apps.notifications.models.Notification.Type",
+        "VerificationTypeEnum": "apps.verification.models.Verification.Type",
     },
 }

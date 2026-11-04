@@ -277,5 +277,75 @@
       "NONE": "No one"
     },
     "dispute": "Dispute"
+  },
+  "notifications": {
+    "unread": "Unread",
+    "newJob": {
+      "title": "New job!",
+      "detail": "{{category}}, {{area}}",
+      "open": "See job"
+    },
+    "types": {
+      "NEW_JOB": {
+        "title": "New job: {{category}}, {{area}}",
+        "body": "Tap to see and accept it."
+      },
+      "BOOKING_ACCEPTED": {
+        "title": "{{name}} accepted your job",
+        "body": "{{category}} — you can call them now."
+      },
+      "BOOKING_DECLINED": {
+        "title": "{{name}} cannot take your job",
+        "body": "Please choose another worker."
+      },
+      "BOOKING_EXPIRED": {
+        "title": "{{name}} did not answer in time",
+        "body": "Please choose another worker."
+      },
+      "BOOKING_CANCELLED": {
+        "title": "Job cancelled: {{category}}",
+        "body": "{{reason}}"
+      },
+      "WORKER_ON_THE_WAY": {
+        "title": "{{name}} is on the way",
+        "body": "{{category}} — arriving soon."
+      },
+      "JOB_STARTED": {
+        "title": "{{name}} started the job",
+        "body": "{{category}}"
+      },
+      "CONFIRM_COMPLETION": {
+        "title": "Is the job done?",
+        "body": "{{name}} says the job is finished. Confirm or report a problem."
+      },
+      "JOB_COMPLETED": {
+        "title": "Job confirmed: {{category}}",
+        "body": "The customer confirmed the job is done."
+      },
+      "JOB_AUTO_CLOSED": {
+        "title": "Job closed: {{category}}",
+        "body": "The customer did not answer, so the job was closed."
+      },
+      "BOOKING_DISPUTED": {
+        "title": "A problem was reported with a job",
+        "body": "{{category}} — the SkillPass team will check."
+      },
+      "DISPUTE_RESOLVED": {
+        "title": "Problem resolved: {{category}}",
+        "body": "{{reason}}"
+      },
+      "REVIEW_RECEIVED": {
+        "title": "New review: {{stars}} stars",
+        "body": "{{category}}"
+      },
+      "VERIFICATION_APPROVED": {
+        "title": "Your documents were approved",
+        "body": "{{subject}}"
+      },
+      "VERIFICATION_REJECTED": {
+        "title": "Your documents were not accepted",
+        "body": "{{reason}}"
+      }
+    }
   }
 }

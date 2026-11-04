@@ -277,5 +277,75 @@
       "NONE": "কেউ না"
     },
     "dispute": "বিরোধ"
+  },
+  "notifications": {
+    "unread": "পড়া হয়নি",
+    "newJob": {
+      "title": "নতুন কাজ!",
+      "detail": "{{category}}, {{area}}",
+      "open": "কাজ দেখুন"
+    },
+    "types": {
+      "NEW_JOB": {
+        "title": "নতুন কাজ: {{category}}, {{area}}",
+        "body": "দেখতে ও গ্রহণ করতে চাপুন।"
+      },
+      "BOOKING_ACCEPTED": {
+        "title": "{{name}} আপনার কাজ গ্রহণ করেছেন",
+        "body": "{{category}} — এখন কল করতে পারবেন।"
+      },
+      "BOOKING_DECLINED": {
+        "title": "{{name}} কাজটি নিতে পারছেন না",
+        "body": "অন্য একজন কর্মী বেছে নিন।"
+      },
+      "BOOKING_EXPIRED": {
+        "title": "{{name}} সময়মতো উত্তর দেননি",
+        "body": "অন্য একজন কর্মী বেছে নিন।"
+      },
+      "BOOKING_CANCELLED": {
+        "title": "কাজ বাতিল হয়েছে: {{category}}",
+        "body": "{{reason}}"
+      },
+      "WORKER_ON_THE_WAY": {
+        "title": "{{name}} রওনা দিয়েছেন",
+        "body": "{{category}} — শীঘ্রই পৌঁছাবেন।"
+      },
+      "JOB_STARTED": {
+        "title": "{{name}} কাজ শুরু করেছেন",
+        "body": "{{category}}"
+      },
+      "CONFIRM_COMPLETION": {
+        "title": "কাজ শেষ হয়েছে কি?",
+        "body": "{{name}} বলছেন কাজ শেষ। নিশ্চিত করুন বা সমস্যা জানান।"
+      },
+      "JOB_COMPLETED": {
+        "title": "কাজ নিশ্চিত হয়েছে: {{category}}",
+        "body": "গ্রাহক কাজ শেষ নিশ্চিত করেছেন।"
+      },
+      "JOB_AUTO_CLOSED": {
+        "title": "কাজ বন্ধ হয়েছে: {{category}}",
+        "body": "গ্রাহক উত্তর দেননি, তাই কাজটি বন্ধ করা হয়েছে।"
+      },
+      "BOOKING_DISPUTED": {
+        "title": "কাজ নিয়ে সমস্যা জানানো হয়েছে",
+        "body": "{{category}} — স্কিলপাস টিম দেখবে।"
+      },
+      "DISPUTE_RESOLVED": {
+        "title": "সমস্যার সমাধান হয়েছে: {{category}}",
+        "body": "{{reason}}"
+      },
+      "REVIEW_RECEIVED": {
+        "title": "নতুন রিভিউ: {{stars}} তারা",
+        "body": "{{category}}"
+      },
+      "VERIFICATION_APPROVED": {
+        "title": "আপনার কাগজ অনুমোদিত হয়েছে",
+        "body": "{{subject}}"
+      },
+      "VERIFICATION_REJECTED": {
+        "title": "আপনার কাগজ গ্রহণ করা হয়নি",
+        "body": "{{reason}}"
+      }
+    }
   }
 }
