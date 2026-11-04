@@ -1,0 +1,69 @@
+databases:
+  - name: skillpass-db
+    plan: free
+    databaseName: skillpass
+    user: skillpass
+
+services:
+  - type: web
+    name: skillpass-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements/prod.txt && python manage.py collectstatic --noinput
+    startCommand: python manage.py migrate --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    healthCheckPath: /api/v1/health/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.prod
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: skillpass-db
+          property: connectionString
+      - key: DJANGO_ALLOWED_HOSTS
+        value: skillpass-api.onrender.com
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://skillpass-web.onrender.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://skillpass-api.onrender.com
+      - key: SERVE_MEDIA
+        value: "true"
+      - key: CRON_TOKEN
+        generateValue: true
+      - key: SUPPORT_PHONE
+        sync: false
+      - key: SUPPORT_WHATSAPP
+        sync: false
+      - key: SUPPORT_HOURS
+        value: "9:00-21:00"
+
+  - type: web
+    name: skillpass-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: VITE_API_BASE_URL
+        value: https://skillpass-api.onrender.com/api/v1
+      - key: VITE_USE_MOCKS
+        value: "false"
+      - key: VITE_TUTORIAL_VIDEO_URL
+        sync: false
+    headers:
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

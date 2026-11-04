@@ -38,6 +38,13 @@ class WorkerProfile(TimeStampedModel):
 
     class Meta:
         ordering = ["-trust_score", "-verified_jobs_count", "display_name"]
+        indexes = [
+            models.Index(
+                fields=["-trust_score", "-verified_jobs_count", "display_name"],
+                name="worker_ranking_idx",
+            ),
+            models.Index(fields=["availability_status"]),
+        ]
 
     def __str__(self):
         return self.display_name

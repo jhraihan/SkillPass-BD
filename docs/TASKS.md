@@ -246,24 +246,26 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Backend coverage ≥ 70%; security checklist; performance pass (N+1, indexes)
-- [ ] Production settings, database, media storage, deploy backend (Render/Railway) and frontend (Vercel/Netlify)
-- [ ] Schedule `process_booking_timeouts`; seed demo data; Swagger descriptions; tag `v1.0`
+- [x] Backend coverage ≥ 70%; security checklist; performance pass (N+1, indexes)
+- [x] Production settings, database, media storage, deploy config (`render.yaml`, `docs/DEPLOY.md`)
+- [ ] Deploy to Render (needs your Render account — follow `docs/DEPLOY.md`)
+- [x] Schedule `process_booking_timeouts`; seed demo data; Swagger descriptions
+- [ ] Tag `v1.0` (after all member PRs are merged — see `docs/DEPLOY.md`)
 
 **M2 — Public & Auth** · zip `M2-final.zip` · branch `m2/final`
 
-- [ ] `public.md`
+- [x] `public.md`
 
 **M3 — Customer** · zip `M3-final.zip` · branch `m3/final`
 
-- [ ] `customer.md`
+- [x] `customer.md`
 
 **M4 — Worker** · zip `M4-final.zip` · branch `m4/final`
 
-- [ ] `worker.md`
-- [ ] `USABILITY.md`
+- [x] `worker.md`
+- [x] `USABILITY.md`
 
 **M5 — Admin & Verification** · zip `M5-final.zip` · branch `m5/final`
 
-- [ ] `admin.md`
-- [ ] `TEST_PLAN.md`
+- [x] `admin.md`
+- [x] `TEST_PLAN.md`

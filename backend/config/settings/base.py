@@ -99,8 +99,10 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
-PRIVATE_MEDIA_ROOT = BASE_DIR / "private_media"
+MEDIA_ROOT = env.path("MEDIA_ROOT", default=BASE_DIR / "media")
+PRIVATE_MEDIA_ROOT = env.path("PRIVATE_MEDIA_ROOT", default=BASE_DIR / "private_media")
+SERVE_MEDIA = env.bool("SERVE_MEDIA", default=False)
+CRON_TOKEN = env("CRON_TOKEN", default="")
 
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=["http://localhost:5173"])
 
@@ -168,9 +170,28 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "SkillPass BD API",
     "DESCRIPTION": (
         "Digital professional identity and verified work history platform "
-        "for informal skilled workers in Bangladesh."
+        "for informal skilled workers in Bangladesh.\n\n"
+        "Authenticate with `POST /api/v1/auth/login/` and send the access token as "
+        "`Authorization: Bearer <token>`. Errors always use "
+        '`{"detail", "code", "errors"}`. Lists are paginated with `?page=`.'
     ),
     "VERSION": "1.0.0",
+    "TAGS": [
+        {"name": "auth", "description": "Register, log in with phone + PIN/password, refresh, me."},
+        {"name": "categories", "description": "Service categories (public read, admin write)."},
+        {"name": "skills", "description": "Skills inside each category."},
+        {"name": "areas", "description": "Service areas and districts."},
+        {"name": "workers", "description": "Worker search, public profiles, own profile, reviews."},
+        {"name": "service-requests", "description": "Customer job requests and matching."},
+        {"name": "bookings", "description": "Booking lifecycle: accept, start, complete, confirm."},
+        {"name": "reviews", "description": "Structured reviews for finished jobs."},
+        {"name": "verification", "description": "Identity / skill documents and admin decisions."},
+        {"name": "reports", "description": "Reports, disputes and their resolution."},
+        {"name": "notifications", "description": "In-app notifications and unread count."},
+        {"name": "admin", "description": "Admin dashboard stats, users and assisted onboarding."},
+        {"name": "support", "description": "Public support contact details."},
+        {"name": "health", "description": "Liveness check."},
+    ],
     "SERVE_INCLUDE_SCHEMA": False,
     "COMPONENT_SPLIT_REQUEST": True,
     "SCHEMA_PATH_PREFIX": r"/api/v1",
