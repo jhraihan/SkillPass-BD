@@ -8,6 +8,7 @@ from apps.audit.services import record
 
 from .credentials import is_weak_pin
 from .models import User
+from .services import register_user
 from .tokens import revoke_all_tokens
 
 PASSWORD_ALPHABET = string.ascii_letters + string.digits
@@ -82,3 +83,20 @@ def reset_credential(user, admin, request=None):
         admin, "user.credential_reset", user, {"kind": "pin" if is_worker else "password"}, request
     )
     return credential, ("pin" if is_worker else "password")
+
+
+@transaction.atomic
+def onboard_worker(admin, full_name, phone, preferred_language=User.Language.BENGALI, request=None):
+    pin = temporary_pin(phone)
+    user = register_user(
+        role=User.Role.WORKER,
+        full_name=full_name,
+        phone=phone,
+        password=pin,
+        preferred_language=preferred_language,
+    )
+    user.must_change_credential = True
+    user.created_by = admin
+    user.save(update_fields=["must_change_credential", "created_by", "updated_at"])
+    record(admin, "user.onboarded", user, {"role": user.role}, request)
+    return user, pin

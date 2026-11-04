@@ -1,16 +1,19 @@
 import { ClipboardList, House, LifeBuoy, UserRound } from 'lucide-react';
-import { Suspense } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import LanguageSwitcher from '@/components/app/LanguageSwitcher';
 import Logo from '@/components/app/Logo';
-import { NewJobAlert } from '@/components/domain';
+import { ScreenVoiceContext } from '@/app/screen-voice-context';
+import { NewJobAlert, ReadAloudButton } from '@/components/domain';
 import { LoadingState } from '@/components/ui';
 import NotificationBell from '@/features/customer/components/NotificationBell';
 import NavItem from './NavItem';
 
 export default function WorkerLayout() {
   const { t } = useTranslation();
+  const [voiceText, setVoiceText] = useState('');
+  const voice = useMemo(() => ({ text: voiceText, setText: setVoiceText }), [voiceText]);
 
   const tabs = [
     { to: '/worker', label: t('nav.home'), icon: House, end: true },
@@ -20,35 +23,38 @@ export default function WorkerLayout() {
   ];
 
   return (
-    <div className="min-h-dvh text-lg">
-      <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-xl items-center gap-1 px-4 py-2">
-          <Logo to="/worker" />
-          <div className="ml-auto flex items-center gap-1">
-            <NotificationBell />
-            <LanguageSwitcher />
+    <ScreenVoiceContext.Provider value={voice}>
+      <div className="min-h-dvh text-lg">
+        <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
+          <div className="mx-auto flex max-w-xl items-center gap-1 px-4 py-2">
+            <Logo to="/worker" />
+            <div className="ml-auto flex items-center gap-1">
+              <ReadAloudButton text={voiceText} />
+              <NotificationBell />
+              <LanguageSwitcher />
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <NewJobAlert />
+        <NewJobAlert />
 
-      <main className="mx-auto max-w-xl px-4 pb-28 pt-4">
-        <Suspense fallback={<LoadingState />}>
-          <Outlet />
-        </Suspense>
-      </main>
+        <main className="mx-auto max-w-xl px-4 pb-28 pt-4">
+          <Suspense fallback={<LoadingState />}>
+            <Outlet />
+          </Suspense>
+        </main>
 
-      <nav
-        aria-label={t('nav.mainMenu')}
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]"
-      >
-        <div className="mx-auto flex max-w-xl">
-          {tabs.map((tab) => (
-            <NavItem key={tab.to} {...tab} variant="bottom" />
-          ))}
-        </div>
-      </nav>
-    </div>
+        <nav
+          aria-label={t('nav.mainMenu')}
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]"
+        >
+          <div className="mx-auto flex max-w-xl">
+            {tabs.map((tab) => (
+              <NavItem key={tab.to} {...tab} variant="bottom" />
+            ))}
+          </div>
+        </nav>
+      </div>
+    </ScreenVoiceContext.Provider>
   );
 }

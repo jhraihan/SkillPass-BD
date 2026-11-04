@@ -3,6 +3,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient
 
 from apps.accounts.credentials import is_weak_pin
+from apps.accounts.models import User
 from apps.accounts.tokens import issue_tokens
 from apps.audit.models import AuditLog
 
@@ -87,3 +88,38 @@ def test_reset_customer_password(admin_api, customer):
 def test_admin_cannot_act_on_self(admin_api, admin_user):
     assert admin_api.post(f"{URL}{admin_user.id}/suspend/", {"reason": "x"}).status_code == 400
     assert admin_api.post(f"{URL}{admin_user.id}/reset-credential/").status_code == 400
+
+
+def test_assisted_onboarding_creates_worker_with_temporary_pin(admin_api, admin_user):
+    response = admin_api.post(
+        "/api/v1/admin/workers/", {"full_name": "Jamal Mia", "phone": "01899999999"}
+    )
+
+    assert response.status_code == 201, response.json()
+    body = response.json()
+    pin = body["temporary_credential"]
+    assert body["kind"] == "pin" and len(pin) == 6
+    assert response["Cache-Control"] == "no-store"
+    user = User.objects.get(phone="+8801899999999")
+    assert (user.role, user.must_change_credential, user.created_by) == ("WORKER", True, admin_user)
+    assert user.preferred_language == "bn"
+    assert user.check_password(pin)
+    assert user.worker_profile.display_name == "Jamal Mia"
+    assert AuditLog.objects.filter(action="user.onboarded").exists()
+    assert pin not in str(AuditLog.objects.get(action="user.onboarded").metadata)
+
+
+def test_onboarding_rejects_taken_or_bad_phone(admin_api, customer):
+    taken = admin_api.post("/api/v1/admin/workers/", {"full_name": "X", "phone": customer.phone})
+    bad = admin_api.post("/api/v1/admin/workers/", {"full_name": "X", "phone": "12345"})
+
+    assert "phone" in taken.json()["errors"]
+    assert "phone" in bad.json()["errors"]
+
+
+def test_only_admins_onboard(customer_api):
+    response = customer_api.post(
+        "/api/v1/admin/workers/", {"full_name": "X", "phone": "01899999999"}
+    )
+
+    assert response.status_code == 403

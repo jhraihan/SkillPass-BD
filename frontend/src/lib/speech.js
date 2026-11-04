@@ -1,21 +1,39 @@
-const LOCALES = { bn: 'bn-BD', en: 'en-US' };
+export const SPEECH_LOCALES = { bn: 'bn-BD', en: 'en-US' };
 
-export function canSpeak() {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window;
+function synthesis() {
+  return typeof window !== 'undefined' && 'speechSynthesis' in window
+    ? window.speechSynthesis
+    : null;
 }
 
-export function speak(text, lang = 'bn') {
-  if (!canSpeak() || !text) return false;
+function voiceFor(lang) {
+  const voices = synthesis()?.getVoices() ?? [];
+  return voices.find((voice) => voice.lang?.toLowerCase().startsWith(lang));
+}
+
+export function canSpeak(lang) {
+  const engine = synthesis();
+  if (!engine) return false;
+  if (!lang) return true;
+  const voices = engine.getVoices();
+  return voices.length === 0 || Boolean(voiceFor(lang));
+}
+
+export function speak(text, lang = 'bn', { onEnd } = {}) {
+  const engine = synthesis();
+  if (!engine || !text) return false;
   try {
-    window.speechSynthesis.cancel();
+    engine.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = LOCALES[lang] ?? lang;
+    utterance.lang = SPEECH_LOCALES[lang] ?? lang;
     utterance.rate = 0.9;
-    const voice = window.speechSynthesis
-      .getVoices()
-      .find((v) => v.lang?.toLowerCase().startsWith(lang));
+    const voice = voiceFor(lang);
     if (voice) utterance.voice = voice;
-    window.speechSynthesis.speak(utterance);
+    if (onEnd) {
+      utterance.onend = onEnd;
+      utterance.onerror = onEnd;
+    }
+    engine.speak(utterance);
     return true;
   } catch {
     return false;
@@ -23,5 +41,10 @@ export function speak(text, lang = 'bn') {
 }
 
 export function stopSpeaking() {
-  if (canSpeak()) window.speechSynthesis.cancel();
+  synthesis()?.cancel();
+}
+
+export function speechRecognition() {
+  if (typeof window === 'undefined') return null;
+  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
 }

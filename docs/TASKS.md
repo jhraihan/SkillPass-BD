@@ -227,9 +227,20 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Read-aloud hook (Bengali speech synthesis, audio-clip fallback); voice-typing hook
-- [ ] PWA: vite-plugin-pwa, manifest, offline screen; assisted onboarding endpoint; tutorial video on Help
-- [ ] Add any new member files for this part to `ownership.json`
+- [x] Read-aloud hook (Bengali speech synthesis, audio-clip fallback); voice-typing hook
+- [x] PWA: vite-plugin-pwa, manifest, offline screen; assisted onboarding endpoint; tutorial video on Help
+- [x] Add any new member files for this part to `ownership.json`
+
+**M4 — Worker** · zip `M4-assistance.zip` · branch `m4/assistance`
+
+- [x] Screen voice on `WorkerHomePage`, `MyJobsPage`, `JobRequestPage`, `ActiveJobPage`
+- [x] `EditProfilePage.jsx` — voice typing for bio
+- [x] `HelpPage.jsx` — read-aloud buttons, tutorial video
+
+**M5 — Admin & Verification** · zip `M5-assistance.zip` · branch `m5/assistance`
+
+- [x] `CreateWorkerModal.jsx`, `UserFilters.jsx`
+- [x] `UsersPage.jsx` — "Add worker" (assisted onboarding)
 
 ## Part 12 — Final  (`final`)
 

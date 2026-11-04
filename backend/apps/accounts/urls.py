@@ -13,6 +13,7 @@ urlpatterns = [
     path("auth/me/", views.MeView.as_view(), name="me"),
     path("auth/password/change/", views.ChangeCredentialView.as_view(), name="change-password"),
     path("admin/stats/", admin_views.AdminStatsView.as_view(), name="admin-stats"),
+    path("admin/workers/", admin_views.OnboardWorkerView.as_view(), name="admin-onboard-worker"),
 ]
 
 router = SimpleRouter()
