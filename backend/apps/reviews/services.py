@@ -7,6 +7,8 @@ from rest_framework import serializers
 from rest_framework.exceptions import PermissionDenied
 
 from apps.bookings.models import Booking
+from apps.notifications.models import Notification
+from apps.notifications.services import booking_data, notify
 from apps.trust.services import recalculate
 
 from .models import RATING_FIELDS, Review
@@ -43,6 +45,11 @@ def create_review(booking, customer, **ratings):
             {"booking": ["You already reviewed this job."]}
         ) from error
     recalculate(booking.worker, trigger="review_created")
+    notify(
+        booking.worker.user,
+        Notification.Type.REVIEW_RECEIVED,
+        booking_data(booking, stars=f"{review.overall:.1f}"),
+    )
     return review
 
 

@@ -1,5 +1,7 @@
 export { default as AvailabilityDot } from './AvailabilityDot';
 export { default as CategoryIcon } from './CategoryIcon';
+export { default as NewJobAlert } from './NewJobAlert';
+export { default as NotificationItem } from './NotificationItem';
 export { default as ReviewCard } from './ReviewCard';
 export { default as StarRating } from './StarRating';
 export { default as StatusTag } from './StatusTag';

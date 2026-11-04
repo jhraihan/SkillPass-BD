@@ -23,6 +23,7 @@ def test_customer_reviews_completed_job(customer_api, completed, review_payload,
     worker.refresh_from_db()
     assert (float(worker.avg_rating), worker.review_count) == (4.5, 1)
     assert worker.trust_history.first().trigger == "review_created"
+    assert worker.user.notifications.filter(type="REVIEW_RECEIVED").exists()
 
 
 def test_booking_shows_has_review(customer_api, completed, review_payload):

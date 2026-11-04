@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import LanguageSwitcher from '@/components/app/LanguageSwitcher';
 import Logo from '@/components/app/Logo';
+import { NewJobAlert } from '@/components/domain';
 import { LoadingState } from '@/components/ui';
 import NotificationBell from '@/features/customer/components/NotificationBell';
 import NavItem from './NavItem';
@@ -29,6 +30,8 @@ export default function WorkerLayout() {
           </div>
         </div>
       </header>
+
+      <NewJobAlert />
 
       <main className="mx-auto max-w-xl px-4 pb-28 pt-4">
         <Suspense fallback={<LoadingState />}>

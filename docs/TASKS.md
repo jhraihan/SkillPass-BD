@@ -192,19 +192,23 @@ Work is delivered **part by part** (PRD §17). Each part: the lead builds backen
 
 **Lead**
 
-- [ ] Notification model; `notify()` wired to booking / review / verification / dispute events
-- [ ] List, unread count, mark read endpoints; tests
-- [ ] Hooks: notifications with 30 s polling, new-job sound + vibration; support phone/WhatsApp settings
+- [x] Notification model; `notify()` wired to booking / review / verification / dispute events
+- [x] List, unread count, mark read endpoints; tests
+- [x] Hooks: notifications with 30 s polling, new-job sound + vibration; support phone/WhatsApp settings
 
 **M3 — Customer** · zip `M3-notifications.zip` · branch `m3/notifications`
 
-- [ ] `NotificationsPage.jsx` — `/notifications`
-- [ ] `AccountSettingsPage.jsx` — `/account`
-- [ ] `NotificationBell.jsx`
+- [x] `NotificationsPage.jsx` — `/notifications`
+- [x] `AccountSettingsPage.jsx` — `/account`
+- [x] `NotificationBell.jsx`
 
 **M4 — Worker** · zip `M4-notifications.zip` · branch `m4/notifications`
 
-- [ ] `HelpPage.jsx` — `/worker/help`
+- [x] `HelpPage.jsx` — `/worker/help`
+
+**M5 — Admin & Verification** · zip `M5-notifications.zip` · branch `m5/notifications`
+
+- [x] Update `ResolveForm.jsx` — disputes cannot be dismissed
 
 ## Part 10 — Admin dashboard  (`admin`)
 

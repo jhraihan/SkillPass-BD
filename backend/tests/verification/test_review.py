@@ -66,6 +66,7 @@ def test_approve_identity(pending, admin_api, admin_user, worker):
     worker.refresh_from_db()
     assert worker.identity_verified is True
     assert worker.trust_history.first().trigger == "identity_verified"
+    assert worker.user.notifications.get().type == "VERIFICATION_APPROVED"
     entry = AuditLog.objects.get()
     assert (entry.actor, entry.action, entry.ip_address) == (
         admin_user,
@@ -101,6 +102,9 @@ def test_reject_needs_reason_and_allows_resubmit(pending, admin_api, submit, wor
     assert response.status_code == 200
     assert response.json()["rejection_reason"] == "Photo is blurry."
     assert AuditLog.objects.get().metadata["reason"] == "Photo is blurry."
+    assert worker_api.get("/api/v1/notifications/").json()["results"][0]["data"]["reason"] == (
+        "Photo is blurry."
+    )
     assert worker_api.get(f"{URL}{pending['id']}/").json()["status"] == "REJECTED"
     assert submit().status_code == 201
 
