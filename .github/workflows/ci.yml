@@ -39,7 +39,7 @@ jobs:
       - run: ruff check .
       - run: black --check .
       - run: python manage.py makemigrations --check --dry-run
-      - run: pytest
+      - run: pytest --cov=apps --cov=common --cov-report=term --cov-fail-under=70
 
   frontend:
     name: Frontend (lint + tests + build)

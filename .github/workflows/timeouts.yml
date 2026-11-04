@@ -1,0 +1,24 @@
+name: Booking timeouts
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  process:
+    name: Expire and auto-close bookings
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the timeouts endpoint
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          CRON_TOKEN: ${{ secrets.CRON_TOKEN }}
+        run: |
+          if [ -z "$API_URL" ] || [ -z "$CRON_TOKEN" ]; then
+            echo "API_URL or CRON_TOKEN secret is not set. Skipping."
+            exit 0
+          fi
+          curl --fail --silent --show-error --retry 3 --retry-delay 20 --max-time 90 \
+            -X POST "$API_URL/internal/process-timeouts/" \
+            -H "X-Cron-Token: $CRON_TOKEN"

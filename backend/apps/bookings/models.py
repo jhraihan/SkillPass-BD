@@ -33,6 +33,7 @@ class ServiceRequest(TimeStampedModel):
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [models.Index(fields=["customer", "status"])]
 
     def __str__(self):
         return f"Request #{self.pk} ({self.category})"
@@ -99,6 +100,12 @@ class Booking(TimeStampedModel):
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["worker", "status"]),
+            models.Index(fields=["customer", "status"]),
+            models.Index(fields=["created_at"]),
+            models.Index(fields=["closed_at"]),
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=["service_request"],

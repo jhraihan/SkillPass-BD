@@ -86,6 +86,11 @@ class HistorySerializer(serializers.ModelSerializer):
         fields = ["from_status", "to_status", "actor_role", "note", "created_at"]
 
 
+class BookingRequestSerializer(ServiceRequestSerializer):
+    class Meta(ServiceRequestSerializer.Meta):
+        fields = [f for f in ServiceRequestSerializer.Meta.fields if f != "active_booking"]
+
+
 class BookingSerializer(serializers.ModelSerializer):
     request = serializers.SerializerMethodField()
     worker = serializers.SerializerMethodField()
@@ -124,8 +129,7 @@ class BookingSerializer(serializers.ModelSerializer):
 
     def get_request(self, booking) -> dict:
         request = booking.service_request
-        data = ServiceRequestSerializer(request).data
-        data.pop("active_booking", None)
+        data = BookingRequestSerializer(request).data
         if self._is_worker_view(booking) and not booking.contact_visible:
             data["address_detail"] = None
         return data

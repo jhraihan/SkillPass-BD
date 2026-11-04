@@ -4,7 +4,7 @@ A digital professional identity and verified work history platform for Banglades
 
 Each worker gets a **"skill passport"**: verified identity, structured skills, customer-confirmed work history, structured reviews, and an explainable trust score. Customers use it to find and book workers based on evidence instead of word of mouth.
 
-> University Software Engineering Project · Status: in development
+> University Software Engineering Project · v1.0
 
 ## Features
 
@@ -16,7 +16,10 @@ Each worker gets a **"skill passport"**: verified identity, structured skills, c
 - **Explainable trust score** — 0–100 from 7 measurable factors, with a visible breakdown
 - **Verification** — identity and skill evidence reviewed by admins, shown as separate badges
 - **Worker-friendly UI** — Bengali first, picture tiles, big buttons, one clear action per screen
-- **Admin panel** — verification queue, disputes, users, catalog
+- **Notifications** — in-app alerts, new-job sound and vibration for workers
+- **Reports & disputes** — report a profile, review or job; admins resolve with an audit trail
+- **Worker assistance** — read-aloud, voice typing, installable app (PWA), Help screen, assisted onboarding
+- **Admin panel** — dashboard, verification queue, disputes, users, catalog
 
 Full requirements: [docs/PRD.md](docs/PRD.md) · Overview: [docs/SkillPass_BD_Overview.pdf](docs/SkillPass_BD_Overview.pdf)
 
@@ -77,6 +80,7 @@ pip install -r requirements/dev.txt
 cp .env.example .env            # then set DATABASE_URL with your password
 python manage.py migrate
 python manage.py createsuperuser
+python manage.py seed_demo         # optional: demo accounts, jobs, reviews
 python manage.py runserver
 ```
 
@@ -99,3 +103,9 @@ Then run the frontend (Option A) with `VITE_USE_MOCKS=false`.
 ## Team
 
 See [CONTRIBUTORS.md](CONTRIBUTORS.md). How we work together: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Deployment and security
+
+- Deploy guide: [docs/DEPLOY.md](docs/DEPLOY.md)
+- Security checklist: [docs/SECURITY.md](docs/SECURITY.md)
+- API docs: `/api/docs/` on any running backend
