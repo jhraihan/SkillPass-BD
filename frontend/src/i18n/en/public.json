@@ -1,1 +1,206 @@
-{}
+{
+  "nav": {
+    "findWorkers": "Find workers",
+    "trustScore": "How trust works",
+    "about": "About",
+    "login": "Log in",
+    "register": "Register",
+    "dashboard": "My dashboard"
+  },
+  "footer": {
+    "tagline": "Verified skills and work history for Bangladesh's skilled workers.",
+    "links": "Links",
+    "rights": "© {{year}} SkillPass BD · University software engineering project"
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Use your mobile number and your PIN (workers) or password (customers).",
+    "phone": "Mobile number",
+    "phonePlaceholder": "01712345678",
+    "password": "PIN or password",
+    "submit": "Log in",
+    "noAccount": "New to SkillPass BD?",
+    "register": "Create an account",
+    "mockHint": "Demo mode: use 01712345678 (customer), 01812345678 (worker) or 01912345678 (admin) with any 6+ characters."
+  },
+  "register": {
+    "title": "Create an account",
+    "subtitle": "It is free and takes one minute.",
+    "roleLabel": "Who are you?",
+    "roles": {
+      "CUSTOMER": {
+        "label": "I need a service",
+        "description": "Find and book workers"
+      },
+      "WORKER": {
+        "label": "I am a worker",
+        "description": "Get jobs, build your profile"
+      }
+    },
+    "fullName": "Full name",
+    "phone": "Mobile number",
+    "email": "Email (optional)",
+    "pin": "Choose a 6-digit PIN",
+    "pinHint": "You will use this PIN to log in. Avoid 123456 or your phone number.",
+    "confirmPin": "Type the PIN again",
+    "password": "Choose a password",
+    "passwordHint": "At least 8 characters.",
+    "confirmPassword": "Type the password again",
+    "submit": "Create account",
+    "haveAccount": "Already have an account?",
+    "login": "Log in",
+    "errors": {
+      "email": "Enter a valid email address."
+    }
+  },
+  "setPin": {
+    "titlePin": "Set a new PIN",
+    "titlePassword": "Set a new password",
+    "subtitle": "Your PIN/password was reset. Choose a new one to continue.",
+    "currentPin": "Temporary PIN",
+    "currentPassword": "Temporary password",
+    "newPin": "New 6-digit PIN",
+    "confirmPin": "Type the new PIN again",
+    "newPassword": "New password",
+    "confirmPassword": "Type the new password again",
+    "submit": "Save and continue",
+    "success": "Saved. You can continue now."
+  },
+  "about": {
+    "title": "About SkillPass BD",
+    "intro": "SkillPass BD gives skilled workers in Bangladesh a digital skill passport: a verified profile, a record of real jobs, and reviews from real customers.",
+    "workersTitle": "For workers",
+    "workersText": "Show your skills and experience, get more jobs, and build a reputation that stays with you. Everything works in Bangla with big, simple buttons.",
+    "customersTitle": "For customers",
+    "customersText": "Find electricians, plumbers, AC technicians and more near you. See verified jobs, structured reviews and a clear trust score before you book.",
+    "trustTitle": "Trust you can see",
+    "trustText": "Every trust score shows exactly how it was calculated. Identity checks, skill evidence and confirmed jobs are shown separately.",
+    "trustLink": "How the trust score works",
+    "ctaWorker": "Join as a worker",
+    "ctaCustomer": "Find a worker"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has moved.",
+    "home": "Go to the home page"
+  },
+  "landing": {
+    "title": "Find a trusted skilled worker near you",
+    "subtitle": "Every worker on SkillPass BD has a verified record of real jobs and reviews from real customers.",
+    "service": "What do you need?",
+    "anyService": "Any service",
+    "area": "Where?",
+    "anyArea": "Any area",
+    "search": "Find workers",
+    "categoriesTitle": "Popular services",
+    "howTitle": "How it works",
+    "steps": {
+      "find": {
+        "title": "Find",
+        "text": "Search by service and area. Compare trust scores, verified jobs and reviews."
+      },
+      "book": {
+        "title": "Book",
+        "text": "Send a request to the worker you like. They accept and come to you."
+      },
+      "review": {
+        "title": "Confirm & review",
+        "text": "Confirm the job is done and rate the work. It becomes part of their verified history."
+      }
+    },
+    "workerCta": {
+      "title": "Are you a skilled worker?",
+      "text": "Build your digital skill passport and get more jobs. It is free.",
+      "button": "Join as a worker"
+    }
+  },
+  "search": {
+    "title": "Find workers",
+    "results_one": "{{count}} worker found",
+    "results_other": "{{count}} workers found",
+    "emptyTitle": "No workers match your search",
+    "emptyText": "Try another area or remove some filters.",
+    "filters": {
+      "title": "Filters",
+      "search": "Search by name or skill",
+      "category": "Service",
+      "skill": "Skill",
+      "anySkill": "Any skill",
+      "area": "Area",
+      "minTrust": "Minimum trust score",
+      "anyTrust": "Any",
+      "verified": "Identity verified only",
+      "available": "Available now only",
+      "ordering": "Sort by",
+      "clear": "Clear filters"
+    },
+    "ordering": {
+      "-trust_score": "Highest trust score",
+      "-avg_rating": "Highest rating",
+      "-verified_jobs_count": "Most verified jobs",
+      "-years_experience": "Most experience"
+    }
+  },
+  "profile": {
+    "book": "Book this worker",
+    "about": "About",
+    "noBio": "This worker has not written a description yet.",
+    "skills": "Skills",
+    "areas": "Service areas",
+    "trustTitle": "Trust score",
+    "trustHow": "How is this calculated?",
+    "memberSince": "Member since {{date}}",
+    "historyTitle": "Verified work history",
+    "reviewsTitle": "Reviews",
+    "notFound": "This worker could not be found.",
+    "historyHint": "Jobs confirmed by real customers on SkillPass.",
+    "noHistory": "No verified jobs yet.",
+    "noReviews": "No reviews yet."
+  },
+  "trust": {
+    "title": "How the trust score works",
+    "intro": "Every worker gets a score from 0 to 100. It is built only from what happens on SkillPass, and every part is shown on the worker's profile.",
+    "factorsTitle": "What goes into the score",
+    "points_one": "up to {{value}} point",
+    "points_other": "up to {{value}} points",
+    "total": "Seven parts add up to 100. The score updates after every job, review and profile change.",
+    "how": {
+      "completion": "Out of the jobs a worker accepted, how many they finished.",
+      "rating": "Average customer rating. New workers start from a fair middle value until real reviews come in.",
+      "verified_jobs": "Jobs that the customer confirmed as done. Full points at 20 confirmed jobs.",
+      "cancellation": "How rarely the worker cancels a job after accepting it. Customer cancellations do not count.",
+      "response": "How fast the worker answers new requests. Within 30 minutes is best.",
+      "identity": "The worker's NID has been checked by the SkillPass team.",
+      "experience": "Years of work experience. Full points at 10 years."
+    },
+    "confirmedTitle": "Confirmed by customers",
+    "confirmedText": "A job only counts after the customer confirms it was done.",
+    "fairStartTitle": "Fair start",
+    "fairStartText": "New workers are not punished for having few jobs. They start from a fair middle value.",
+    "notForSaleTitle": "Cannot be bought",
+    "notForSaleText": "No one can pay to raise a score. Fake reviews are removed by our team.",
+    "cta": "Find a trusted worker"
+  },
+  "report": {
+    "title": {
+      "WORKER": "Report this worker",
+      "REVIEW": "Report this review",
+      "BOOKING": "Report a problem with this job"
+    },
+    "about": "About: {{subject}}",
+    "reason": "What is wrong?",
+    "description": "More details (optional)",
+    "descriptionHint": "Tell us what happened. Do not share phone numbers.",
+    "privacy": "Only the SkillPass team sees your report. The other person is not told who reported.",
+    "submit": "Send report",
+    "sent": "Thank you. Our team will look at it.",
+    "loginFirst": "Please sign in to send a report.",
+    "login": "Sign in",
+    "profileButton": "Report this profile",
+    "reviewButton": "Report",
+    "errors": {
+      "reason": "Please choose a reason.",
+      "description": "Please keep it under 1000 characters."
+    }
+  }
+}
