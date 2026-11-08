@@ -1,1 +1,196 @@
-{}
+{
+  "home": {
+    "greeting": "Hello, {{name}}",
+    "newRequests": "New job requests",
+    "noRequests": "No new requests right now",
+    "todayJobs": "Today's jobs",
+    "noJobs": "No jobs today"
+  },
+  "availability": {
+    "label": "I'm ready for work",
+    "on": "Customers can send you job requests now",
+    "off": "Nobody will send you new jobs now",
+    "saved": "Saved"
+  },
+  "completeness": {
+    "title": "Profile {{percent}}% complete",
+    "nextLabel": "Next step:",
+    "next": {
+      "skills": "Add your skills",
+      "areas": "Add your work areas",
+      "photo": "Add your photo",
+      "experience": "Add your years of experience",
+      "bio": "Write two lines about yourself",
+      "identity": "Verify your identity"
+    },
+    "action": "Do it now"
+  },
+  "trustCard": {
+    "title": "Your trust score",
+    "verifiedJobs": "Verified jobs",
+    "rating": "Rating",
+    "newHint": "Finish 3 jobs to show your trust score.",
+    "reviews": "My reviews",
+    "history": "My work"
+  },
+  "wizard": {
+    "step": "Step {{current}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "skip": "Not now",
+    "saved": "Your profile is ready!",
+    "name": {
+      "title": "What is your name?",
+      "label": "Name"
+    },
+    "categories": {
+      "title": "What kind of work do you do?",
+      "hint": "You can choose more than one"
+    },
+    "skills": {
+      "title": "Which jobs can you do?",
+      "hint": "Choose everything you can do"
+    },
+    "experience": {
+      "title": "How many years have you done this work?",
+      "less": "Less",
+      "more": "More",
+      "years": "years"
+    },
+    "areas": {
+      "title": "Which areas do you work in?",
+      "hint": "Choose every area you can travel to"
+    },
+    "photo": {
+      "title": "Add your photo",
+      "hint": "Customers trust workers more when they can see a clear photo of your face."
+    }
+  },
+  "edit": {
+    "title": "My profile",
+    "photo": "Photo",
+    "name": "Name",
+    "bio": "About me",
+    "bioHint": "For example: how many years you have worked, what you are best at.",
+    "experience": "Experience (years)",
+    "skills": "Skills",
+    "areas": "Work areas",
+    "save": "Save",
+    "saved": "Profile saved",
+    "verification": "Submit identity or skill evidence",
+    "account": "Account and log out"
+  },
+  "jobs": {
+    "title": "My jobs",
+    "tabs": {
+      "today": "Today",
+      "upcoming": "Upcoming",
+      "past": "Past"
+    },
+    "empty": "No jobs here"
+  },
+  "request": {
+    "title": "New job request",
+    "customer": "Customer",
+    "problem": "Problem",
+    "area": "Area",
+    "when": "When",
+    "accept": "Accept job",
+    "decline": "No, I can't",
+    "declineTitle": "Turn down this job?",
+    "declineMessage": "The customer will find another worker.",
+    "accepted": "You accepted the job",
+    "declined": "You turned down the request",
+    "privacy": "The customer's address and phone appear after you accept.",
+    "notPending": "This request has already been answered.",
+    "openJob": "Open the job"
+  },
+  "active": {
+    "call": "Call",
+    "directions": "Directions",
+    "address": "Address",
+    "steps": {
+      "ACCEPTED": "Accepted",
+      "ON_THE_WAY": "On the way",
+      "IN_PROGRESS": "Working",
+      "AWAITING_CONFIRMATION": "Done"
+    },
+    "waiting": "Waiting for the customer to confirm",
+    "done": "This job is complete",
+    "stopped": "This job is no longer active",
+    "next": {
+      "on-the-way": "I'm on the way",
+      "start": "Start work",
+      "mark-complete": "Work is done"
+    },
+    "completeTitle": "Is the work done?",
+    "completeMessage": "The customer will confirm once the work is done.",
+    "cancel": "Cancel job",
+    "cancelTitle": "Cancel this job?",
+    "cancelMessage": "Cancelling often lowers your trust score.",
+    "cancelLabel": "Reason for cancelling",
+    "problem": "Report a problem",
+    "problemTitle": "Report a problem",
+    "problemMessage": "SkillPass support will look into it.",
+    "problemLabel": "What went wrong?",
+    "saved": "Saved"
+  },
+  "reviews": {
+    "title": "My reviews",
+    "scoreTitle": "How my score is made",
+    "listTitle": "What customers said",
+    "empty": "No reviews yet. Finish jobs to get reviews."
+  },
+  "history": {
+    "title": "My work",
+    "subtitle": "Jobs confirmed by customers",
+    "empty": "No confirmed jobs yet."
+  },
+  "help": {
+    "title": "Help",
+    "call": "Call support",
+    "whatsapp": "WhatsApp support",
+    "whatsappText": "Hello, I need help with SkillPass.",
+    "hours": "We answer every day, {{hours}}",
+    "questionsTitle": "Common questions",
+    "listen": "Listen",
+    "questions": {
+      "accept": {
+        "q": "How do I take a new job?",
+        "a": "When a green card appears, tap See job, then tap the big Accept button."
+      },
+      "finish": {
+        "q": "How do I finish a job?",
+        "a": "Open the job and tap the big button each step: On the way, Start work, Work done."
+      },
+      "payment": {
+        "q": "How do I get paid?",
+        "a": "The customer pays you directly in cash or mobile money. SkillPass takes no money."
+      },
+      "trust": {
+        "q": "How does my trust score grow?",
+        "a": "Finish jobs, come on time, answer quickly, and get good reviews."
+      },
+      "verify": {
+        "q": "How do I get the verified badge?",
+        "a": "Open My documents and send a clear photo of both sides of your NID."
+      }
+    },
+    "videoTitle": "Watch how to use SkillPass"
+  },
+  "voice": {
+    "home_one": "You have {{count}} new job request. Tap the green card to see it.",
+    "home_other": "You have {{count}} new job requests. Tap a green card to see it.",
+    "jobs": "These are your jobs. Choose Today, Upcoming or Past at the top.",
+    "request": "New job: {{category}} in {{area}}. Press the big green button to accept.",
+    "help": "Press the big green button to call support. Below are answers to common questions.",
+    "active": {
+      "ACCEPTED": "You accepted this job. When you leave for the customer, press the big button.",
+      "ON_THE_WAY": "You are on the way. When you reach the customer and start, press the big button.",
+      "IN_PROGRESS": "Work is going on. When the work is finished, press the big button.",
+      "AWAITING_CONFIRMATION": "Waiting for the customer to confirm the job is done.",
+      "COMPLETED": "This job is finished and confirmed."
+    }
+  }
+}
