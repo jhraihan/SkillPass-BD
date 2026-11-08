@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/app/auth-context';
-import { playNewJobSound, vibrate } from '@/lib/alerts';
+import { markAnnounced, playNewJobSound, userHasInteracted, vibrate } from '@/lib/alerts';
 import { notificationParams } from '@/lib/notificationTypes';
 import {
   mockListNotifications,
@@ -96,6 +96,7 @@ export function useNewJobAlert() {
   useEffect(() => {
     if (!alert || announced.current === alert.id) return;
     announced.current = alert.id;
+    if (!markAnnounced(alert.id) || !userHasInteracted()) return;
     playNewJobSound();
     vibrate();
   }, [alert]);

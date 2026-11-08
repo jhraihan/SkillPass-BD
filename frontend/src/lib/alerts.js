@@ -1,4 +1,21 @@
 const BEEPS = [0, 0.35, 0.7];
+const ANNOUNCED_KEY = 'skillpass.announcedJobs';
+
+export function userHasInteracted() {
+  return navigator.userActivation ? navigator.userActivation.hasBeenActive : true;
+}
+
+export function markAnnounced(id) {
+  try {
+    const seen = new Set(JSON.parse(sessionStorage.getItem(ANNOUNCED_KEY) ?? '[]'));
+    if (seen.has(id)) return false;
+    seen.add(id);
+    sessionStorage.setItem(ANNOUNCED_KEY, JSON.stringify([...seen].slice(-50)));
+    return true;
+  } catch {
+    return true;
+  }
+}
 
 export function playNewJobSound() {
   try {

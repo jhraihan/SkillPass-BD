@@ -153,7 +153,7 @@ class Command(BaseCommand):
     def _summary(self):
         self.stdout.write(self.style.SUCCESS("Demo data created. Sign in with:"))
         self.stdout.write(f"  Admin    {ADMIN[0]}  password {ADMIN[2]}")
-        for phone, name, password in CUSTOMERS:
-            self.stdout.write(f"  Customer {phone}  password {password}  ({name})")
-        for phone, name, *_ in WORKERS:
-            self.stdout.write(f"  Worker   {phone}  PIN {WORKER_PIN}  ({name})")
+        for phone, _name, password in CUSTOMERS:
+            self.stdout.write(f"  Customer {phone}  password {password}")
+        for phone, *_ in WORKERS:
+            self.stdout.write(f"  Worker   {phone}  PIN {WORKER_PIN}")

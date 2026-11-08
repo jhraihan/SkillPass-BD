@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect, useMemo } from 'react';
 import { useAuth } from '@/app/auth-context';
+import { useObjectUrl } from '@/lib/objectUrl';
 import {
   mockDecideVerification,
   mockDocument,
@@ -100,7 +100,6 @@ export function useDocumentUrl(documentId) {
     enabled: Boolean(documentId),
     staleTime: Infinity,
   });
-  const url = useMemo(() => (query.data ? URL.createObjectURL(query.data) : null), [query.data]);
-  useEffect(() => () => url && URL.revokeObjectURL(url), [url]);
+  const url = useObjectUrl(query.data ?? null);
   return { ...query, url };
 }
