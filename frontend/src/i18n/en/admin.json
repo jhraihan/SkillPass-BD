@@ -1,1 +1,296 @@
-{}
+{
+  "catalog": {
+    "title": "Catalog",
+    "description": "Service categories, skills and areas that workers and customers choose from.",
+    "tabs": {
+      "categories": "Categories",
+      "skills": "Skills",
+      "areas": "Areas"
+    },
+    "add": {
+      "categories": "Add category",
+      "skills": "Add skill",
+      "areas": "Add area"
+    },
+    "edit": {
+      "categories": "Edit category",
+      "skills": "Edit skill",
+      "areas": "Edit area"
+    },
+    "columns": {
+      "name": "Name",
+      "parent": "Belongs to",
+      "slug": "Slug",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete"
+    },
+    "filterCategory": "Category",
+    "allCategories": "All categories",
+    "skillCount_one": "{{count}} skill",
+    "skillCount_other": "{{count}} skills",
+    "empty": "Nothing here yet",
+    "saved": "Saved.",
+    "deleted": "Deleted.",
+    "statusChanged": "Status updated.",
+    "confirmDelete": {
+      "title": "Delete this item?",
+      "message": "“{{name}}” will be removed permanently. If it is already used, deactivate it instead."
+    },
+    "form": {
+      "nameEn": "Name in English",
+      "nameBn": "Name in Bangla",
+      "slug": "Slug (optional)",
+      "slugHint": "Lowercase letters, numbers and dashes. Leave empty to create it from the English name.",
+      "icon": "Icon name",
+      "iconHint": "A lucide icon name, e.g. snowflake, zap, droplets.",
+      "category": "Category",
+      "categoryPlaceholder": "Choose a category",
+      "district": "District",
+      "districtPlaceholder": "Choose a district",
+      "sortOrder": "Display order",
+      "active": "Active (visible to users)",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "slug": "Use only lowercase letters, numbers and dashes."
+    }
+  },
+  "verifications": {
+    "title": "Verification requests",
+    "description": "Check identity documents and skill proof. Oldest requests first.",
+    "columns": {
+      "worker": "Worker",
+      "type": "Type",
+      "documents": "Files",
+      "submitted": "Sent",
+      "status": "Status"
+    },
+    "fileCount_one": "{{value}} file",
+    "fileCount_other": "{{value}} files",
+    "open": "Review",
+    "filterType": "Filter by type",
+    "allTypes": "All types",
+    "empty": "No requests here."
+  },
+  "review": {
+    "title": "Review: {{type}}",
+    "fullName": "Account name",
+    "memberSince": "Member since",
+    "type": "Type",
+    "skill": "Skill",
+    "submitted": "Sent",
+    "publicProfile": "Open public profile",
+    "checklist": {
+      "IDENTITY": "Check that the NID photo is clear, the name matches the account, and the face matches the profile photo.",
+      "SKILL_EVIDENCE": "Check that the certificate or work photos clearly show this skill. Identity is checked separately."
+    },
+    "approve": "Approve",
+    "reject": "Reject",
+    "approveTitle": "Approve this request?",
+    "approveMessage": {
+      "IDENTITY": "{{name}} will get the Identity verified badge and their trust score will update.",
+      "SKILL_EVIDENCE": "{{name}} will get the Skill checked mark on this skill."
+    },
+    "rejectTitle": "Reject this request?",
+    "rejectMessage": "The worker will see your reason and can send new documents.",
+    "reason": "Reason for the worker",
+    "done": {
+      "approve": "Request approved.",
+      "reject": "Request rejected."
+    },
+    "decided": {
+      "APPROVED": "Approved by {{name}} on {{date}}.",
+      "REJECTED": "Rejected by {{name}} on {{date}}."
+    }
+  },
+  "documents": {
+    "loadFailed": "Could not load this file.",
+    "noPreview": "Preview not available. Open the file instead.",
+    "size": "{{size}} KB",
+    "rotate": "Rotate",
+    "open": "Open"
+  },
+  "upload": {
+    "title": "Verify my documents",
+    "identityDone": "Your identity is verified.",
+    "nothingToSend": "Nothing to send right now. We will tell you when your documents are checked.",
+    "whatToSend": "What do you want to send?",
+    "identity": "My NID",
+    "skill": "Skill proof",
+    "whichSkill": "Which skill?",
+    "photos": "Photos or PDF",
+    "hint": {
+      "IDENTITY": "Take a clear photo of the front and back of your NID. Up to {{max}} MB each.",
+      "SKILL_EVIDENCE": "A certificate or photos of your work. Up to {{max}} MB each."
+    },
+    "send": "Send for checking",
+    "sent": "Sent! We will check it soon.",
+    "tooMany": "Send at most {{count}} files.",
+    "historyTitle": "What I sent",
+    "historyEmpty": "You have not sent anything yet.",
+    "sentOn": "Sent on {{date}}"
+  },
+  "reports": {
+    "title": "Reports and disputes",
+    "description": "Problems reported by customers and workers. Oldest first.",
+    "columns": {
+      "reason": "Reason",
+      "target": "About",
+      "reporter": "Reported by",
+      "created": "Sent",
+      "status": "Status"
+    },
+    "open": "Open",
+    "filterTarget": "Filter by type",
+    "allTargets": "All types",
+    "empty": "No reports here."
+  },
+  "resolve": {
+    "reportTitle": "Report",
+    "reporter": "Reported by",
+    "noDescription": "No details given.",
+    "targetTitle": "What was reported",
+    "targetGone": "This item no longer exists.",
+    "author": "Review written by",
+    "worker": "Worker",
+    "customer": "Customer",
+    "workerNote": "Worker's note",
+    "take": "I will handle this",
+    "assigned": "Handled by {{name}}",
+    "closedBy": "Closed by {{name}} on {{date}}.",
+    "status": "Decision",
+    "outcome": "How does the job end?",
+    "fault": "Who was at fault?",
+    "reviewAction": "What to do with the review",
+    "choose": "Choose…",
+    "outcomes": {
+      "COMPLETED": "Mark the job as done",
+      "CANCELLED": "Cancel the job"
+    },
+    "reviewActions": {
+      "HIDE": "Hide it (still counts in the score)",
+      "INVALIDATE": "Mark invalid (removed from the score)"
+    },
+    "suspend": {
+      "WORKER": "Suspend this worker",
+      "REVIEW": "Suspend the review author",
+      "BOOKING": "Suspend the person at fault"
+    },
+    "note": "Resolution note",
+    "noteHint": "Both sides may see this note. Keep it short and factual.",
+    "submit": "Save decision",
+    "done": "Decision saved.",
+    "errors": {
+      "note": "Write at least 5 characters.",
+      "fault": "Choose who was at fault."
+    }
+  },
+  "users": {
+    "title": "Users",
+    "description": "Find accounts, suspend or reactivate them, unlock them, or issue a temporary PIN or password.",
+    "search": "Search by name or phone",
+    "filterRole": "Filter by role",
+    "filterState": "Filter by status",
+    "allRoles": "All roles",
+    "allStates": "All statuses",
+    "empty": "No users found.",
+    "columns": {
+      "name": "Name",
+      "role": "Role",
+      "state": "Status",
+      "joined": "Joined"
+    },
+    "roles": {
+      "CUSTOMER": "Customer",
+      "WORKER": "Worker",
+      "ADMIN": "Admin",
+      "CONTRACTOR": "Contractor"
+    },
+    "state": {
+      "active": "Active",
+      "suspended": "Suspended",
+      "locked": "Locked"
+    },
+    "mustChange": "Must change PIN/password",
+    "actions": {
+      "suspend": "Suspend",
+      "reactivate": "Reactivate",
+      "unlock": "Unlock",
+      "resetPin": "New PIN",
+      "resetPassword": "New password"
+    },
+    "done": {
+      "suspend": "Account suspended.",
+      "reactivate": "Account reactivated.",
+      "unlock": "Account unlocked."
+    },
+    "suspendTitle": "Suspend {{name}}?",
+    "suspendMessage": "They will be signed out and cannot sign in until reactivated. Workers disappear from search.",
+    "reason": "Reason (kept in the audit log)",
+    "resetTitle": "Issue a new temporary credential for {{name}}?",
+    "resetMessage": "Their old PIN or password stops working right away. They must choose a new one after signing in.",
+    "resetConfirm": "Issue",
+    "issuedTitle": "Temporary credential",
+    "issuedFor": {
+      "pin": "Temporary PIN for {{name}}:",
+      "password": "Temporary password for {{name}}:"
+    },
+    "issuedWarning": "This is shown only once. Give it to the person directly. Do not send it in a public chat."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "How SkillPass is doing and what needs your attention.",
+    "period": "Time period",
+    "days": "{{value}} days",
+    "queues": {
+      "verifications": "Documents waiting",
+      "disputes": "Open disputes",
+      "reports": "Open reports"
+    },
+    "users": "Users",
+    "usersHint": "{{customers}} customers · {{workers}} workers · {{fresh}} new",
+    "activeWorkers": "Active workers",
+    "workersHint": "{{available}} available now · {{verified}} identity verified",
+    "bookings": "Bookings",
+    "verifiedJobs": "{{value}} customer-confirmed",
+    "completionRate": "Completion rate",
+    "completionHint": "Accepted jobs that were finished",
+    "byStatus": "Bookings by status",
+    "topCategories": "Top services",
+    "reviews": "{{value}} reviews",
+    "categoryCounts": "{{bookings}} booked · {{completed}} done",
+    "noBookings": "No bookings in this period.",
+    "chart": {
+      "title": "Bookings per day",
+      "subtitle": "New requests compared with jobs finished",
+      "requested": "Requested",
+      "completed": "Finished",
+      "date": "Date",
+      "showTable": "Show as table",
+      "showChart": "Show as chart"
+    }
+  },
+  "onboard": {
+    "open": "Add worker",
+    "title": "Add a worker",
+    "description": "For workers who cannot sign up alone. They get a temporary PIN and must choose a new one at first sign-in.",
+    "name": "Full name",
+    "phone": "Mobile number",
+    "language": "Language",
+    "submit": "Create account",
+    "errors": {
+      "name": "Please enter the worker's name."
+    }
+  }
+}
