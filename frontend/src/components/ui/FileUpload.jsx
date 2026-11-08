@@ -1,15 +1,12 @@
 import { Camera, FileText, Upload, X } from 'lucide-react';
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useObjectUrl } from '@/lib/objectUrl';
 import Button from './Button';
 import Field from './Field';
 
 function FileThumb({ file }) {
-  const url = useMemo(
-    () => (file.type?.startsWith('image/') ? URL.createObjectURL(file) : null),
-    [file],
-  );
-  useEffect(() => () => url && URL.revokeObjectURL(url), [url]);
+  const url = useObjectUrl(file.type?.startsWith('image/') ? file : null);
 
   if (!url) return <FileText className="size-12 p-2 text-gray-400" aria-hidden="true" />;
   return <img src={url} alt="" className="size-12 rounded-lg object-cover" />;
