@@ -1,1 +1,139 @@
-{}
+{
+  "dashboard": {
+    "greeting": "Hello, {{name}}",
+    "newRequest": "Request a service",
+    "activeBookings": "Active bookings",
+    "noActive": "No active bookings",
+    "openRequests": "Requests waiting for a worker",
+    "seeMatches": "See matching workers",
+    "noRequests": "No open requests",
+    "viewAll": "View all bookings"
+  },
+  "request": {
+    "title": "Request a service",
+    "subtitle": "Tell us what you need. We will show you the best workers for it.",
+    "forWorker": "You are booking {{name}}",
+    "category": "Which service?",
+    "skills": "What exactly? (optional)",
+    "description": "Describe the problem",
+    "descriptionPlaceholder": "For example: The AC is not cooling and water is dripping.",
+    "area": "Area",
+    "areaPlaceholder": "Choose your area",
+    "address": "Address",
+    "addressHint": "Only the worker you book will see it, after they accept.",
+    "date": "Preferred date",
+    "slot": "Preferred time",
+    "submit": "Continue",
+    "errors": {
+      "description": "Please describe the problem in a few words.",
+      "date": "Choose today or a later date."
+    }
+  },
+  "matches": {
+    "title": "Matching workers",
+    "subtitle": "Best matches first. Compare trust scores and verified jobs, then book.",
+    "emptyTitle": "No available workers match this request right now",
+    "emptyText": "Try again later or change the area.",
+    "book": "Book",
+    "alreadyBooked": "This request already has an active booking.",
+    "viewBooking": "View booking",
+    "booked": "Request sent. The worker will reply soon."
+  },
+  "bookings": {
+    "title": "My bookings",
+    "tabs": {
+      "active": "Active",
+      "past": "Past"
+    },
+    "empty": "No bookings here"
+  },
+  "detail": {
+    "title": "Booking #{{id}}",
+    "worker": "Worker",
+    "call": "Call {{name}}",
+    "contactHidden": "The worker's phone number appears after they accept.",
+    "job": "Job details",
+    "timeline": "Progress",
+    "notes": "Worker's notes",
+    "cancelReason": "Cancellation reason",
+    "disputeReason": "Problem reported",
+    "verified": "Confirmed. This job is now part of the worker's verified history."
+  },
+  "actions": {
+    "confirm": "Confirm the job is done",
+    "confirmTitle": "Is the job done?",
+    "confirmMessage": "Confirm only if the work is finished properly. This adds the job to the worker's verified history.",
+    "cancel": "Cancel booking",
+    "cancelTitle": "Cancel this booking?",
+    "cancelMessage": "The worker will be told. Please give a short reason.",
+    "cancelLabel": "Reason for cancelling",
+    "dispute": "Report a problem",
+    "disputeTitle": "Report a problem",
+    "disputeMessage": "SkillPass support will review the job and contact you.",
+    "disputeLabel": "What went wrong?",
+    "review": "Rate this worker",
+    "done": {
+      "confirm": "Thank you! The job is confirmed.",
+      "cancel": "The booking is cancelled.",
+      "dispute": "Your report was sent to support."
+    }
+  },
+  "summary": {
+    "date": "Date",
+    "time": "Time",
+    "area": "Area",
+    "address": "Address",
+    "problem": "Problem"
+  },
+  "review": {
+    "title": "Rate this job",
+    "subtitle": "How did {{name}} do with your {{service}} job?",
+    "hireAgain": "Would you hire this worker again?",
+    "yes": "Yes",
+    "no": "No",
+    "comment": "Anything else to say? (optional)",
+    "commentHint": "Your words help other customers. Do not share phone numbers.",
+    "submit": "Send review",
+    "thanks": "Thank you! Your review is saved.",
+    "alreadyDone": "You already reviewed this job.",
+    "notYet": "You can review this job after it is finished.",
+    "backToJob": "Back to the job",
+    "errors": {
+      "rating": "Please choose 1 to 5 stars.",
+      "hireAgain": "Please choose yes or no.",
+      "comment": "Please keep it under 1000 characters."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "bell": "Notifications",
+    "bellUnread_one": "Notifications, {{value}} unread",
+    "bellUnread_other": "Notifications, {{value}} unread",
+    "markAll": "Mark all as read",
+    "tabs": {
+      "all": "All",
+      "unread": "Unread"
+    },
+    "none": "No notifications yet.",
+    "noneUnread": "You have read everything."
+  },
+  "account": {
+    "title": "My account",
+    "phone": "Phone number",
+    "name": "Full name",
+    "email": "Email (optional)",
+    "emailHint": "Used only for account messages.",
+    "language": "Language",
+    "save": "Save changes",
+    "saved": "Your account is updated.",
+    "pinTitle": "PIN",
+    "passwordTitle": "Password",
+    "credentialHint": "Change it if someone else may know it.",
+    "changePin": "Change PIN",
+    "changePassword": "Change password",
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email."
+    }
+  }
+}
