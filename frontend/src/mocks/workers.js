@@ -5,6 +5,17 @@ import { mockError, mockPaginate, mockRequest } from './utils';
 const skillBySlug = Object.fromEntries(skills.map((skill) => [skill.slug, skill]));
 const areaBySlug = Object.fromEntries(areas.map((area) => [area.slug, area]));
 
+const SAMPLE_PRICES = {
+  'ac-servicing': 800,
+  'ac-gas-refill': 2500,
+  'split-ac-installation': 1500,
+  'tap-pipe-repair': 400,
+  'house-wiring': 3000,
+  'fan-installation': 350,
+  'interior-painting': 12000,
+  'home-deep-cleaning': 3500,
+};
+
 const COMPLETENESS_STEPS = [
   ['skills', 25, (p) => p.skills.length > 0],
   ['areas', 25, (p) => p.service_areas.length > 0],
@@ -25,7 +36,15 @@ function categoriesFor(skillList) {
 function buildWorker(id, name, skillSlugs, areaSlugs, extra = {}) {
   const workerSkills = skillSlugs.map((slug) => {
     const { id: skillId, name_en, name_bn, category_slug } = skillBySlug[slug];
-    return { id: skillId, slug, name_en, name_bn, category_slug, evidence_verified: false };
+    return {
+      id: skillId,
+      slug,
+      name_en,
+      name_bn,
+      category_slug,
+      evidence_verified: false,
+      starting_price: SAMPLE_PRICES[slug] ?? null,
+    };
   });
   const worker = {
     id,
@@ -33,6 +52,7 @@ function buildWorker(id, name, skillSlugs, areaSlugs, extra = {}) {
     photo: null,
     bio: '',
     years_experience: 0,
+    visit_charge: null,
     availability_status: 'AVAILABLE',
     identity_verified: false,
     trust_score: 0,
@@ -64,6 +84,7 @@ export const workers = [
     {
       bio: 'এসি সার্ভিসিং ও ইনস্টলেশনে ৯ বছরের অভিজ্ঞতা।',
       years_experience: 9,
+      visit_charge: 300,
       identity_verified: true,
       trust_score: 82,
       verified_jobs_count: 28,
@@ -79,6 +100,7 @@ export const workers = [
     ['dhanmondi', 'mohammadpur'],
     {
       years_experience: 12,
+      visit_charge: 200,
       identity_verified: true,
       trust_score: 76,
       verified_jobs_count: 19,
@@ -139,6 +161,7 @@ export const workers = [
     ['gulshan', 'banani'],
     {
       years_experience: 3,
+      visit_charge: 0,
       identity_verified: true,
       trust_score: 69,
       verified_jobs_count: 9,
@@ -279,7 +302,18 @@ export function mockSetMySkills(ids) {
       name_bn,
       category_slug,
       evidence_verified: false,
+      starting_price: me.skills.find((kept) => kept.id === id)?.starting_price ?? null,
     }));
+  return mockRequest(myProfile());
+}
+
+export function mockSetMySkillPrices(prices) {
+  const owned = new Set(me.skills.map((s) => s.id));
+  if (prices.some(({ skill }) => !owned.has(skill))) {
+    return mockError(400, 'Invalid input.', { prices: ['Set prices only for your own skills.'] });
+  }
+  const bySkill = Object.fromEntries(prices.map(({ skill, price }) => [skill, price]));
+  me.skills = me.skills.map((s) => (s.id in bySkill ? { ...s, starting_price: bySkill[s.id] } : s));
   return mockRequest(myProfile());
 }
 

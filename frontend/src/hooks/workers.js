@@ -4,6 +4,7 @@ import {
   mockMyProfile,
   mockSearchWorkers,
   mockSetMyAreas,
+  mockSetMySkillPrices,
   mockSetMySkills,
   mockUpdateMyProfile,
   mockUploadMyPhoto,
@@ -93,6 +94,13 @@ export function useSetMySkills() {
   return useMyProfileMutation(
     (ids) => api.put('/workers/me/skills/', { skills: ids }),
     mockSetMySkills,
+  );
+}
+
+export function useSetMySkillPrices() {
+  return useMyProfileMutation(
+    (prices) => api.put('/workers/me/skill-prices/', { prices }),
+    mockSetMySkillPrices,
   );
 }
 

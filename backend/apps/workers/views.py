@@ -22,6 +22,7 @@ from .serializers import (
     MyWorkerProfileSerializer,
     PhotoSerializer,
     SkillIdsSerializer,
+    SkillPricesSerializer,
     WorkerCardSerializer,
     WorkerPublicSerializer,
 )
@@ -102,6 +103,18 @@ class MySkillsView(APIView):
         profile = services.profile_for(request.user)
         services.set_skills(profile, serializer.validated_data["skills"])
         recalculate(profile, trigger="profile_updated")
+        return _my_profile_response(request, profile)
+
+
+class MySkillPricesView(APIView):
+    permission_classes = [IsWorker]
+
+    @extend_schema(request=SkillPricesSerializer, responses=MyWorkerProfileSerializer)
+    def put(self, request):
+        serializer = SkillPricesSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        profile = services.profile_for(request.user)
+        services.set_skill_prices(profile, serializer.validated_data["prices"])
         return _my_profile_response(request, profile)
 
 

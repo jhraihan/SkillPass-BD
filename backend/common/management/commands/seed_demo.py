@@ -17,7 +17,7 @@ from apps.reports.services import create_report
 from apps.reviews.services import create_review
 from apps.trust.services import recalculate
 from apps.verification.services import approve, submit
-from apps.workers.services import set_service_areas, set_skills
+from apps.workers.services import set_service_areas, set_skill_prices, set_skills
 
 S = Booking.Status
 ADMIN = ("01900000001", "Demo Admin", "DemoAdmin#2026")
@@ -41,6 +41,21 @@ WORKERS = [
     ("01800000006", "Rubina Akter", ["home-deep-cleaning", "kitchen-cleaning"], ["gulshan"], 3),
 ]
 WORKER_PIN = "482915"
+VISIT_CHARGES = [300, 200, 250, 500, 300, 0]
+SKILL_PRICES = {
+    "ac-servicing": 800,
+    "ac-gas-refill": 2500,
+    "tap-pipe-repair": 400,
+    "water-pump-repair": 1200,
+    "house-wiring": 3000,
+    "fan-installation": 350,
+    "interior-painting": 12000,
+    "waterproofing": 6000,
+    "refrigerator-repair": 1000,
+    "washing-machine-repair": 1000,
+    "home-deep-cleaning": 3500,
+    "kitchen-cleaning": 1500,
+}
 JOBS = [
     (0, 0, "AC is not cooling.", "COMPLETED", (5, 5, 4, 5)),
     (0, 1, "Gas refill for split AC.", "COMPLETED", (4, 5, 5, 4)),
@@ -91,16 +106,26 @@ class Command(BaseCommand):
             for p, n, pw in CUSTOMERS
         ]
         workers = []
-        for phone, name, skills, areas, years in WORKERS:
+        for (phone, name, skills, areas, years), visit_charge in zip(
+            WORKERS, VISIT_CHARGES, strict=True
+        ):
             user = register_user(
                 role=User.Role.WORKER, full_name=name, phone=phone, password=WORKER_PIN
             )
             profile = user.worker_profile
             set_skills(profile, Skill.objects.filter(slug__in=skills).values_list("id", flat=True))
+            set_skill_prices(
+                profile,
+                [
+                    {"skill": skill.id, "price": SKILL_PRICES.get(skill.slug)}
+                    for skill in Skill.objects.filter(slug__in=skills)
+                ],
+            )
             set_service_areas(
                 profile, Area.objects.filter(slug__in=areas).values_list("id", flat=True)
             )
             profile.years_experience = years
+            profile.visit_charge = visit_charge
             profile.bio = f"{years} years of experience. Careful, clean and on time."
             profile.availability_status = "AVAILABLE"
             profile.save()

@@ -155,7 +155,10 @@
     "notFound": "This worker could not be found.",
     "historyHint": "Jobs confirmed by real customers on SkillPass.",
     "noHistory": "No verified jobs yet.",
-    "noReviews": "No reviews yet."
+    "noReviews": "No reviews yet.",
+    "prices": "Prices",
+    "pricesHint": "Starting prices set by the worker. The final price is agreed with the worker.",
+    "noPrices": "This worker has not added prices yet."
   },
   "trust": {
     "title": "How the trust score works",

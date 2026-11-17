@@ -27,6 +27,16 @@ export function formatNumber(value, lang, options) {
   return new Intl.NumberFormat(locale(lang), options).format(value);
 }
 
+export function formatTaka(value, lang) {
+  if (value === null || value === undefined) return '';
+  return formatNumber(value, lang, {
+    style: 'currency',
+    currency: 'BDT',
+    currencyDisplay: 'narrowSymbol',
+    maximumFractionDigits: 0,
+  });
+}
+
 export function localName(item, lang) {
   if (!item) return '';
   const preferred = lang === 'bn' ? item.name_bn : item.name_en;
