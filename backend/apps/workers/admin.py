@@ -21,6 +21,7 @@ class WorkerProfileAdmin(admin.ModelAdmin):
         "display_name",
         "user",
         "availability_status",
+        "visit_charge",
         "identity_verified",
         "trust_score",
         "verified_jobs_count",

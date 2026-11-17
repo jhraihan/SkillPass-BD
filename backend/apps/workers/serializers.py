@@ -4,7 +4,7 @@ from apps.catalog.models import Area
 from apps.trust.services import latest_breakdown
 
 from . import services
-from .models import WorkerProfile, WorkerSkill
+from .models import MAX_PRICE_TAKA, WorkerProfile, WorkerSkill
 
 
 class WorkerSkillSerializer(serializers.ModelSerializer):
@@ -16,7 +16,15 @@ class WorkerSkillSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkerSkill
-        fields = ["id", "slug", "name_en", "name_bn", "category_slug", "evidence_verified"]
+        fields = [
+            "id",
+            "slug",
+            "name_en",
+            "name_bn",
+            "category_slug",
+            "evidence_verified",
+            "starting_price",
+        ]
 
 
 class AreaBriefSerializer(serializers.ModelSerializer):
@@ -39,6 +47,7 @@ class WorkerCardSerializer(serializers.ModelSerializer):
             "display_name",
             "photo",
             "years_experience",
+            "visit_charge",
             "availability_status",
             "identity_verified",
             "trust_score",
@@ -91,7 +100,14 @@ class MyWorkerProfileSerializer(WorkerPublicSerializer):
         read_only_fields = [
             field
             for field in fields
-            if field not in ("display_name", "bio", "years_experience", "availability_status")
+            if field
+            not in (
+                "display_name",
+                "bio",
+                "years_experience",
+                "visit_charge",
+                "availability_status",
+            )
         ]
         extra_kwargs = {"years_experience": {"max_value": 60}}
 
@@ -104,6 +120,15 @@ class MyWorkerProfileSerializer(WorkerPublicSerializer):
 
 class SkillIdsSerializer(serializers.Serializer):
     skills = serializers.ListField(child=serializers.IntegerField(), allow_empty=False)
+
+
+class SkillPriceSerializer(serializers.Serializer):
+    skill = serializers.IntegerField()
+    price = serializers.IntegerField(min_value=0, max_value=MAX_PRICE_TAKA, allow_null=True)
+
+
+class SkillPricesSerializer(serializers.Serializer):
+    prices = SkillPriceSerializer(many=True)
 
 
 class AreaIdsSerializer(serializers.Serializer):

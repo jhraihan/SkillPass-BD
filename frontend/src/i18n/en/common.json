@@ -171,7 +171,11 @@
     "noReviews": "No reviews yet",
     "years_one": "{{count}} year of experience",
     "years_other": "{{count}} years of experience",
-    "moreAreas": "+{{count}} more"
+    "moreAreas": "+{{count}} more",
+    "visitCharge": "Visit charge {{amount}}",
+    "freeVisit": "No visit charge",
+    "fromPrice": "from {{amount}}",
+    "visitChargeLabel": "Visit charge"
   },
   "booking": {
     "actor": {

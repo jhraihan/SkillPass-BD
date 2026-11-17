@@ -20,11 +20,14 @@ import { useAreas, useCategories, useSkills } from '@/hooks/catalog';
 import {
   useMyWorkerProfile,
   useSetMyAreas,
+  useSetMySkillPrices,
   useSetMySkills,
   useUpdateMyWorkerProfile,
   useUploadMyPhoto,
 } from '@/hooks/workers';
 import { localName } from '@/lib/format';
+import { initialPricing, pricingPayload } from '@/lib/pricing';
+import PriceFields from '../components/PriceFields';
 
 function ProfileForm({ profile }) {
   const { t, i18n } = useTranslation('worker');
@@ -34,6 +37,7 @@ function ProfileForm({ profile }) {
   const { data: areas = [] } = useAreas();
   const updateProfile = useUpdateMyWorkerProfile();
   const setSkills = useSetMySkills();
+  const setSkillPrices = useSetMySkillPrices();
   const setAreas = useSetMyAreas();
   const uploadPhoto = useUploadMyPhoto();
   const [saving, setSaving] = useState(false);
@@ -44,6 +48,7 @@ function ProfileForm({ profile }) {
     skills: profile.skills.map((s) => s.id),
     areas: profile.service_areas.map((a) => a.id),
     photos: [],
+    pricing: initialPricing(profile),
   });
 
   const set = (key) => (value) => setForm((current) => ({ ...current, [key]: value }));
@@ -55,12 +60,15 @@ function ProfileForm({ profile }) {
   const save = async () => {
     setSaving(true);
     try {
+      const { visitCharge, skillPrices } = pricingPayload(form.pricing, form.skills);
       await updateProfile.mutateAsync({
         display_name: form.display_name.trim(),
         bio: form.bio,
         years_experience: Number(form.years_experience) || 0,
+        visit_charge: visitCharge,
       });
       await setSkills.mutateAsync(form.skills);
+      await setSkillPrices.mutateAsync(skillPrices);
       await setAreas.mutateAsync(form.areas);
       if (form.photos[0]) await uploadPhoto.mutateAsync(form.photos[0]);
       set('photos')([]);
@@ -137,6 +145,12 @@ function ProfileForm({ profile }) {
           onChange={set('areas')}
         />
       </Card>
+
+      <PriceFields
+        skills={skills.filter((skill) => form.skills.includes(skill.id))}
+        value={form.pricing}
+        onChange={set('pricing')}
+      />
 
       <Button size="xl" fullWidth icon={Save} onClick={save} loading={saving} disabled={!canSave}>
         {t('edit.save')}

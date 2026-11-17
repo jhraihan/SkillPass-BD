@@ -1,10 +1,10 @@
-import { BadgeCheck, BriefcaseBusiness, MapPin } from 'lucide-react';
+import { BadgeCheck, BriefcaseBusiness, Banknote, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import Avatar from '@/components/ui/Avatar';
 import Badge from '@/components/ui/Badge';
 import { cn } from '@/lib/cn';
-import { localName } from '@/lib/format';
+import { formatTaka, localName } from '@/lib/format';
 import AvailabilityDot from './AvailabilityDot';
 import StarRating from './StarRating';
 import TrustScorePill from './TrustScorePill';
@@ -71,6 +71,15 @@ export default function WorkerCard({ worker, footer, className }) {
         {worker.service_areas.slice(0, MAX_AREAS).map(name).join(', ')}
         {extraAreas > 0 && ` ${t('worker.moreAreas', { count: extraAreas })}`}
       </p>
+
+      {worker.visit_charge !== null && worker.visit_charge !== undefined && (
+        <p className="flex items-center gap-1.5 text-sm font-medium text-gray-800">
+          <Banknote className="size-4 shrink-0 text-green-700" aria-hidden="true" />
+          {worker.visit_charge === 0
+            ? t('worker.freeVisit')
+            : t('worker.visitCharge', { amount: formatTaka(worker.visit_charge, i18n.language) })}
+        </p>
+      )}
 
       {footer && <div className="relative z-10 pt-1">{footer}</div>}
     </article>

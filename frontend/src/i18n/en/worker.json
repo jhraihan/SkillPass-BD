@@ -79,7 +79,13 @@
     "save": "Save",
     "saved": "Profile saved",
     "verification": "Submit identity or skill evidence",
-    "account": "Account and log out"
+    "account": "Account and log out",
+    "prices": "My prices",
+    "pricesHint": "Customers see these as a guide. You agree the final price with the customer.",
+    "visitCharge": "Visit charge (৳)",
+    "visitChargeHint": "Leave empty to hide it. Write 0 if the visit is free.",
+    "skillPrice": "{{skill}}: starting price (৳)",
+    "noSkills": "Choose your skills above to add prices."
   },
   "jobs": {
     "title": "My jobs",

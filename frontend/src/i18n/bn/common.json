@@ -171,7 +171,11 @@
     "noReviews": "এখনো কোনো রিভিউ নেই",
     "years_one": "{{count}} বছরের অভিজ্ঞতা",
     "years_other": "{{count}} বছরের অভিজ্ঞতা",
-    "moreAreas": "+আরও {{count}}টি"
+    "moreAreas": "+আরও {{count}}টি",
+    "visitCharge": "ভিজিট চার্জ {{amount}}",
+    "freeVisit": "ভিজিট চার্জ নেই",
+    "fromPrice": "{{amount}} থেকে",
+    "visitChargeLabel": "ভিজিট চার্জ"
   },
   "booking": {
     "actor": {

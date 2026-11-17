@@ -57,6 +57,17 @@ def set_skills(profile, skill_ids):
 
 
 @transaction.atomic
+def set_skill_prices(profile, prices):
+    links = {link.skill_id: link for link in WorkerSkill.objects.filter(worker=profile)}
+    unknown = [item["skill"] for item in prices if item["skill"] not in links]
+    if unknown:
+        raise serializers.ValidationError({"prices": ["Set prices only for your own skills."]})
+    for item in prices:
+        links[item["skill"]].starting_price = item["price"]
+    WorkerSkill.objects.bulk_update(links.values(), ["starting_price"])
+
+
+@transaction.atomic
 def set_service_areas(profile, area_ids):
     areas = list(Area.objects.filter(id__in=set(area_ids), is_active=True))
     if len(areas) != len(set(area_ids)):

@@ -1,10 +1,12 @@
 from django.conf import settings
+from django.core.validators import MaxValueValidator
 from django.db import models
 
 from apps.catalog.models import Area, Skill
 from common.models import TimeStampedModel
 
 NEW_WORKER_JOB_THRESHOLD = 3
+MAX_PRICE_TAKA = 100_000
 
 
 class WorkerProfile(TimeStampedModel):
@@ -20,6 +22,9 @@ class WorkerProfile(TimeStampedModel):
     photo = models.ImageField(upload_to="workers/photos/", blank=True)
     bio = models.TextField(max_length=1000, blank=True)
     years_experience = models.PositiveSmallIntegerField(default=0)
+    visit_charge = models.PositiveIntegerField(
+        blank=True, null=True, validators=[MaxValueValidator(MAX_PRICE_TAKA)]
+    )
     availability_status = models.CharField(
         max_length=10, choices=Availability.choices, default=Availability.OFFLINE
     )
@@ -58,6 +63,9 @@ class WorkerSkill(models.Model):
     worker = models.ForeignKey(WorkerProfile, on_delete=models.CASCADE, related_name="skill_links")
     skill = models.ForeignKey(Skill, on_delete=models.PROTECT, related_name="worker_links")
     evidence_verified = models.BooleanField(default=False)
+    starting_price = models.PositiveIntegerField(
+        blank=True, null=True, validators=[MaxValueValidator(MAX_PRICE_TAKA)]
+    )
 
     class Meta:
         constraints = [

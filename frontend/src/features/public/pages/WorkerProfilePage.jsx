@@ -7,6 +7,7 @@ import { TrustBreakdown, TrustScorePill } from '@/components/domain';
 import { Button, Card, ErrorState, LoadingState, PageHeader } from '@/components/ui';
 import { useWorker } from '@/hooks/workers';
 import { localName } from '@/lib/format';
+import PriceList from '../components/PriceList';
 import ProfileHeader from '../components/ProfileHeader';
 import ReportModal from '../components/ReportModal';
 import ReviewsSection from '../components/ReviewsSection';
@@ -85,6 +86,10 @@ export default function WorkerProfilePage() {
           </ul>
         </Section>
       </div>
+
+      <Section title={t('profile.prices')}>
+        <PriceList worker={worker} />
+      </Section>
 
       <Section title={t('profile.trustTitle')}>
         <div className="flex flex-wrap items-center justify-between gap-2">
