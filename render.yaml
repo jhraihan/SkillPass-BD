@@ -25,11 +25,11 @@ services:
           name: skillpass-db
           property: connectionString
       - key: DJANGO_ALLOWED_HOSTS
-        value: skillpass-api.onrender.com
+        value: skillpass-api-e339.onrender.com
       - key: CORS_ALLOWED_ORIGINS
-        value: https://skillpass-web.onrender.com
+        value: https://skillpass-web-846w.onrender.com
       - key: CSRF_TRUSTED_ORIGINS
-        value: https://skillpass-api.onrender.com
+        value: https://skillpass-api-e339.onrender.com
       - key: SERVE_MEDIA
         value: "true"
       - key: CRON_TOKEN
@@ -51,7 +51,7 @@ services:
       - key: NODE_VERSION
         value: "24"
       - key: VITE_API_BASE_URL
-        value: https://skillpass-api.onrender.com/api/v1
+        value: https://skillpass-api-e339.onrender.com/api/v1
       - key: VITE_USE_MOCKS
         value: "false"
       - key: VITE_TUTORIAL_VIDEO_URL
