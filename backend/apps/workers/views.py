@@ -3,7 +3,7 @@ from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import status, viewsets
-from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.filters import OrderingFilter
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -15,7 +15,7 @@ from apps.trust.services import recalculate
 from common.permissions import IsWorker
 
 from . import services
-from .filters import WorkerFilter
+from .filters import StemmedSearchFilter, WorkerFilter
 from .models import WorkerProfile, WorkerServiceArea, WorkerSkill
 from .serializers import (
     AreaIdsSerializer,
@@ -47,9 +47,15 @@ def visible_workers():
 class WorkerViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [AllowAny]
     lookup_value_regex = r"\d+"
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filter_backends = [DjangoFilterBackend, StemmedSearchFilter, OrderingFilter]
     filterset_class = WorkerFilter
-    search_fields = ["display_name", "skills__name_en", "skills__name_bn"]
+    search_fields = [
+        "display_name",
+        "skills__name_en",
+        "skills__name_bn",
+        "skills__category__name_en",
+        "skills__category__name_bn",
+    ]
     ordering_fields = [
         "trust_score",
         "avg_rating",

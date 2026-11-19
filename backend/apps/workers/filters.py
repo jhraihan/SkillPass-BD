@@ -1,4 +1,5 @@
 import django_filters
+from rest_framework.filters import SearchFilter
 
 from .models import WorkerProfile
 
@@ -19,3 +20,22 @@ class WorkerFilter(django_filters.FilterSet):
         if value:
             return queryset.filter(availability_status=WorkerProfile.Availability.AVAILABLE)
         return queryset
+
+
+SUFFIXES = ("ation", "ians", "ian", "ing", "ers", "er", "es", "e", "s")
+MIN_STEM = 3
+
+
+def stem(term):
+    if not term.isascii():
+        return term
+    lowered = term.lower()
+    for suffix in SUFFIXES:
+        if lowered.endswith(suffix) and len(lowered) - len(suffix) >= MIN_STEM:
+            return lowered[: -len(suffix)]
+    return lowered
+
+
+class StemmedSearchFilter(SearchFilter):
+    def get_search_terms(self, request):
+        return [stem(term) for term in super().get_search_terms(request)]
