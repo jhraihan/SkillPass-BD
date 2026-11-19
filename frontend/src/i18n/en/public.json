@@ -5,7 +5,8 @@
     "about": "About",
     "login": "Log in",
     "register": "Register",
-    "dashboard": "My dashboard"
+    "dashboard": "My dashboard",
+    "menu": "Menu"
   },
   "footer": {
     "tagline": "Verified skills and work history for Bangladesh's skilled workers.",
@@ -85,7 +86,6 @@
     "home": "Go to the home page"
   },
   "landing": {
-    "title": "Find a trusted skilled worker near you",
     "subtitle": "Every worker on SkillPass BD has a verified record of real jobs and reviews from real customers.",
     "service": "What do you need?",
     "anyService": "Any service",
@@ -111,8 +111,33 @@
     "workerCta": {
       "title": "Are you a skilled worker?",
       "text": "Build your digital skill passport and get more jobs. It is free.",
-      "button": "Join as a worker"
-    }
+      "button": "Join as a worker",
+      "eyebrow": "For skilled workers"
+    },
+    "eyebrow": "Bangladesh's digital skill passport",
+    "titleLead": "Find a trusted",
+    "titleAccent": "skilled worker near you",
+    "highlights": {
+      "identity": "Verified identity",
+      "jobs": "Customer-confirmed jobs",
+      "score": "Explainable trust score"
+    },
+    "passport": {
+      "label": "Sample skill passport",
+      "name": "Rahim Uddin",
+      "role": "AC technician · Mirpur",
+      "trust": "Trust score",
+      "jobs": "Verified jobs",
+      "rating": "Rating",
+      "years": "Years",
+      "idVerified": "ID verified",
+      "newJob": "+1 verified job",
+      "review": "“On time, fair price”"
+    },
+    "categoriesEyebrow": "Services",
+    "categoriesText": "Pick a service to see verified workers near you.",
+    "viewAll": "View all workers",
+    "howEyebrow": "How it works"
   },
   "search": {
     "title": "Find workers",

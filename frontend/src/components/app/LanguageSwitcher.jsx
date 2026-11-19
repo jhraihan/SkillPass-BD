@@ -11,7 +11,7 @@ export default function LanguageSwitcher({ className }) {
       onClick={() => i18n.changeLanguage(next)}
       lang={next}
       className={cn(
-        'inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-medium text-gray-700 hover:bg-gray-100',
+        'inline-flex min-h-11 items-center gap-1.5 rounded-2xl px-2.5 text-sm font-semibold text-gray-700 transition hover:bg-ink-900/5',
         className,
       )}
       aria-label={`${t('language.label')}: ${t('language.switchTo')}`}

@@ -20,14 +20,14 @@ export default function WorkerCard({ worker, footer, className }) {
   return (
     <article
       className={cn(
-        'relative flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:border-brand-300',
+        'lift group relative flex flex-col gap-3 rounded-3xl border border-white/80 bg-white/85 p-5 shadow-soft hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/10',
         className,
       )}
     >
       <div className="flex items-start gap-3">
         <Avatar src={worker.photo} name={worker.display_name} size="lg" />
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-lg font-semibold text-gray-900">
+          <h3 className="truncate text-lg font-bold text-ink-900 transition-colors group-hover:text-brand-700">
             <Link to={`/workers/${worker.id}`} className="after:absolute after:inset-0">
               {worker.display_name}
             </Link>
@@ -60,7 +60,10 @@ export default function WorkerCard({ worker, footer, className }) {
 
       <ul className="flex flex-wrap gap-1.5">
         {worker.skills.slice(0, MAX_SKILLS).map((skill) => (
-          <li key={skill.id} className="rounded-lg bg-gray-100 px-2 py-1 text-sm text-gray-700">
+          <li
+            key={skill.id}
+            className="rounded-xl bg-linear-to-br from-gray-50 to-gray-100 px-2.5 py-1 text-sm font-medium text-gray-700 ring-1 ring-gray-200/70"
+          >
             {name(skill)}
           </li>
         ))}

@@ -33,7 +33,7 @@ export default function Modal({ open, onClose, title, size = 'md', footer, child
         if (event.target === dialogRef.current) onClose?.();
       }}
       className={cn(
-        'm-auto w-[calc(100%-2rem)] rounded-2xl bg-white p-0 shadow-xl backdrop:bg-black/50',
+        'm-auto w-[calc(100%-2rem)] rounded-3xl bg-white/95 p-0 shadow-2xl ring-1 ring-black/5 backdrop:bg-ink-950/55 backdrop:backdrop-blur-sm',
         SIZES[size],
       )}
     >
@@ -41,14 +41,14 @@ export default function Modal({ open, onClose, title, size = 'md', footer, child
         <div className="flex max-h-[85dvh] flex-col">
           <div className="flex items-start justify-between gap-4 border-b border-gray-100 p-4 sm:p-5">
             {title && (
-              <h2 id={titleId} className="text-lg font-semibold text-gray-900">
+              <h2 id={titleId} className="text-xl font-bold text-ink-900">
                 {title}
               </h2>
             )}
             <button
               type="button"
               onClick={onClose}
-              className="-m-2 ml-auto rounded-lg p-2 text-gray-500 hover:bg-gray-100"
+              className="-m-2 ml-auto rounded-xl p-2 text-gray-500 transition hover:rotate-90 hover:bg-gray-100"
               aria-label={t('actions.close')}
             >
               <X className="size-5" aria-hidden="true" />

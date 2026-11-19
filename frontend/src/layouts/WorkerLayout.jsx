@@ -28,7 +28,7 @@ export default function WorkerLayout() {
   return (
     <ScreenVoiceContext.Provider value={voice}>
       <div className="min-h-dvh text-lg">
-        <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
+        <header className="glass sticky top-0 z-30 border-x-0 border-t-0 shadow-sm">
           <div className="mx-auto flex max-w-xl items-center gap-1 px-4 py-2">
             <Logo to="/worker" compact />
             <div className="ml-auto flex items-center gap-1">
@@ -38,7 +38,7 @@ export default function WorkerLayout() {
               <button
                 type="button"
                 onClick={() => setConfirmLogout(true)}
-                className="inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-base font-medium text-gray-700 hover:bg-gray-100"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-2xl px-2.5 text-base font-semibold text-gray-700 transition hover:bg-red-50 hover:text-red-700"
               >
                 <LogOut className="size-6" aria-hidden="true" />
                 <span>{t('actions.logout')}</span>
@@ -57,7 +57,7 @@ export default function WorkerLayout() {
 
         <nav
           aria-label={t('nav.mainMenu')}
-          className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]"
+          className="glass fixed inset-x-0 bottom-0 z-30 border-x-0 border-b-0 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_-12px_rgb(15_23_42/0.18)]"
         >
           <div className="mx-auto flex max-w-xl">
             {tabs.map((tab) => (

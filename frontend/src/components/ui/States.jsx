@@ -44,8 +44,12 @@ export function EmptyState({ icon: Icon = Inbox, title, description, action, cla
     <div
       className={cn('flex flex-col items-center justify-center gap-3 py-16 text-center', className)}
     >
-      <Icon className="size-12 text-gray-300" aria-hidden="true" />
-      <p className="text-lg font-semibold text-gray-800">{title ?? t('states.empty')}</p>
+      <span className="neu flex size-20 items-center justify-center rounded-3xl bg-white">
+        <Icon className="size-9 text-brand-500" aria-hidden="true" />
+      </span>
+      <p className="font-display text-lg font-semibold text-ink-900">
+        {title ?? t('states.empty')}
+      </p>
       {description && <p className="max-w-sm text-gray-500">{description}</p>}
       {action}
     </div>

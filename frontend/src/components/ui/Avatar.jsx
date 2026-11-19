@@ -24,7 +24,7 @@ export default function Avatar({ src, name, size = 'md', className }) {
     <span
       className={cn(
         classes,
-        'inline-flex items-center justify-center bg-brand-100 font-semibold text-brand-800',
+        'inline-flex items-center justify-center bg-linear-to-br from-brand-100 via-electric-300/40 to-accent-100 font-display font-bold text-brand-800 ring-2 ring-white',
       )}
       aria-label={name}
       role="img"

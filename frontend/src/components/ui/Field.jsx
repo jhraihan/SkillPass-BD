@@ -4,7 +4,7 @@ export default function Field({ id, label, hint, error, required, className, chi
   return (
     <div className={cn('space-y-1.5', className)}>
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-800">
+        <label htmlFor={id} className="block text-sm font-semibold text-gray-800">
           {label}
           {required && <span className="text-red-600"> *</span>}
         </label>
