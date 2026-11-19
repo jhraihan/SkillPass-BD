@@ -22,14 +22,17 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-dvh md:flex">
-      <aside className="border-b border-gray-200 bg-white md:sticky md:top-0 md:h-dvh md:w-64 md:shrink-0 md:border-b-0 md:border-r">
+      <aside className="glass sticky top-0 z-30 border-x-0 border-t-0 shadow-sm md:h-dvh md:w-64 md:shrink-0 md:border-r md:border-b-0 md:shadow-none">
         <div className="flex items-center gap-1 px-4 py-3">
           <Logo to="/admin" />
           <div className="ml-auto flex items-center md:hidden">
             <LanguageSwitcher />
           </div>
         </div>
-        <nav aria-label={t('nav.mainMenu')} className="overflow-x-auto px-3 pb-3">
+        <nav
+          aria-label={t('nav.mainMenu')}
+          className="overflow-x-auto px-3 pb-3 [scrollbar-width:none]"
+        >
           <div className="flex gap-1 md:flex-col">
             {links.map((link) => (
               <span key={link.to} className="contents md:hidden">
@@ -48,14 +51,14 @@ export default function AdminLayout() {
           <button
             type="button"
             onClick={signOut}
-            className="inline-flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-base font-medium text-gray-700 hover:bg-gray-100"
+            className="inline-flex min-h-12 w-full items-center gap-3 rounded-2xl px-3.5 text-base font-semibold text-gray-700 transition hover:bg-red-50 hover:text-red-700"
           >
             <LogOut className="size-5" aria-hidden="true" />
             {t('actions.logout')}
           </button>
         </div>
       </aside>
-      <main className="min-w-0 flex-1 px-4 py-6 md:px-8">
+      <main className="min-w-0 flex-1 animate-fade-up px-4 py-6 md:px-10 md:py-8">
         <Suspense fallback={<LoadingState />}>
           <Outlet />
         </Suspense>

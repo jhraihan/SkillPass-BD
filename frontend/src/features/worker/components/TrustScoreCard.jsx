@@ -41,7 +41,7 @@ export default function TrustScoreCard({ profile }) {
         />
       </div>
       {profile.is_new && <p className="text-gray-600">{t('trustCard.newHint')}</p>}
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid gap-2 min-[420px]:grid-cols-2">
         <Button as={Link} to="/worker/reviews" variant="outline" size="lg" icon={MessageSquareText}>
           {t('trustCard.reviews')}
         </Button>

@@ -1,4 +1,5 @@
-import { LayoutDashboard, LogIn } from 'lucide-react';
+import { LayoutDashboard, LogIn, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router';
 import LanguageSwitcher from '@/components/app/LanguageSwitcher';
@@ -14,7 +15,7 @@ const LINKS = [
   { to: '/about', key: 'about' },
 ];
 
-function NavLinks({ className }) {
+function NavLinks({ className, linkClassName, onNavigate }) {
   const { t } = useTranslation('public');
   return (
     <nav className={className}>
@@ -22,10 +23,14 @@ function NavLinks({ className }) {
         <NavLink
           key={to}
           to={to}
+          onClick={onNavigate}
           className={({ isActive }) =>
             cn(
-              'inline-flex min-h-11 shrink-0 items-center rounded-xl px-3 text-sm font-medium',
-              isActive ? 'bg-brand-50 text-brand-800' : 'text-gray-700 hover:bg-gray-100',
+              'inline-flex min-h-11 shrink-0 items-center rounded-2xl px-3.5 font-semibold transition-colors',
+              isActive
+                ? 'bg-brand-500/12 text-brand-800'
+                : 'text-gray-600 hover:bg-ink-900/5 hover:text-ink-900',
+              linkClassName,
             )
           }
         >
@@ -36,34 +41,93 @@ function NavLinks({ className }) {
   );
 }
 
+function AccountActions({ user, onNavigate, stacked = false }) {
+  const { t } = useTranslation('public');
+  if (user) {
+    return (
+      <Button
+        as={Link}
+        to={homePathForRole(user.role)}
+        size={stacked ? 'lg' : 'sm'}
+        icon={LayoutDashboard}
+        fullWidth={stacked}
+        onClick={onNavigate}
+      >
+        {t('nav.dashboard')}
+      </Button>
+    );
+  }
+  return (
+    <div className={cn('flex gap-2', stacked && 'grid grid-cols-2')}>
+      <Button
+        as={Link}
+        to="/login"
+        size={stacked ? 'lg' : 'sm'}
+        variant={stacked ? 'outline' : 'ghost'}
+        icon={LogIn}
+        onClick={onNavigate}
+      >
+        {t('nav.login')}
+      </Button>
+      <Button as={Link} to="/register" size={stacked ? 'lg' : 'sm'} onClick={onNavigate}>
+        {t('nav.register')}
+      </Button>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const { t } = useTranslation('public');
   const { user } = useAuth();
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
-      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2">
-        <Logo />
-        <NavLinks className="ml-4 hidden gap-1 md:flex" />
-        <div className="ml-auto flex items-center gap-1">
-          <LanguageSwitcher />
-          {user ? (
-            <Button as={Link} to={homePathForRole(user.role)} size="sm" icon={LayoutDashboard}>
-              {t('nav.dashboard')}
-            </Button>
-          ) : (
-            <>
-              <Button as={Link} to="/login" size="sm" variant="ghost" icon={LogIn}>
-                {t('nav.login')}
-              </Button>
-              <Button as={Link} to="/register" size="sm">
-                {t('nav.register')}
-              </Button>
-            </>
+    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-4">
+      <div className="glass mx-auto max-w-6xl rounded-3xl shadow-lg shadow-ink-900/5">
+        <div className="flex items-center gap-2 px-3 py-2 sm:px-4">
+          <Logo />
+          <NavLinks className="ml-6 hidden gap-1 text-sm md:flex" />
+          <div className="ml-auto flex items-center gap-1">
+            <LanguageSwitcher />
+            <div className="hidden md:block">
+              <AccountActions user={user} />
+            </div>
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={t('nav.menu')}
+              className="inline-flex size-11 items-center justify-center rounded-2xl text-ink-900 transition hover:bg-ink-900/5 md:hidden"
+            >
+              {open ? (
+                <X className="size-6" aria-hidden="true" />
+              ) : (
+                <Menu className="size-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+        <div
+          id="mobile-menu"
+          className={cn(
+            'grid transition-[grid-template-rows] duration-300 ease-out md:hidden',
+            open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
           )}
+        >
+          <div className="overflow-hidden" inert={!open}>
+            <div className="space-y-3 border-t border-gray-200/60 p-3">
+              <NavLinks
+                className="flex flex-col gap-1"
+                linkClassName="text-base"
+                onNavigate={close}
+              />
+              <AccountActions user={user} onNavigate={close} stacked />
+            </div>
+          </div>
         </div>
       </div>
-      <NavLinks className="flex gap-1 overflow-x-auto px-4 pb-2 md:hidden" />
     </header>
   );
 }

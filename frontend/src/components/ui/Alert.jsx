@@ -13,7 +13,7 @@ export default function Alert({ tone = 'info', title, children, className }) {
   return (
     <div
       role={tone === 'error' ? 'alert' : 'status'}
-      className={cn('flex gap-3 rounded-xl border p-3 text-base', toneClass, className)}
+      className={cn('flex gap-3 rounded-2xl border p-4 text-base', toneClass, className)}
     >
       <Icon className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
       <div className="space-y-1">

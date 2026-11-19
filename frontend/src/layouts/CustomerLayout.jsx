@@ -22,7 +22,7 @@ export default function CustomerLayout() {
 
   return (
     <div className="min-h-dvh">
-      <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
+      <header className="glass sticky top-0 z-30 border-x-0 border-t-0 shadow-sm">
         <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2">
           <Logo to="/customer" compact />
           <div className="ml-auto flex items-center gap-1">
@@ -31,14 +31,17 @@ export default function CustomerLayout() {
             <button
               type="button"
               onClick={signOut}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-2xl px-3 text-sm font-semibold text-gray-700 transition hover:bg-red-50 hover:text-red-700"
             >
               <LogOut className="size-5" aria-hidden="true" />
               <span className="hidden sm:inline">{t('actions.logout')}</span>
             </button>
           </div>
         </div>
-        <nav aria-label={t('nav.mainMenu')} className="mx-auto max-w-5xl overflow-x-auto px-4 pb-2">
+        <nav
+          aria-label={t('nav.mainMenu')}
+          className="mx-auto max-w-5xl overflow-x-auto px-4 pb-2 [scrollbar-width:none]"
+        >
           <div className="flex gap-1">
             {links.map((link) => (
               <NavItem key={link.to} {...link} />
@@ -46,7 +49,7 @@ export default function CustomerLayout() {
           </div>
         </nav>
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-6">
+      <main className="mx-auto max-w-5xl animate-fade-up px-4 py-6 sm:py-8">
         <Suspense fallback={<LoadingState />}>
           <Outlet />
         </Suspense>

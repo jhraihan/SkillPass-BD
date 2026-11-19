@@ -30,7 +30,7 @@ export default function HeroSearch() {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid gap-3 rounded-2xl bg-white p-4 shadow-lg sm:grid-cols-[1fr_1fr_auto] sm:items-end"
+      className="glass grid gap-3 rounded-3xl p-3 text-gray-900 shadow-2xl shadow-black/30 sm:grid-cols-[1fr_1fr_auto] sm:items-end sm:p-4"
     >
       <Select
         label={t('landing.service')}

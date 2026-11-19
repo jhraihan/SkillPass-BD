@@ -37,12 +37,14 @@ export default function Toggle({
         className={cn(
           'relative inline-flex shrink-0 items-center rounded-full p-0.5 transition-colors',
           s.track,
-          checked ? 'bg-brand-600' : 'bg-gray-300',
+          checked
+            ? 'bg-linear-to-r from-brand-500 to-brand-700 shadow-inner'
+            : 'neu-inset bg-gray-200',
         )}
       >
         <span
           className={cn(
-            'rounded-full bg-white shadow transition-transform',
+            'rounded-full bg-white shadow-md transition-transform duration-300',
             s.thumb,
             checked && s.on,
           )}

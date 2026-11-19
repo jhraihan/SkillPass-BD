@@ -1,12 +1,12 @@
 import { cn } from '@/lib/cn';
 
 const TONES = {
-  gray: 'bg-gray-100 text-gray-700',
-  green: 'bg-green-100 text-green-800',
-  yellow: 'bg-amber-100 text-amber-800',
-  blue: 'bg-blue-100 text-blue-800',
-  red: 'bg-red-100 text-red-800',
-  brand: 'bg-brand-100 text-brand-800',
+  gray: 'bg-gray-100/90 text-gray-700 ring-gray-500/15',
+  green: 'bg-emerald-50 text-emerald-800 ring-emerald-600/20',
+  yellow: 'bg-amber-50 text-amber-800 ring-amber-600/20',
+  blue: 'bg-sky-50 text-sky-800 ring-sky-600/20',
+  red: 'bg-red-50 text-red-800 ring-red-600/20',
+  brand: 'bg-brand-50 text-brand-800 ring-brand-600/20',
 };
 
 const SIZES = {
@@ -19,7 +19,7 @@ export default function Badge({ tone = 'gray', size = 'md', icon: Icon, classNam
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full font-medium',
+        'inline-flex items-center rounded-full font-semibold ring-1 ring-inset',
         TONES[tone],
         SIZES[size],
         className,

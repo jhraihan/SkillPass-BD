@@ -31,7 +31,7 @@ export default function TileGroup({
 
   return (
     <fieldset className={className}>
-      {label && <legend className="mb-2 text-sm font-medium text-gray-800">{label}</legend>}
+      {label && <legend className="mb-2 text-sm font-semibold text-gray-800">{label}</legend>}
       <div
         role={multiple ? 'group' : 'radiogroup'}
         aria-invalid={error ? true : undefined}
@@ -48,10 +48,10 @@ export default function TileGroup({
               aria-pressed={multiple ? active : undefined}
               onClick={() => toggle(optionValue)}
               className={cn(
-                'flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border-2 p-3 text-center transition-colors',
+                'flex min-h-24 flex-col items-center justify-center gap-2 rounded-3xl border-2 p-3 text-center transition-all duration-200 active:scale-[0.97]',
                 active
-                  ? 'border-brand-600 bg-brand-50 text-brand-800'
-                  : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300',
+                  ? 'border-brand-500 bg-brand-50 text-brand-800 shadow-lg shadow-brand-600/15 ring-4 ring-brand-500/10'
+                  : 'neu border-white bg-white text-gray-800 hover:border-brand-200',
               )}
             >
               {typeof Icon === 'string' ? (
