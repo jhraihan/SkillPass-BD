@@ -1,5 +1,7 @@
 import pytest
 
+from apps.workers.filters import stem
+
 pytestmark = pytest.mark.django_db
 
 URL = "/api/v1/workers/"
@@ -57,11 +59,32 @@ def test_lists_only_complete_profiles_ordered_by_trust(api_client, workers):
         ("verified=true", ["Rahim"]),
         ("available=true", ["Rahim"]),
         ("search=wiring", ["Salam"]),
+        ("search=ac service", ["Rahim"]),
+        ("search=AC Repairs", ["Rahim"]),
+        ("search=plumber", ["Karim"]),
+        ("search=electrician", ["Salam"]),
+        ("search=এসি", ["Rahim"]),
         ("ordering=-years_experience", ["Karim", "Rahim", "Salam"]),
     ],
 )
 def test_filters(api_client, workers, query, expected):
     assert names(api_client.get(f"{URL}?{query}")) == expected
+
+
+@pytest.mark.parametrize(
+    ("term", "expected"),
+    [
+        ("service", "servic"),
+        ("Servicing", "servic"),
+        ("installation", "install"),
+        ("electrician", "electric"),
+        ("ac", "ac"),
+        ("gas", "gas"),
+        ("এসি", "এসি"),
+    ],
+)
+def test_stem(term, expected):
+    assert stem(term) == expected
 
 
 def test_card_has_badges_skills_and_no_phone(api_client, workers):
