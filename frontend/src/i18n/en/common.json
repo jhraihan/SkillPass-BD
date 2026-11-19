@@ -15,6 +15,7 @@
     "delete": "Delete",
     "search": "Search",
     "logout": "Log out",
+    "logoutConfirm": "Log out of SkillPass?",
     "login": "Log in",
     "viewAll": "View all",
     "reload": "Reload page"
