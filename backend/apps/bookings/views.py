@@ -46,13 +46,15 @@ class ServiceRequestViewSet(
     def perform_create(self, serializer):
         data = dict(serializer.validated_data)
         skills = data.pop("skills", [])
+        worker = data.pop("worker", None)
         serializer.instance = services.create_service_request(
-            self.request.user, skills=skills, **data
+            self.request.user, skills=skills, worker=worker, **data
         )
 
     def perform_update(self, serializer):
         if serializer.instance.status != ServiceRequest.Status.OPEN:
             raise serializers.ValidationError({"detail": "Only open requests can be edited."})
+        serializer.validated_data.pop("worker", None)
         serializer.save()
 
     @extend_schema(request=None, responses=ServiceRequestSerializer)

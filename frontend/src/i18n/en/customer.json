@@ -27,7 +27,17 @@
     "errors": {
       "description": "Please describe the problem in a few words.",
       "date": "Choose today or a later date."
-    }
+    },
+    "bookingWorker": "You are booking",
+    "worksIn": "Works in",
+    "change": "Change",
+    "submitBook": "Send booking request",
+    "workerMissing": "We could not find this worker.",
+    "offlineTitle": "{{name}} is not taking jobs right now",
+    "offlineText": "Pick another worker, or send your request to every matching worker.",
+    "findOthers": "Find other workers",
+    "requestAll": "Send to matching workers",
+    "workerUnavailable": "This worker cannot take this request right now. Check the service and area, or choose another worker."
   },
   "matches": {
     "title": "Matching workers",
@@ -37,7 +47,11 @@
     "book": "Book",
     "alreadyBooked": "This request already has an active booking.",
     "viewBooking": "View booking",
-    "booked": "Request sent. The worker will reply soon."
+    "booked": "Request sent. The worker will reply soon.",
+    "cancel": "Cancel this request",
+    "cancelTitle": "Cancel this request?",
+    "cancelMessage": "It will be removed from your waiting list and no worker will see it.",
+    "cancelled": "Request cancelled"
   },
   "bookings": {
     "title": "My bookings",

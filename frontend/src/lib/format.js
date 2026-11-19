@@ -42,3 +42,7 @@ export function localName(item, lang) {
   const preferred = lang === 'bn' ? item.name_bn : item.name_en;
   return preferred || item.name_en || item.name_bn || '';
 }
+
+export function todayIso() {
+  return new Date().toLocaleDateString('en-CA');
+}

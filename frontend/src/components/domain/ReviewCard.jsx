@@ -10,10 +10,15 @@ export default function ReviewCard({ review, showCategory = true, footer, classN
   const { t, i18n } = useTranslation();
 
   return (
-    <article className={cn('space-y-3 rounded-2xl border border-gray-200 bg-white p-4', className)}>
+    <article
+      className={cn(
+        'space-y-3 rounded-3xl border border-white/80 bg-white/85 p-4 shadow-soft sm:p-5',
+        className,
+      )}
+    >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          <p className="font-semibold text-gray-900">{review.customer_name}</p>
+          <p className="font-display font-semibold text-ink-900">{review.customer_name}</p>
           <p className="text-sm text-gray-500">
             {[
               showCategory && localName(review.category, i18n.language),
@@ -26,7 +31,7 @@ export default function ReviewCard({ review, showCategory = true, footer, classN
         <StarRating value={review.overall} readOnly showValue />
       </div>
 
-      <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+      <dl className="grid gap-x-6 gap-y-1.5 rounded-2xl bg-gray-50/80 p-3 text-sm sm:grid-cols-2">
         {RATING_DIMENSIONS.map((dimension) => (
           <div key={dimension} className="flex items-center justify-between gap-2">
             <dt className="text-gray-600">{t(`review.dimensions.${dimension}`)}</dt>

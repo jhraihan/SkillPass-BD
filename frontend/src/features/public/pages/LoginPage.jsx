@@ -12,6 +12,10 @@ import { homePathForRole } from '@/lib/constants';
 import { fieldError } from '@/lib/forms';
 import { isValidBdPhone } from '@/lib/validation';
 
+function returnPath(from) {
+  return from ? `${from.pathname}${from.search ?? ''}` : null;
+}
+
 const schema = z.object({
   phone: z.string().refine(isValidBdPhone, 'common:errors.phone'),
   password: z.string().min(1, 'common:errors.required'),
@@ -30,7 +34,7 @@ export default function LoginPage() {
   } = useForm({ resolver: zodResolver(schema), defaultValues: { phone: '', password: '' } });
 
   if (user) {
-    return <Navigate to={location.state?.from?.pathname ?? homePathForRole(user.role)} replace />;
+    return <Navigate to={returnPath(location.state?.from) ?? homePathForRole(user.role)} replace />;
   }
 
   return (
@@ -72,7 +76,11 @@ export default function LoginPage() {
 
         <p className="text-center text-gray-600">
           {t('login.noAccount')}{' '}
-          <Link to="/register" className="font-semibold text-brand-700 hover:underline">
+          <Link
+            to="/register"
+            state={location.state}
+            className="font-semibold text-brand-700 hover:underline"
+          >
             {t('login.register')}
           </Link>
         </p>

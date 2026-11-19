@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { House, UserPlus, Wrench } from 'lucide-react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Link, Navigate } from 'react-router';
+import { Link, Navigate, useLocation } from 'react-router';
 import { z } from 'zod';
 import { getErrorMessage } from '@/api/errors';
 import { Alert, Button, Card, Input, TileGroup } from '@/components/ui';
@@ -36,6 +36,7 @@ const schema = z
 export default function RegisterPage() {
   const { t, i18n } = useTranslation('public');
   const { user } = useAuth();
+  const location = useLocation();
   const registerUser = useRegister();
 
   const {
@@ -58,7 +59,11 @@ export default function RegisterPage() {
 
   const role = useWatch({ control, name: 'role' });
 
-  if (user) return <Navigate to={homePathForRole(user.role)} replace />;
+  if (user) {
+    const from = location.state?.from;
+    const back = user.role === 'CUSTOMER' && from ? `${from.pathname}${from.search ?? ''}` : null;
+    return <Navigate to={back ?? homePathForRole(user.role)} replace />;
+  }
 
   const isWorker = role === 'WORKER';
   const secretProps = isWorker
@@ -159,7 +164,11 @@ export default function RegisterPage() {
 
         <p className="text-center text-gray-600">
           {t('register.haveAccount')}{' '}
-          <Link to="/login" className="font-semibold text-brand-700 hover:underline">
+          <Link
+            to="/login"
+            state={location.state}
+            className="font-semibold text-brand-700 hover:underline"
+          >
             {t('register.login')}
           </Link>
         </p>

@@ -152,7 +152,11 @@
     "already_pending": "You already sent this. Please wait for the review.",
     "already_decided": "This request was already decided. Refresh the page.",
     "skill_removed": "The worker removed this skill from their profile.",
-    "already_reported": "You already reported this. Our team is looking at it."
+    "already_reported": "You already reported this. Our team is looking at it.",
+    "not_found": "We could not find that. It may have been removed.",
+    "permission_denied": "You do not have permission to do this.",
+    "not_authenticated": "Please log in again.",
+    "account_inactive": "This account is not active."
   },
   "worker": {
     "availability": {

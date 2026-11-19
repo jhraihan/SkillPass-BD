@@ -183,7 +183,9 @@
     "noReviews": "No reviews yet.",
     "prices": "Prices",
     "pricesHint": "Starting prices set by the worker. The final price is agreed with the worker.",
-    "noPrices": "This worker has not added prices yet."
+    "noPrices": "This worker has not added prices yet.",
+    "customerOnly": "Log in with a customer account to book a worker.",
+    "offline": "Not taking jobs right now"
   },
   "trust": {
     "title": "How the trust score works",

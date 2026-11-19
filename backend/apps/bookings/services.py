@@ -139,9 +139,12 @@ def _set_request_status(request, status):
 
 
 @transaction.atomic
-def create_service_request(customer, *, skills=(), **fields):
+@transaction.atomic
+def create_service_request(customer, *, skills=(), worker=None, **fields):
     request = ServiceRequest.objects.create(customer=customer, **fields)
     request.skills.set(skills)
+    if worker is not None:
+        create_booking(request, worker)
     return request
 
 
@@ -167,6 +170,18 @@ def bookable_workers(request):
     ).exclude(availability_status=WorkerProfile.Availability.OFFLINE)
 
 
+def booking_block_reason(request, worker):
+    if worker.user_id == request.customer_id:
+        return "You cannot book yourself."
+    if not is_setup_complete(worker) or not worker.user.is_active or worker.user.is_suspended:
+        return "This worker is not available for this request."
+    if worker.availability_status == WorkerProfile.Availability.OFFLINE:
+        return "This worker is not taking jobs right now."
+    if not bookable_workers(request).filter(pk=worker.pk).exists():
+        return "This worker does not offer this service in this area."
+    return None
+
+
 @transaction.atomic
 def create_booking(request, worker):
     request = ServiceRequest.objects.select_for_update().get(pk=request.pk)
@@ -174,11 +189,9 @@ def create_booking(request, worker):
         raise RequestNotOpen()
     if request.bookings.filter(status__in=Booking.ACTIVE_STATUSES).exists():
         raise RequestNotOpen()
-    eligible = bookable_workers(request).filter(pk=worker.pk).exists()
-    if not eligible or not is_setup_complete(worker) or worker.user_id == request.customer_id:
-        raise serializers.ValidationError(
-            {"worker": ["This worker is not available for this request."]}
-        )
+    reason = booking_block_reason(request, worker)
+    if reason:
+        raise serializers.ValidationError({"worker": [reason]})
     booking = Booking.objects.create(
         service_request=request, customer=request.customer, worker=worker
     )

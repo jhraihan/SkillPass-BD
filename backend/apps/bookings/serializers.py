@@ -31,6 +31,12 @@ class ServiceRequestSerializer(serializers.ModelSerializer):
     skills_detail = SkillBriefSerializer(source="skills", many=True, read_only=True)
     area_detail = AreaBriefSerializer(source="area", read_only=True)
     active_booking = serializers.SerializerMethodField()
+    worker = serializers.PrimaryKeyRelatedField(
+        queryset=WorkerProfile.objects.select_related("user"),
+        write_only=True,
+        required=False,
+        allow_null=True,
+    )
 
     class Meta:
         model = ServiceRequest
@@ -48,6 +54,7 @@ class ServiceRequestSerializer(serializers.ModelSerializer):
             "preferred_slot",
             "status",
             "active_booking",
+            "worker",
             "created_at",
         ]
         read_only_fields = ["status", "created_at"]

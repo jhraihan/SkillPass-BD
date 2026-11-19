@@ -1,4 +1,5 @@
-import { CalendarPlus, Check, SearchX } from 'lucide-react';
+import { CalendarPlus, Check, SearchX, XCircle } from 'lucide-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router';
 import { getErrorMessage } from '@/api/errors';
@@ -6,13 +7,19 @@ import { WorkerCard } from '@/components/domain';
 import {
   Alert,
   Button,
+  ConfirmDialog,
   EmptyState,
   ErrorState,
   LoadingState,
   PageHeader,
   useToast,
 } from '@/components/ui';
-import { useCreateBooking, useMatches, useServiceRequest } from '@/hooks/bookings';
+import {
+  useCancelServiceRequest,
+  useCreateBooking,
+  useMatches,
+  useServiceRequest,
+} from '@/hooks/bookings';
 import RequestSummaryCard from '../components/RequestSummaryCard';
 
 function MatchReasons({ reasons }) {
@@ -40,6 +47,18 @@ export default function MatchResultsPage() {
   const request = useServiceRequest(id);
   const matches = useMatches(id);
   const createBooking = useCreateBooking();
+  const cancelRequest = useCancelServiceRequest();
+  const [confirmCancel, setConfirmCancel] = useState(false);
+
+  const cancel = () =>
+    cancelRequest.mutate(Number(id), {
+      onSuccess: () => {
+        toast.success(t('matches.cancelled'));
+        navigate('/customer');
+      },
+      onError: (error) => toast.error(getErrorMessage(error, t)),
+      onSettled: () => setConfirmCancel(false),
+    });
 
   const book = (worker) =>
     createBooking.mutate(
@@ -59,6 +78,7 @@ export default function MatchResultsPage() {
   }
 
   const activeBooking = request.data.active_booking;
+  const canCancel = request.data.status === 'OPEN' && !activeBooking;
 
   return (
     <div className="space-y-4">
@@ -66,6 +86,22 @@ export default function MatchResultsPage() {
         title={t('matches.title')}
         description={t('matches.subtitle')}
         backTo="/customer"
+        actions={
+          canCancel && (
+            <Button variant="outline" icon={XCircle} onClick={() => setConfirmCancel(true)}>
+              {t('matches.cancel')}
+            </Button>
+          )
+        }
+      />
+      <ConfirmDialog
+        open={confirmCancel}
+        onClose={() => setConfirmCancel(false)}
+        onConfirm={cancel}
+        loading={cancelRequest.isPending}
+        title={t('matches.cancelTitle')}
+        message={t('matches.cancelMessage')}
+        confirmLabel={t('matches.cancel')}
       />
       <RequestSummaryCard request={request.data} showStatus />
 
