@@ -35,7 +35,7 @@ The booking timeouts (24 h to answer a request, 72 h to confirm a finished job) 
    ```
    It prints the demo phone numbers, passwords and PINs. Change or remove these accounts before real users join.
 6. **Turn on the timeouts job.** In GitHub: *Settings* → *Secrets and variables* → *Actions* → add:
-   - `API_URL` = `https://skillpass-api.onrender.com/api/v1`
+   - `API_URL` = `https://skillpass-api-e339.onrender.com/api/v1`
    - `CRON_TOKEN` = the value Render generated for `CRON_TOKEN` on `skillpass-api`
 
    Run it once by hand from the *Actions* tab (*Booking timeouts* → *Run workflow*) and check it returns `{"expired": …, "auto_closed": …}`.
